@@ -1,0 +1,42 @@
+{
+	"bowerDependencies": {
+	    "angular-sanitize": "1.2.16",
+	    "angular-ui-router": "~0.2.13",
+	    "bootstrap": "~3.3.2",
+	    "angular-bootstrap": "~0.12.0",
+	    "angular-gettext": "~2.0.2",
+        "underscore":"~1.8.3",
+        "ng-debounce": "~0.1.5",
+        "moment": "~2.10.2"
+	},
+    "npmDependencies": {
+        "express": "^4.12.1",
+        "express-session": "^1.10.3",
+        "morgan": "^1.5.1",
+        "body-parser": "^1.12.0",
+        "syncorm": "^0.1.19",
+        "passport": "^0.2.1",
+        "underscore": "^1.8.3"
+    },
+	"serverConfig": {
+    	"database": {
+	        "driver": "mysql",
+	        "host": "127.0.0.1",
+	        "port": 3306,
+	        "user": "root",
+	        "password": "",
+	        "timezone": "utc",
+	        "database": "myDatabase"
+	    },
+	    "sessionSecret": "mySecret",
+        "log": "output.log",
+        "logLevel": "debug",
+        "accessLog": "access.log",
+        "apiPrefix": "/api",
+        "sessionSecret": "masterASP149969*"
+	},
+	"commonConfig": {
+		"hostUrl": "",
+	    "apiPrefix": "/api"
+	}
+}

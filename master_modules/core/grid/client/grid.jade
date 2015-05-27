@@ -1,0 +1,53 @@
+div.grid
+
+
+	div.container-fluid.grid_nav
+		div.col-xs-3
+			a.grid_action(ng-click="configGrid()") 
+				span.glyphicon.glyphicon-wrench(aria-hidden="true")
+				| Config
+			a.grid_action(ng-if="config.grid_actions", ng-repeat="action in config.grid_actions", ng-click="action.handler(record)") 
+				span.glyphicon(ng-class="'glyphicon-' + action.icon", aria-hidden="true")
+				| {{action.label}}
+		div.col-xs-4.col-xs-offset
+			p.grid_title.text-center 
+				span.h3 {{config.title}}
+				br
+				span.small {{selection.length>0 ? selection.length + "/" + data.length : data.length}}
+		div.col-xs-3.col-xs-offset-2
+			input.form-control.input-sm(type="text", role="search", placeholder="(Search...)")
+
+
+	//
+		nav.navbar.navbar-default.grid_title_bar
+			div.container-fluid
+				span.glyphicon.glyphicon-wrench(aria-hidden="true")
+				span.h4.grid_title {{config.title}}
+				form.navbar-form.navbar-right(role="search")
+					div.form-group
+						input.form-control.input-sm(type="text", role="search")
+
+	table.table.table-condensed.table-bordered
+		thead
+			tr
+				th(ng-if="config.multiselect")
+				th(ng-repeat="field in config.fields")
+					span {{field.label}}
+					div.sort_updown
+						div.sort_up
+						div.sort_down
+					div.add_filter
+						span.glyphicon.glyphicon-zoom-in
+				th(ng-if="config.record_actions")
+
+
+		tbody
+			tr(ng-repeat="record in data", ng-class="{info : isChecked(record)}")
+				td(ng-if="config.multiselect")
+					span.glyphicon.glyphicon-check(aria-hidden="true", ng-show="isChecked(record)", ng-click="uncheck(record, $event)")
+					span.glyphicon.glyphicon-unchecked(aria-hidden="true", ng-show="!isChecked(record)", ng-click="check(record, $event)")
+				td(ng-repeat="(fieldName, field) in config.fields") {{record[fieldName]}}
+				td(ng-if="config.record_actions")
+					a.grid_action(ng-repeat="action in config.record_actions", ng-click="action.handler(record)") 
+						span.glyphicon(ng-class="'glyphicon-' + action.icon", aria-hidden="true")
+						| {{action.label}}

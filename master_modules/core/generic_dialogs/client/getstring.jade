@@ -1,0 +1,12 @@
+div.modal-header
+	h4 {{data.title}}
+
+div.modal-body
+	h5 {{data.msg}}
+
+	form
+		input.span6(name="valor", ng-model="data.valor")
+
+div.modal-footer
+	button.btn.btn-primary(ng-click="ok()") Sí
+	button.btn(ng-click="cancel()") No

@@ -1,0 +1,8 @@
+div.modal-header
+	h4 {{msg}}
+
+div.modal-body
+	div.alerr.alert-danger(ng-repeat="m in msgs") {{m}}
+
+div.modal-footer
+	button.btn(ng-click="ok()") Close
