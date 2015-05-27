@@ -1,0 +1,204 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: autoemail/autoemail.html:32
+msgid "Add new rule"
+msgstr ""
+
+#: autoemail/autoemail_rule.html:19
+msgid "After checkout"
+msgstr ""
+
+#: app.js:1446
+msgid "Are you sure you want to delete rule '{{ruleDescription}}'?"
+msgstr ""
+
+#: app.js:1598
+msgid "At least one contract must be selected"
+msgstr ""
+
+#: autoemail/autoemail_rule.html:4
+msgid "Automatic Email Rule"
+msgstr ""
+
+#: autoemail/autoemail.html:8
+msgid "Automatic Email rules"
+msgstr ""
+
+#: master/home.html:4
+msgid "Automàtic Email"
+msgstr ""
+
+#: autoemail/autoemail_rule.html:18
+msgid "Before checkin"
+msgstr ""
+
+#: app.js:1653
+#: autoemail/autoemail_rule.html:89
+msgid "Body"
+msgstr ""
+
+#: app.js:1634
+msgid "Body can't be empty"
+msgstr ""
+
+#: app.js:1675
+msgid "Can't be empty"
+msgstr ""
+
+#: master/login.html:20
+msgid "Cancel"
+msgstr ""
+
+#: app.js:1663
+#: autoemail/autoemail_rule.html:36
+msgid "Contracts"
+msgstr ""
+
+#: autoemail/autoemail_rule.html:58
+msgid "Create a template"
+msgstr ""
+
+#: app.js:1662
+msgid "Days After Checkout"
+msgstr ""
+
+#: app.js:1661
+msgid "Days Before Checkin"
+msgstr ""
+
+#: autoemail/autoemail_rule.html:30
+msgid "Days after checkout"
+msgstr ""
+
+#: autoemail/autoemail_rule.html:24
+msgid "Days before checkin"
+msgstr ""
+
+#: autoemail/autoemail.html:29
+msgid "Delete"
+msgstr ""
+
+#: autoemail/autoemail_rule.html:53
+msgid "Don't send"
+msgstr ""
+
+#: autoemail/autoemail.html:29
+msgid "Edit"
+msgstr ""
+
+#: index.html:28
+#: master/body.html:18
+msgid "Home"
+msgstr ""
+
+#: app.js:1566
+#: app.js:1569
+msgid "Invalid number"
+msgstr ""
+
+#: app.js:1575
+msgid "Invalid range"
+msgstr ""
+
+#: master/home.html:23
+#: master/home.html:7
+#: master/login.html:19
+#: master/login.html:3
+msgid "Login"
+msgstr ""
+
+#: index.html:20
+#: master/body.html:10
+msgid "Logout"
+msgstr ""
+
+#: autoemail/autoemail.html:12
+msgid "Name"
+msgstr ""
+
+#: app.js:1572
+msgid "Number can not have decimals"
+msgstr ""
+
+#: app.js:1651
+msgid "Options"
+msgstr ""
+
+#: master/home.html:16
+#: master/login.html:12
+msgid "Password"
+msgstr ""
+
+#: app.js:1711
+msgid "Pleas correct this error"
+msgid_plural "Please correct this errors"
+msgstr[0] ""
+msgstr[1] ""
+
+#: autoemail/autoemail_rule.html:97
+msgid "Raw HTML"
+msgstr ""
+
+#: autoemail/autoemail.html:13
+msgid "Rule"
+msgstr ""
+
+#: app.js:1664
+#: autoemail/autoemail_rule.html:9
+msgid "Rule Name"
+msgstr ""
+
+#: autoemail/autoemail_rule.html:15
+msgid "Rule type"
+msgstr ""
+
+#: autoemail/autoemail_rule.html:104
+msgid "Save"
+msgstr ""
+
+#: app.js:1465
+msgid "Send an email {{ndays}} day after checkout."
+msgid_plural "Send an email {{ndays}} days after checkout."
+msgstr[0] ""
+msgstr[1] ""
+
+#: app.js:1461
+msgid "Send an email {{ndays}} day before checkin."
+msgid_plural "Send an email {{ndays}} days before checkin."
+msgstr[0] ""
+msgstr[1] ""
+
+#: app.js:1652
+#: autoemail/autoemail.html:14
+#: autoemail/autoemail_rule.html:83
+msgid "Subject"
+msgstr ""
+
+#: app.js:1627
+msgid "Subject can't be empty"
+msgstr ""
+
+#: app.js:1618
+msgid "The reference language template is not defined"
+msgstr ""
+
+#: autoemail/autoemail_rule.html:64
+msgid "Use a template of a different language."
+msgstr ""
+
+#: master/home.html:10
+#: master/login.html:6
+msgid "User"
+msgstr ""
+
+#: app.js:1614
+msgid "You must select a reference language"
+msgstr ""
+
+#: master/home.html:3
+msgid "masterCAMPING menu"
+msgstr ""

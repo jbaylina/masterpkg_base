@@ -1,6 +1,5 @@
 # Logs
 logs
-*.log
 
 # Runtime data
 pids
@@ -32,10 +31,16 @@ app.js
 bower.json
 package.json
 config.json
+!master_modules/
+
 master_modules/*
-!master_modules/core/*
+!master_modules/core/
+
 translations/*.mo
 *\.log
+*\.out
+core/
+.DS_Store
 
 # Users Environment Variables
 .lock-wscript
