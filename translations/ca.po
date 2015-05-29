@@ -1,201 +1,253 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: masterWeb\n"
+"Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: Jordi Baylina <baylina@uniclau.com>\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"X-Generator: Poedit 1.7.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: autoemail/autoemail.html:32
-msgid "Add new rule"
-msgstr "Afegir nova regla"
+#: app.js:1191 app.js:1322
+msgid "Administrador"
+msgstr ""
 
-#: autoemail/autoemail_rule.html:19
-msgid "After checkout"
-msgstr "Després del checkout"
+#: trailerTrack\logisticsOp.html:42 trailerTrack\webUsers.html:17
+msgid "All"
+msgstr ""
 
-#: app.js:1446
-msgid "Are you sure you want to delete rule '{{ruleDescription}}'?"
-msgstr "Estàs segur que vols borrar la regla  '{{ruleDescription}}'?"
+#: app.js:824
+msgid "An email has been sended to your email. Please follow the instructions there."
+msgstr ""
 
-#: app.js:1598
-msgid "At least one contract must be selected"
-msgstr "S'ha de seleccionar un contracte com a minim"
+#: trailerTrack\logisticsOp.html:60
+msgid "Authorization"
+msgstr "Autorització"
 
-#: autoemail/autoemail_rule.html:4
-msgid "Automatic Email Rule"
-msgstr "Regla d'email automàtic"
+#: trailerTrack\logisticsOp.html:112
+msgid "Authorization for trailer"
+msgstr "Autorització per al remolc"
 
-#: autoemail/autoemail.html:8
-msgid "Automatic Email rules"
-msgstr "Regles d'email automàtic"
+#: my_ang_boot\change_password.html:2 my_ang_boot\change_password.html:24
+msgid "Change Password"
+msgstr ""
 
-#: master/home.html:4
-msgid "Automàtic Email"
-msgstr "Regla d'email automàtic"
+#: index.html:28 my_ang_boot\body.html:18
+msgid "Change password"
+msgstr ""
 
-#: autoemail/autoemail_rule.html:18
-msgid "Before checkin"
-msgstr "Abans del checkin"
+#: trailerTrack\logisticsOp.html:101 trailerTrack\logisticsOp.html:129
+msgid "Close"
+msgstr "Tanca"
 
-#: app.js:1653 autoemail/autoemail_rule.html:89
-msgid "Body"
-msgstr "Cos"
+#: trailerTrack\logisticsOp.html:59 trailerTrack\logisticsOp.html:98
+msgid "Comment"
+msgstr "Comentari"
 
-#: app.js:1634
-msgid "Body can't be empty"
-msgstr "El cos no pot ser vuit."
+#: trailerTrack\logisticsOp.html:93
+msgid "Comments for trailer"
+msgstr ""
 
-#: app.js:1675
-msgid "Can't be empty"
-msgstr "No pot ser vuit."
+#: trailerTrack\webUser_modal.html:21 trailerTrack\webUsers.html:36
+msgid "Company"
+msgstr ""
 
-#: master/login.html:20
-msgid "Cancel"
-msgstr "Cancel·lar"
+#: trailerTrack\webUsers.html:15
+msgid "Company filter"
+msgstr ""
 
-#: app.js:1663 autoemail/autoemail_rule.html:36
-msgid "Contracts"
-msgstr "Contractes"
+#: trailerTrack\logisticsOp.html:40
+msgid "Company filter {{filtreEmpresa}}"
+msgstr ""
 
-#: autoemail/autoemail_rule.html:58
-msgid "Create a template"
-msgstr "Crear una plantilla"
+#: my_ang_boot\change_password.html:17 my_ang_boot\reset_password.html:17
+msgid "Confirm New Password"
+msgstr ""
 
-#: app.js:1662
-msgid "Days After Checkout"
-msgstr "Dies després del Checkout"
+#: trailerTrack\logisticsOp.html:119
+msgid "Confirmed"
+msgstr "Confirmat"
 
-#: app.js:1661
-msgid "Days Before Checkin"
-msgstr "Dies Abans del Checkin"
+#: trailerTrack\logisticsOp.html:120
+msgid "Denied"
+msgstr "Denegat"
 
-#: autoemail/autoemail_rule.html:30
-msgid "Days after checkout"
-msgstr "Dies després del checkout"
+#: app.js:1193 app.js:1324 app.js:962
+msgid "Docker"
+msgstr "Estibador"
 
-#: autoemail/autoemail_rule.html:24
-msgid "Days before checkin"
-msgstr "Dies abans del Checkin"
+#: trailerTrack\webUsers.html:34
+msgid "Email"
+msgstr ""
 
-#: autoemail/autoemail.html:29
-msgid "Delete"
-msgstr "Borrar"
+#: trailerTrack\logisticsOp.html:56
+msgid "Entrance date"
+msgstr ""
 
-#: autoemail/autoemail_rule.html:53
-msgid "Don't send"
-msgstr "No enviar"
+#: trailerTrack\docker.html:24
+msgid "Entrance date:"
+msgstr ""
 
-#: autoemail/autoemail.html:29
-msgid "Edit"
-msgstr "Editar"
+#: trailerTrack\logisticsOp.html:57
+msgid "Exit date"
+msgstr ""
 
-#: index.html:28 master/body.html:18
-msgid "Home"
-msgstr "Inici"
+#: trailerTrack\docker.html:27
+msgid "Exit date:"
+msgstr ""
 
-#: app.js:1566 app.js:1569
-msgid "Invalid number"
-msgstr "Número invàlid"
+#: app.js:1116
+msgid "Expected"
+msgstr "Previsió"
 
-#: app.js:1575
-msgid "Invalid range"
-msgstr "Rang invàlid"
+#: trailerTrack\logisticsOp.html:55
+msgid "Expected date"
+msgstr "Data prevista"
 
-#: master/home.html:23 master/home.html:7 master/login.html:19
-#: master/login.html:3
+#: trailerTrack\logisticsOp.html:52
+msgid "Id"
+msgstr ""
+
+#: app.js:1117
+msgid "Inside"
+msgstr "Dins"
+
+#: trailerTrack\webUsers.html:52
+msgid "Listed users:"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:79
+msgid "Listed vehicles:"
+msgstr "Vehicles llistats:"
+
+#: my_ang_boot\login.html:18 my_ang_boot\login.html:2
 msgid "Login"
 msgstr "Login"
 
-#: index.html:20 master/body.html:10
+#: app.js:1018 app.js:1192 app.js:1323
+msgid "Logistics"
+msgstr "Logística"
+
+#: index.html:29 my_ang_boot\body.html:19
 msgid "Logout"
-msgstr "Desconnectar"
+msgstr "Logout"
 
-#: autoemail/autoemail.html:12
-msgid "Name"
-msgstr "Nom"
+#: app.js:985
+msgid "Matrícula no encontrada"
+msgstr ""
 
-#: app.js:1572
-msgid "Number can not have decimals"
-msgstr "El número no pot tenir decimals"
+#: my_ang_boot\change_password.html:11 my_ang_boot\reset_password.html:11
+msgid "New Password"
+msgstr ""
 
-#: app.js:1651
-msgid "Options"
-msgstr "Opcions"
+#: my_ang_boot\change_password.html:5
+msgid "Old Password"
+msgstr ""
 
-#: master/home.html:16 master/login.html:12
+#: app.js:1118
+msgid "Outside"
+msgstr "Fora"
+
+#: my_ang_boot\login.html:11
 msgid "Password"
 msgstr "Password"
 
-#: app.js:1711
-msgid "Pleas correct this error"
-msgid_plural "Please correct this errors"
-msgstr[0] "Siuspalu, corretgir l'error."
-msgstr[1] "Siuspalu, corretgir els error."
+#: trailerTrack\logisticsOp.html:118
+msgid "Pending"
+msgstr "Pendent"
 
-#: autoemail/autoemail_rule.html:97
-msgid "Raw HTML"
-msgstr "HTML pla"
+#: trailerTrack\logisticsOp.html:53
+msgid "Plate"
+msgstr ""
 
-#: autoemail/autoemail.html:13
-msgid "Rule"
-msgstr "Regla"
+#: trailerTrack\logisticsOp.html:14
+msgid "Plate filter"
+msgstr "Filtre matrícula"
 
-#: app.js:1664 autoemail/autoemail_rule.html:9
-msgid "Rule Name"
-msgstr "Nom de la regla"
+#: trailerTrack\docker.html:18
+msgid "Plate:"
+msgstr ""
 
-#: autoemail/autoemail_rule.html:15
-msgid "Rule type"
-msgstr "Tipus de regla"
+#: trailerTrack\webUsers.html:35
+msgid "Profile"
+msgstr ""
 
-#: autoemail/autoemail_rule.html:104
-msgid "Save"
-msgstr "Guardar"
+#: app.js:972
+msgid "Query trailer"
+msgstr ""
 
-#: app.js:1465
-msgid "Send an email {{ndays}} day after checkout."
-msgid_plural "Send an email {{ndays}} days after checkout."
-msgstr[0] "Enviar un email {{ndays}} dia despres del checkout."
-msgstr[1] "Enviar un email {{ndays}} dies despres del checkout."
+#: my_ang_boot\remember_password.html:2
+msgid "Remeber password"
+msgstr ""
 
-#: app.js:1461
-msgid "Send an email {{ndays}} day before checkin."
-msgid_plural "Send an email {{ndays}} days before checkin."
-msgstr[0] "Enviar un email {{ndays}} dia abans del checkin."
-msgstr[1] "Enviar un email {{ndays}} dies abans del checkin."
+#: my_ang_boot\login.html:13 my_ang_boot\remember_password.html:12
+msgid "Remember Password"
+msgstr ""
 
-#: app.js:1652 autoemail/autoemail.html:14 autoemail/autoemail_rule.html:83
-msgid "Subject"
-msgstr "Assumpte"
+#: my_ang_boot\reset_password.html:2 my_ang_boot\reset_password.html:24
+msgid "Reset Password"
+msgstr ""
 
-#: app.js:1627
-msgid "Subject can't be empty"
-msgstr "L'assumpte no pot ser vuit."
+#: trailerTrack\logisticsOp.html:102 trailerTrack\logisticsOp.html:130
+#: trailerTrack\webUser_modal.html:41
+msgid "Save changes"
+msgstr "Desa els canvis"
 
-#: app.js:1618
-msgid "The reference language template is not defined"
-msgstr "El llenguatge alternatiu no te plantilla"
+#: trailerTrack\docker.html:10 trailerTrack\logisticsOp.html:15
+msgid "Search plate"
+msgstr ""
 
-#: autoemail/autoemail_rule.html:64
-msgid "Use a template of a different language."
-msgstr "Utilitzar la platilla d'un idioma alternatiu."
+#: trailerTrack\webUsers.html:12
+msgid "Search user"
+msgstr ""
 
-#: master/home.html:10 master/login.html:6
+#: trailerTrack\logisticsOp.html:54
+msgid "State"
+msgstr "Estat"
+
+#: trailerTrack\docker.html:21
+msgid "State:"
+msgstr ""
+
+#: app.js:1028
+msgid "Trailers"
+msgstr ""
+
+#: my_ang_boot\login.html:5 my_ang_boot\remember_password.html:5
+#: my_ang_boot\reset_password.html:5
 msgid "User"
-msgstr "Usuari"
+msgstr "User"
 
-#: app.js:1614
-msgid "You must select a reference language"
-msgstr "S'ha de seleccionar un idioma alternatiu"
+#: trailerTrack\webUsers.html:33
+msgid "User Name"
+msgstr ""
 
-#: master/home.html:3
-msgid "masterCAMPING menu"
-msgstr "masterCAMPING menu"
+#: trailerTrack\webUser_modal.html:3
+msgid "User details"
+msgstr ""
+
+#: trailerTrack\webUsers.html:11
+msgid "User filter"
+msgstr ""
+
+#: trailerTrack\webUsers.html:6
+msgid "Users Management"
+msgstr ""
+
+#: app.js:1266
+msgid "Users Manager"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:58
+msgid "Zone"
+msgstr "Zona"
+
+#~ msgid "Change comment for trailer"
+#~ msgstr "Canvi comentari del remolc"
+
+#~ msgid "Search for plate"
+#~ msgstr "Buscar matrícula"

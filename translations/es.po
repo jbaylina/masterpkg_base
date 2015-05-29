@@ -1,201 +1,324 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: masterWEB\n"
+"Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: Jordi Baylina <baylina@uniclau.com>\n"
-"Language-Team:  <jordi@masterasp.com>\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
-"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
-"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.7.7\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: autoemail/autoemail.html:32
-msgid "Add new rule"
-msgstr "Añadir nueva regla"
+#: trailerTrack\webUsers.html:20
+msgid "Add User"
+msgstr "Añadir Usuario"
 
-#: autoemail/autoemail_rule.html:19
-msgid "After checkout"
-msgstr "Después del checkout"
+#: app.js:2770 app.js:2910
+msgid "Administrator"
+msgstr "Administrador"
 
-#: app.js:1446
-msgid "Are you sure you want to delete rule '{{ruleDescription}}'?"
-msgstr "¿Està seguro que quiere borrar la regla '{{ruleDescription}}'?"
+#: trailerTrack\logisticsOp.html:41 trailerTrack\logisticsOp.html:57
+#: trailerTrack\webUsers.html:15
+msgid "All"
+msgstr "Todos"
 
-#: app.js:1598
-msgid "At least one contract must be selected"
-msgstr "Debe seleccionar amenos un contacto"
+#: app.js:2224
+msgid "An email has been sended to your email. Please follow the instructions there."
+msgstr "Se le ha enviado un correo electrónico a su dirección de correo. Por favor, "
 
-#: autoemail/autoemail_rule.html:4
-msgid "Automatic Email Rule"
-msgstr "Regla de email automático "
+#: trailerTrack\logisticsOp.html:135 trailerTrack\logisticsOp.html:96
+msgid "Authorization"
+msgstr "Autorización"
 
-#: autoemail/autoemail.html:8
-msgid "Automatic Email rules"
-msgstr "Reglas de email automático"
+#: trailerTrack\logisticsOp.html:182
+msgid "Authorization for trailer"
+msgstr "Autorización para el remolque"
 
-#: master/home.html:4
-msgid "Automàtic Email"
-msgstr "Regla de email automático "
+#: app.js:2693
+msgid "CONFIRMED"
+msgstr "CONFIRMADO"
 
-#: autoemail/autoemail_rule.html:18
-msgid "Before checkin"
-msgstr "Antes del checkin"
+#: my_ang_boot\change_password.html:2 my_ang_boot\change_password.html:24
+msgid "Change Password"
+msgstr "Cambiar contraseña"
 
-#: app.js:1653 autoemail/autoemail_rule.html:89
-msgid "Body"
-msgstr "Cuerpo"
+#: index.html:45 my_ang_boot\body.html:34
+msgid "Change password"
+msgstr "Cambiar contraseña"
 
-#: app.js:1634
-msgid "Body can't be empty"
-msgstr "El cuerpo no puede estar vacío"
+#: trailerTrack\logisticsOp.html:125 trailerTrack\logisticsOp.html:86
+msgid "Click to order"
+msgstr "Clic para ordenar"
 
-#: app.js:1675
-msgid "Can't be empty"
-msgstr "No puede estar vacio"
+#: trailerTrack\logisticsOp.html:171 trailerTrack\logisticsOp.html:199
+msgid "Close"
+msgstr "Cerrar"
 
-#: master/login.html:20
-msgid "Cancel"
-msgstr "Cancelar"
+#: trailerTrack\logisticsOp.html:134 trailerTrack\logisticsOp.html:168
+#: trailerTrack\logisticsOp.html:95
+msgid "Comment"
+msgstr "Comentarios"
 
-#: app.js:1663 autoemail/autoemail_rule.html:36
-msgid "Contracts"
-msgstr "Contratos"
+#: trailerTrack\logisticsOp.html:163
+msgid "Comments for trailer"
+msgstr "Comentarios para remolque"
 
-#: autoemail/autoemail_rule.html:58
-msgid "Create a template"
-msgstr "Crear una plantilla"
+#: app.js:2653 trailerTrack\docker.html:33 trailerTrack\logisticsOp.html:127
+#: trailerTrack\logisticsOp.html:88 trailerTrack\webUser_modal.html:21
+#: trailerTrack\webUsers.html:30
+msgid "Company"
+msgstr "Empresa"
 
-#: app.js:1662
-msgid "Days After Checkout"
-msgstr "Días después del checkout"
+#: trailerTrack\logisticsOp.html:55 trailerTrack\webUsers.html:13
+msgid "Company filter"
+msgstr "Filtro empresa"
 
-#: app.js:1661
-msgid "Days Before Checkin"
-msgstr "Dias antes del Checkin"
+#: my_ang_boot\change_password.html:17 my_ang_boot\reset_password.html:17
+msgid "Confirm New Password"
+msgstr "Confirmar Nueva Contraseña"
 
-#: autoemail/autoemail_rule.html:30
-msgid "Days after checkout"
-msgstr "Días después del checkout"
+#: trailerTrack\logisticsOp.html:189
+msgid "Confirmed"
+msgstr "Confirmado"
 
-#: autoemail/autoemail_rule.html:24
-msgid "Days before checkin"
-msgstr "Dias antes del Checkin"
+#: app.js:2694
+msgid "DENIED"
+msgstr "DENEGADO"
 
-#: autoemail/autoemail.html:29
-msgid "Delete"
-msgstr "Borrar"
+#: trailerTrack\logisticsOp.html:73
+msgid "Deactivate warnings filter"
+msgstr "Desactivar filtro avisos"
 
-#: autoemail/autoemail_rule.html:53
-msgid "Don't send"
-msgstr "No enviar"
+#: trailerTrack\logisticsOp.html:190
+msgid "Denied"
+msgstr "Denegado"
 
-#: autoemail/autoemail.html:29
-msgid "Edit"
-msgstr "Editar"
+#: app.js:2371 app.js:2772 app.js:2912
+msgid "Docker"
+msgstr "Estibador"
 
-#: index.html:28 master/body.html:18
-msgid "Home"
-msgstr "Inicio"
+#: trailerTrack\webUsers.html:28
+msgid "Email"
+msgstr "Email"
 
-#: app.js:1566 app.js:1569
-msgid "Invalid number"
-msgstr "Número inválido"
+#: trailerTrack\docker.html:25 trailerTrack\logisticsOp.html:130
+#: trailerTrack\logisticsOp.html:91
+msgid "Entrance"
+msgstr "Entrada"
 
-#: app.js:1575
-msgid "Invalid range"
-msgstr "Rango inválido"
+#: trailerTrack\docker.html:27 trailerTrack\logisticsOp.html:131
+#: trailerTrack\logisticsOp.html:92
+msgid "Exit"
+msgstr "Salida"
 
-#: master/home.html:23 master/home.html:7 master/login.html:19
-#: master/login.html:3
+#: app.js:2412 app.js:2682 trailerTrack\logisticsOp.html:129
+#: trailerTrack\logisticsOp.html:44 trailerTrack\logisticsOp.html:90
+msgid "Expected"
+msgstr "Previsión"
+
+#: trailerTrack\my-custom-pagination-tmpl.html:4
+msgid "First"
+msgstr "Primera"
+
+#: trailerTrack\logisticsOp.html:18
+msgid "From"
+msgstr "Desde"
+
+#: app.js:2413 app.js:2683 trailerTrack\logisticsOp.html:47
+msgid "Inside"
+msgstr "Dentro"
+
+#: trailerTrack\my-custom-pagination-tmpl.html:12
+msgid "Last"
+msgstr "Última"
+
+#: trailerTrack\webUsers.html:44
+msgid "Listed users:"
+msgstr "Usuarios listados:"
+
+#: trailerTrack\logisticsOp.html:66
+msgid "Listed vehicles:"
+msgstr "Vehículos listados:"
+
+#: trailerTrack\logisticsOp.html:12
+msgid "Load all available registers"
+msgstr "Cargar todos los movimientos"
+
+#: my_ang_boot\login.html:18 my_ang_boot\login.html:2
 msgid "Login"
 msgstr "Login"
 
-#: index.html:20 master/body.html:10
+#: app.js:2447 app.js:2771 app.js:2911
+msgid "Logistics"
+msgstr "Logística"
+
+#: index.html:46 my_ang_boot\body.html:35
 msgid "Logout"
 msgstr "Logout"
 
-#: autoemail/autoemail.html:12
-msgid "Name"
-msgstr "Nombre"
+#: my_ang_boot\change_password.html:11 my_ang_boot\reset_password.html:11
+msgid "New Password"
+msgstr "Nueva Contraseña"
 
-#: app.js:1572
-msgid "Number can not have decimals"
-msgstr "El número no puede tener decimales"
+#: app.js:2662
+msgid "Nothing to print!"
+msgstr "¡No hay nada para imprimir!"
 
-#: app.js:1651
-msgid "Options"
-msgstr "Opciones"
+#: my_ang_boot\change_password.html:5
+msgid "Old Password"
+msgstr "Contraseña Actual"
 
-#: master/home.html:16 master/login.html:12
+#: app.js:2414 app.js:2684 trailerTrack\logisticsOp.html:50
+msgid "Outside"
+msgstr "Fuera"
+
+#: app.js:2692
+msgid "PENDING"
+msgstr "PENDIENTE"
+
+#: my_ang_boot\login.html:11
 msgid "Password"
-msgstr "Password"
+msgstr "Contraseña"
 
-#: app.js:1711
-msgid "Pleas correct this error"
-msgid_plural "Please correct this errors"
-msgstr[0] "Por favor corrija este error."
-msgstr[1] "Por favor corrija estos errores."
+#: trailerTrack\logisticsOp.html:188
+msgid "Pending"
+msgstr "Pendiente"
 
-#: autoemail/autoemail_rule.html:97
-msgid "Raw HTML"
-msgstr "HTML directo"
+#: app.js:2645 trailerTrack\docker.html:21 trailerTrack\logisticsOp.html:126
+#: trailerTrack\logisticsOp.html:34 trailerTrack\logisticsOp.html:87
+msgid "Plate"
+msgstr "Matrícula"
 
-#: autoemail/autoemail.html:13
-msgid "Rule"
-msgstr "Regla"
+#: app.js:2404
+msgid "Plate not found"
+msgstr "Matrícula no encontrada"
 
-#: app.js:1664 autoemail/autoemail_rule.html:9
-msgid "Rule Name"
-msgstr "Nombre de regla"
+#: trailerTrack\webUsers.html:29
+msgid "Profile"
+msgstr "Permisos"
 
-#: autoemail/autoemail_rule.html:15
-msgid "Rule type"
-msgstr "Tipo de regla"
+#: app.js:2381
+msgid "Query trailer"
+msgstr "Consulta remolque"
 
-#: autoemail/autoemail_rule.html:104
-msgid "Save"
-msgstr "Guardar"
+#: my_ang_boot\remember_password.html:2
+msgid "Remeber password"
+msgstr "Recordar contraseña"
 
-#: app.js:1465
-msgid "Send an email {{ndays}} day after checkout."
-msgid_plural "Send an email {{ndays}} days after checkout."
-msgstr[0] "Enviar un email  {{ndays}} día después del checkout."
-msgstr[1] "Enviar un email  {{ndays}} días después del checkout."
+#: my_ang_boot\login.html:13 my_ang_boot\remember_password.html:12
+msgid "Remember Password"
+msgstr "Recordar Contraseña"
 
-#: app.js:1461
-msgid "Send an email {{ndays}} day before checkin."
-msgid_plural "Send an email {{ndays}} days before checkin."
-msgstr[0] "Enviar un email  {{ndays}} día antes del checkin."
-msgstr[1] "Enviar un email  {{ndays}} días antes del checkin."
+#: my_ang_boot\reset_password.html:2 my_ang_boot\reset_password.html:24
+msgid "Reset Password"
+msgstr "Borrar Contraseña"
 
-#: app.js:1652 autoemail/autoemail.html:14 autoemail/autoemail_rule.html:83
-msgid "Subject"
-msgstr "Asunto"
+#: trailerTrack\logisticsOp.html:172 trailerTrack\logisticsOp.html:200
+#: trailerTrack\webUser_modal.html:41
+msgid "Save changes"
+msgstr "Guardar cambios"
 
-#: app.js:1627
-msgid "Subject can't be empty"
-msgstr "Asunto no puede estar vacio"
+#: trailerTrack\docker.html:10 trailerTrack\logisticsOp.html:35
+msgid "Search plate"
+msgstr "Buscar matrícula"
 
-#: app.js:1618
-msgid "The reference language template is not defined"
-msgstr "La plantilla del idioma alternativo no está definido"
+#: trailerTrack\webUsers.html:10
+msgid "Search user"
+msgstr "Buscar usuario"
 
-#: autoemail/autoemail_rule.html:64
-msgid "Use a template of a different language."
-msgstr "Usar una plantilla de un lenguage alternativo"
+#: app.js:2649 trailerTrack\docker.html:23 trailerTrack\logisticsOp.html:128
+#: trailerTrack\logisticsOp.html:89
+msgid "State"
+msgstr "Estado"
 
-#: master/home.html:10 master/login.html:6
+#: trailerTrack\docker.html:29 trailerTrack\logisticsOp.html:132
+#: trailerTrack\logisticsOp.html:93
+msgid "Time inside"
+msgstr "T. Dentro"
+
+#: trailerTrack\logisticsOp.html:26
+msgid "To"
+msgstr "Hasta"
+
+#: app.js:2457
+msgid "Trailers"
+msgstr "Remolques"
+
+#: my_ang_boot\login.html:5 my_ang_boot\remember_password.html:5
+#: my_ang_boot\reset_password.html:5
 msgid "User"
 msgstr "Usuario"
 
-#: app.js:1614
-msgid "You must select a reference language"
-msgstr "Se debe seleccionar un lenguaje alternativo"
+#: trailerTrack\webUsers.html:27
+msgid "User Name"
+msgstr "Nombre de Usuario"
 
-#: master/home.html:3
-msgid "masterCAMPING menu"
-msgstr "masterCAMPING menu"
+#: trailerTrack\webUser_modal.html:3
+msgid "User details"
+msgstr "Detalle de usuario"
+
+#: trailerTrack\webUsers.html:9
+msgid "User filter"
+msgstr "Filtro de usuario"
+
+#: app.js:2845 trailerTrack\webUsers.html:5
+msgid "Users Management"
+msgstr "Gestión de Usuarios"
+
+#: trailerTrack\logisticsOp.html:74 trailerTrack\logisticsOp.html:78
+msgid "Warnings"
+msgstr "Avisos"
+
+#: app.js:2641
+msgid "Warnings filter activated"
+msgstr "Filtro de avisos activado"
+
+#: trailerTrack\docker.html:31 trailerTrack\logisticsOp.html:133
+#: trailerTrack\logisticsOp.html:94
+msgid "Zone"
+msgstr "Zona"
+
+#~ msgid "Plate filter"
+#~ msgstr "Filtro matrícula"
+
+#~ msgid "to"
+#~ msgstr "hasta"
+
+#~ msgid "Entrance date"
+#~ msgstr "Fecha de entrada"
+
+#~ msgid "Exit date"
+#~ msgstr "Fecha de salida"
+
+#~ msgid "Expected date"
+#~ msgstr "Fecha Prevista"
+
+#~ msgid "Id"
+#~ msgstr "Id"
+
+#~ msgid "Entrance date:"
+#~ msgstr "Fecha de entrada:"
+
+#~ msgid "Exit date:"
+#~ msgstr "Fecha de salida:"
+
+#~ msgid "Plate:"
+#~ msgstr "Matrícula:"
+
+#~ msgid "State:"
+#~ msgstr "stado:"
+
+#~ msgid "Users Manager"
+#~ msgstr "Gestor de Usuarios"
+
+#~ msgid "Edit comment for trailer"
+#~ msgstr "Editar comentario para remolque"
+
+#~ msgid "Change comment for trailer"
+#~ msgstr "Cambiar comentario remolque"
+
+#~ msgid "Search for plate"
+#~ msgstr "Buscar matrícula"

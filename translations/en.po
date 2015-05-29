@@ -1,0 +1,214 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"X-Generator: Poedit 1.7.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: en\n"
+
+#: trailerTrack\webUsers.html:22
+msgid ""
+"Add User\n"
+"              &nbsp;"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:45 trailerTrack\webUsers.html:17
+msgid "All"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:65
+msgid "Authorization"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:118
+msgid "Authorization for trailer"
+msgstr ""
+
+#: my_ang_boot\change_password.html:2
+#: my_ang_boot\change_password.html:24
+msgid "Change Password"
+msgstr ""
+
+#: index.html:28 my_ang_boot\body.html:19
+msgid "Change password"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:107 trailerTrack\logisticsOp.html:135
+msgid "Close"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:104 trailerTrack\logisticsOp.html:64
+msgid "Comment"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:99
+msgid "Comments for trailer"
+msgstr ""
+
+#: trailerTrack\docker.html:31 trailerTrack\logisticsOp.html:57
+#: trailerTrack\webUser_modal.html:21 trailerTrack\webUsers.html:36
+msgid "Company"
+msgstr ""
+
+#: trailerTrack\webUsers.html:15
+msgid "Company filter"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:40
+msgid ""
+"Company filter\n"
+"              &nbsp;"
+msgstr ""
+
+#: my_ang_boot\change_password.html:17
+#: my_ang_boot\reset_password.html:17
+msgid "Confirm New Password"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:125
+msgid "Confirmed"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:126
+msgid "Denied"
+msgstr ""
+
+#: trailerTrack\webUsers.html:34
+msgid "Email"
+msgstr ""
+
+#: trailerTrack\docker.html:25 trailerTrack\logisticsOp.html:60
+msgid "Entrance date"
+msgstr ""
+
+#: trailerTrack\docker.html:27 trailerTrack\logisticsOp.html:61
+msgid "Exit date"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:59
+msgid "Expected date"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:55
+msgid "Id"
+msgstr ""
+
+#: trailerTrack\webUsers.html:52
+msgid "Listed users:"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:85
+msgid "Listed vehicles:"
+msgstr ""
+
+#: my_ang_boot\login.html:18 my_ang_boot\login.html:2
+msgid "Login"
+msgstr ""
+
+#: index.html:29 my_ang_boot\body.html:20
+msgid "Logout"
+msgstr ""
+
+#: my_ang_boot\change_password.html:11
+#: my_ang_boot\reset_password.html:11
+msgid "New Password"
+msgstr ""
+
+#: my_ang_boot\change_password.html:5
+msgid "Old Password"
+msgstr ""
+
+#: my_ang_boot\login.html:11
+msgid "Password"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:124
+msgid "Pending"
+msgstr ""
+
+#: trailerTrack\docker.html:21 trailerTrack\logisticsOp.html:56
+msgid "Plate"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:14
+msgid "Plate filter"
+msgstr ""
+
+#: trailerTrack\webUsers.html:35
+msgid "Profile"
+msgstr ""
+
+#: my_ang_boot\remember_password.html:2
+msgid "Remeber password"
+msgstr ""
+
+#: my_ang_boot\login.html:13 my_ang_boot\remember_password.html:12
+msgid "Remember Password"
+msgstr ""
+
+#: my_ang_boot\reset_password.html:2 my_ang_boot\reset_password.html:24
+msgid "Reset Password"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:108 trailerTrack\logisticsOp.html:136
+#: trailerTrack\webUser_modal.html:41
+msgid "Save changes"
+msgstr ""
+
+#: trailerTrack\docker.html:10 trailerTrack\logisticsOp.html:15
+msgid "Search plate"
+msgstr ""
+
+#: trailerTrack\webUsers.html:12
+msgid "Search user"
+msgstr ""
+
+#: trailerTrack\docker.html:23 trailerTrack\logisticsOp.html:58
+msgid "State"
+msgstr ""
+
+#: trailerTrack\docker.html:29 trailerTrack\logisticsOp.html:62
+msgid "Time inside"
+msgstr ""
+
+#: my_ang_boot\login.html:5 my_ang_boot\remember_password.html:5
+#: my_ang_boot\reset_password.html:5
+msgid "User"
+msgstr ""
+
+#: trailerTrack\webUsers.html:33
+msgid "User Name"
+msgstr ""
+
+#: trailerTrack\webUser_modal.html:3
+msgid "User details"
+msgstr ""
+
+#: trailerTrack\webUsers.html:11
+msgid "User filter"
+msgstr ""
+
+#: trailerTrack\webUsers.html:6
+msgid "Users Management"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:32
+msgid ""
+"Warnings\n"
+"              &nbsp;<span class=\"badge\">{{(trailerTracks | filter:"
+"{authStatus:\"PENDING\"}).length}}</span>"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:63
+msgid "Zone"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:72
+msgid "{{trailerTrack.companyName}}"
+msgstr ""

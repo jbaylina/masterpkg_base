@@ -4,201 +4,314 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 
-#: autoemail/autoemail.html:32
-msgid "Add new rule"
+#: trailerTrack\webUsers.html:20
+msgid "Add User"
 msgstr ""
 
-#: autoemail/autoemail_rule.html:19
-msgid "After checkout"
+#: app.js:2770
+#: app.js:2910
+msgid "Administrator"
 msgstr ""
 
-#: app.js:1446
-msgid "Are you sure you want to delete rule '{{ruleDescription}}'?"
+#: trailerTrack\logisticsOp.html:41
+#: trailerTrack\logisticsOp.html:57
+#: trailerTrack\webUsers.html:15
+msgid "All"
 msgstr ""
 
-#: app.js:1598
-msgid "At least one contract must be selected"
+#: app.js:2224
+msgid "An email has been sended to your email. Please follow the instructions there."
 msgstr ""
 
-#: autoemail/autoemail_rule.html:4
-msgid "Automatic Email Rule"
+#: trailerTrack\logisticsOp.html:135
+#: trailerTrack\logisticsOp.html:96
+msgid "Authorization"
 msgstr ""
 
-#: autoemail/autoemail.html:8
-msgid "Automatic Email rules"
+#: trailerTrack\logisticsOp.html:182
+msgid "Authorization for trailer"
 msgstr ""
 
-#: master/home.html:4
-msgid "Automàtic Email"
+#: app.js:2693
+msgid "CONFIRMED"
 msgstr ""
 
-#: autoemail/autoemail_rule.html:18
-msgid "Before checkin"
+#: my_ang_boot\change_password.html:2
+#: my_ang_boot\change_password.html:24
+msgid "Change Password"
 msgstr ""
 
-#: app.js:1653
-#: autoemail/autoemail_rule.html:89
-msgid "Body"
+#: index.html:45
+#: my_ang_boot\body.html:34
+msgid "Change password"
 msgstr ""
 
-#: app.js:1634
-msgid "Body can't be empty"
+#: trailerTrack\logisticsOp.html:125
+#: trailerTrack\logisticsOp.html:86
+msgid "Click to order"
 msgstr ""
 
-#: app.js:1675
-msgid "Can't be empty"
+#: trailerTrack\logisticsOp.html:171
+#: trailerTrack\logisticsOp.html:199
+msgid "Close"
 msgstr ""
 
-#: master/login.html:20
-msgid "Cancel"
+#: trailerTrack\logisticsOp.html:134
+#: trailerTrack\logisticsOp.html:168
+#: trailerTrack\logisticsOp.html:95
+msgid "Comment"
 msgstr ""
 
-#: app.js:1663
-#: autoemail/autoemail_rule.html:36
-msgid "Contracts"
+#: trailerTrack\logisticsOp.html:163
+msgid "Comments for trailer"
 msgstr ""
 
-#: autoemail/autoemail_rule.html:58
-msgid "Create a template"
+#: app.js:2653
+#: trailerTrack\docker.html:33
+#: trailerTrack\logisticsOp.html:127
+#: trailerTrack\logisticsOp.html:88
+#: trailerTrack\webUser_modal.html:21
+#: trailerTrack\webUsers.html:30
+msgid "Company"
 msgstr ""
 
-#: app.js:1662
-msgid "Days After Checkout"
+#: trailerTrack\logisticsOp.html:55
+#: trailerTrack\webUsers.html:13
+msgid "Company filter"
 msgstr ""
 
-#: app.js:1661
-msgid "Days Before Checkin"
+#: my_ang_boot\change_password.html:17
+#: my_ang_boot\reset_password.html:17
+msgid "Confirm New Password"
 msgstr ""
 
-#: autoemail/autoemail_rule.html:30
-msgid "Days after checkout"
+#: trailerTrack\logisticsOp.html:189
+msgid "Confirmed"
 msgstr ""
 
-#: autoemail/autoemail_rule.html:24
-msgid "Days before checkin"
+#: app.js:2694
+msgid "DENIED"
 msgstr ""
 
-#: autoemail/autoemail.html:29
-msgid "Delete"
+#: trailerTrack\logisticsOp.html:73
+msgid "Deactivate warnings filter"
 msgstr ""
 
-#: autoemail/autoemail_rule.html:53
-msgid "Don't send"
+#: trailerTrack\logisticsOp.html:190
+msgid "Denied"
 msgstr ""
 
-#: autoemail/autoemail.html:29
-msgid "Edit"
+#: app.js:2371
+#: app.js:2772
+#: app.js:2912
+msgid "Docker"
 msgstr ""
 
-#: index.html:28
-#: master/body.html:18
-msgid "Home"
+#: trailerTrack\webUsers.html:28
+msgid "Email"
 msgstr ""
 
-#: app.js:1566
-#: app.js:1569
-msgid "Invalid number"
+#: trailerTrack\docker.html:25
+#: trailerTrack\logisticsOp.html:130
+#: trailerTrack\logisticsOp.html:91
+msgid "Entrance"
 msgstr ""
 
-#: app.js:1575
-msgid "Invalid range"
+#: trailerTrack\docker.html:27
+#: trailerTrack\logisticsOp.html:131
+#: trailerTrack\logisticsOp.html:92
+msgid "Exit"
 msgstr ""
 
-#: master/home.html:23
-#: master/home.html:7
-#: master/login.html:19
-#: master/login.html:3
+#: app.js:2412
+#: app.js:2682
+#: trailerTrack\logisticsOp.html:129
+#: trailerTrack\logisticsOp.html:44
+#: trailerTrack\logisticsOp.html:90
+msgid "Expected"
+msgstr ""
+
+#: trailerTrack\my-custom-pagination-tmpl.html:4
+msgid "First"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:18
+msgid "From"
+msgstr ""
+
+#: app.js:2413
+#: app.js:2683
+#: trailerTrack\logisticsOp.html:47
+msgid "Inside"
+msgstr ""
+
+#: trailerTrack\my-custom-pagination-tmpl.html:12
+msgid "Last"
+msgstr ""
+
+#: trailerTrack\webUsers.html:44
+msgid "Listed users:"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:66
+msgid "Listed vehicles:"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:12
+msgid "Load all available registers"
+msgstr ""
+
+#: my_ang_boot\login.html:18
+#: my_ang_boot\login.html:2
 msgid "Login"
 msgstr ""
 
-#: index.html:20
-#: master/body.html:10
+#: app.js:2447
+#: app.js:2771
+#: app.js:2911
+msgid "Logistics"
+msgstr ""
+
+#: index.html:46
+#: my_ang_boot\body.html:35
 msgid "Logout"
 msgstr ""
 
-#: autoemail/autoemail.html:12
-msgid "Name"
+#: my_ang_boot\change_password.html:11
+#: my_ang_boot\reset_password.html:11
+msgid "New Password"
 msgstr ""
 
-#: app.js:1572
-msgid "Number can not have decimals"
+#: app.js:2662
+msgid "Nothing to print!"
 msgstr ""
 
-#: app.js:1651
-msgid "Options"
+#: my_ang_boot\change_password.html:5
+msgid "Old Password"
 msgstr ""
 
-#: master/home.html:16
-#: master/login.html:12
+#: app.js:2414
+#: app.js:2684
+#: trailerTrack\logisticsOp.html:50
+msgid "Outside"
+msgstr ""
+
+#: app.js:2692
+msgid "PENDING"
+msgstr ""
+
+#: my_ang_boot\login.html:11
 msgid "Password"
 msgstr ""
 
-#: app.js:1711
-msgid "Pleas correct this error"
-msgid_plural "Please correct this errors"
-msgstr[0] ""
-msgstr[1] ""
-
-#: autoemail/autoemail_rule.html:97
-msgid "Raw HTML"
+#: trailerTrack\logisticsOp.html:188
+msgid "Pending"
 msgstr ""
 
-#: autoemail/autoemail.html:13
-msgid "Rule"
+#: app.js:2645
+#: trailerTrack\docker.html:21
+#: trailerTrack\logisticsOp.html:126
+#: trailerTrack\logisticsOp.html:34
+#: trailerTrack\logisticsOp.html:87
+msgid "Plate"
 msgstr ""
 
-#: app.js:1664
-#: autoemail/autoemail_rule.html:9
-msgid "Rule Name"
+#: app.js:2404
+msgid "Plate not found"
 msgstr ""
 
-#: autoemail/autoemail_rule.html:15
-msgid "Rule type"
+#: trailerTrack\webUsers.html:29
+msgid "Profile"
 msgstr ""
 
-#: autoemail/autoemail_rule.html:104
-msgid "Save"
+#: app.js:2381
+msgid "Query trailer"
 msgstr ""
 
-#: app.js:1465
-msgid "Send an email {{ndays}} day after checkout."
-msgid_plural "Send an email {{ndays}} days after checkout."
-msgstr[0] ""
-msgstr[1] ""
-
-#: app.js:1461
-msgid "Send an email {{ndays}} day before checkin."
-msgid_plural "Send an email {{ndays}} days before checkin."
-msgstr[0] ""
-msgstr[1] ""
-
-#: app.js:1652
-#: autoemail/autoemail.html:14
-#: autoemail/autoemail_rule.html:83
-msgid "Subject"
+#: my_ang_boot\remember_password.html:2
+msgid "Remeber password"
 msgstr ""
 
-#: app.js:1627
-msgid "Subject can't be empty"
+#: my_ang_boot\login.html:13
+#: my_ang_boot\remember_password.html:12
+msgid "Remember Password"
 msgstr ""
 
-#: app.js:1618
-msgid "The reference language template is not defined"
+#: my_ang_boot\reset_password.html:2
+#: my_ang_boot\reset_password.html:24
+msgid "Reset Password"
 msgstr ""
 
-#: autoemail/autoemail_rule.html:64
-msgid "Use a template of a different language."
+#: trailerTrack\logisticsOp.html:172
+#: trailerTrack\logisticsOp.html:200
+#: trailerTrack\webUser_modal.html:41
+msgid "Save changes"
 msgstr ""
 
-#: master/home.html:10
-#: master/login.html:6
+#: trailerTrack\docker.html:10
+#: trailerTrack\logisticsOp.html:35
+msgid "Search plate"
+msgstr ""
+
+#: trailerTrack\webUsers.html:10
+msgid "Search user"
+msgstr ""
+
+#: app.js:2649
+#: trailerTrack\docker.html:23
+#: trailerTrack\logisticsOp.html:128
+#: trailerTrack\logisticsOp.html:89
+msgid "State"
+msgstr ""
+
+#: trailerTrack\docker.html:29
+#: trailerTrack\logisticsOp.html:132
+#: trailerTrack\logisticsOp.html:93
+msgid "Time inside"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:26
+msgid "To"
+msgstr ""
+
+#: app.js:2457
+msgid "Trailers"
+msgstr ""
+
+#: my_ang_boot\login.html:5
+#: my_ang_boot\remember_password.html:5
+#: my_ang_boot\reset_password.html:5
 msgid "User"
 msgstr ""
 
-#: app.js:1614
-msgid "You must select a reference language"
+#: trailerTrack\webUsers.html:27
+msgid "User Name"
 msgstr ""
 
-#: master/home.html:3
-msgid "masterCAMPING menu"
+#: trailerTrack\webUser_modal.html:3
+msgid "User details"
+msgstr ""
+
+#: trailerTrack\webUsers.html:9
+msgid "User filter"
+msgstr ""
+
+#: app.js:2845
+#: trailerTrack\webUsers.html:5
+msgid "Users Management"
+msgstr ""
+
+#: trailerTrack\logisticsOp.html:74
+#: trailerTrack\logisticsOp.html:78
+msgid "Warnings"
+msgstr ""
+
+#: app.js:2641
+msgid "Warnings filter activated"
+msgstr ""
+
+#: trailerTrack\docker.html:31
+#: trailerTrack\logisticsOp.html:133
+#: trailerTrack\logisticsOp.html:94
+msgid "Zone"
 msgstr ""
