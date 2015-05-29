@@ -43,6 +43,7 @@ translations/*.mo
 *\.out
 /core
 .DS_Store
+.idea/
 
 # Users Environment Variables
 .lock-wscript
