@@ -5,14 +5,14 @@
 
 var path = require('path');
 var fs = require('fs');
+var _ = require('underscore');
 
-var modulesPath = path.join(__top,"master_modules");
-
+var config = __mods.config;
 var logger = __mods.logger;
 
 module.exports = function(app) {
-	__mods.masterModules.forEach(function(module) {
-		var moduleApiPath = path.join(modulesPath, module, 'server', 'api');
+	_.each(config.masterModules, function(module, moduleName) {
+		var moduleApiPath = path.join(process.cwd(), module.dir, 'server', 'api');
 		var fstat;
 		try {
 			fstat = fs.lstatSync(moduleApiPath);

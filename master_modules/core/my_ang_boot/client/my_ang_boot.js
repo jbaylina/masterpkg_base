@@ -22,13 +22,13 @@
 		$stateProvider.state("unauthorized", {
 				parent: 'site',
 				url: "/unauthorized",
-				templateUrl: 'templates/core/my_ang_boot/unauthorized.html',
+				templateUrl: 'templates/my_ang_boot/unauthorized.html',
 				controller: 'UnauthorizedCtrl'
 		});
 		$stateProvider.state("login", {
                 parent: 'site',
                 url: "/login",
-                templateUrl: 'templates/core/my_ang_boot/login.html',
+                templateUrl: 'templates/my_ang_boot/login.html',
                 controller: 'LoginCtrl'
         });
 		$stateProvider.state("changePassword", {
@@ -37,19 +37,19 @@
                 data: {
                     rights: []
                 },
-                templateUrl: 'templates/core/my_ang_boot/change_password.html',
+                templateUrl: 'templates/my_ang_boot/change_password.html',
                 controller: 'ChangePasswordCtrl'
         });
         $stateProvider.state("otp", {
                 parent: 'site',
                 url: "/otp/:otp",
-                templateUrl: 'templates/core/my_ang_boot/reset_password.html',
+                templateUrl: 'templates/my_ang_boot/reset_password.html',
                 controller: 'ResetPasswordCtrl'
         });
         $stateProvider.state("rememberPassword", {
                 parent: 'site',
                 url: "/rememberPassword",
-                templateUrl: 'templates/core/my_ang_boot/remember_password.html',
+                templateUrl: 'templates/my_ang_boot/remember_password.html',
                 controller: 'RememberPasswordCtrl'
         });
 		var defaultUrl = clientConfig.defaultUrl || "/login";

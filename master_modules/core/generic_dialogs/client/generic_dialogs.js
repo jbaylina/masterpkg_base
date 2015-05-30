@@ -11,7 +11,7 @@
 		function ($modal) {
 			this.notification = function (msg) {
 				return $modal.open({
-					templateUrl: "templates/core/generic_dialogs/notification.html",
+					templateUrl: "templates/generic_dialogs/notification.html",
 					controller: "NotificationDialogCtrl",
 					backdrop: false,
 					resolve: {
@@ -25,7 +25,7 @@
 			};
 			this.confirmation = function (msg) {
 				return $modal.open({
-					templateUrl: "templates/core/generic_dialogs/confirmation.html",
+					templateUrl: "templates/generic_dialogs/confirmation.html",
 					controller: "ConfirmationDialogCtrl",
 					backdrop: false,
 					resolve: {
@@ -40,7 +40,7 @@
 			this.getString = function (title,msg,valor) {
 				valor = valor || "";
 				return $modal.open({
-					templateUrl: "templates/core/generic_dialogs/getstring.html",
+					templateUrl: "templates/generic_dialogs/getstring.html",
 					controller: "GetStringDialogCtrl",
 					backdrop: false,
 					resolve: {
@@ -57,7 +57,7 @@
 			this.getInteger = function (title,msg,value,min, max) {
 				value = value || 0;
 				return $modal.open({
-					templateUrl: "templates/core/generic_dialogs/getinteger.html",
+					templateUrl: "templates/generic_dialogs/getinteger.html",
 					controller: "GetIntegerDialogCtrl",
 					backdrop: false,
 					resolve: {
@@ -75,7 +75,7 @@
 			};
 			this.error = function (msg, msgs) {
 				return $modal.open({
-					templateUrl: "templates/core/generic_dialogs/error.html",
+					templateUrl: "templates/generic_dialogs/error.html",
 					controller: "ErrorDialogCtrl",
 					backdrop: false,
 					resolve: {

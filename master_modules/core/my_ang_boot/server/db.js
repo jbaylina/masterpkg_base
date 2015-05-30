@@ -6,19 +6,17 @@
 var path = require("path");
 var fs = require("fs");
 var ORM = require("syncorm");
-var config = __mods.config;
 var logger = __mods.logger;
+var _ = require('underscore');
+var config = __mods.config;
 config.database.log = logger.log;
 
 var db = new ORM.Database(config.database);
 __mods.db = db;
 
-var modulesPath = path.join(__top,"master_modules");
 
-
-
-__mods.masterModules.forEach(function(module) {
-	var moduleModelsPath = path.join(modulesPath, module, 'server', 'models');
+_.each(config.masterModules, function(module, moduleName) {
+	var moduleModelsPath = path.join(process.cwd(), module.dir, 'server', 'models');
 	var fstat;
 	try {
 		fstat = fs.lstatSync(moduleModelsPath);

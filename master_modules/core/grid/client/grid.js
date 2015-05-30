@@ -8,7 +8,7 @@
     var mod = angular.module('grid',[]);
 	mod.directive('grid', function() {
 		return {
-			templateUrl: 'templates/grid.html',
+			templateUrl: 'templates/grid/grid.html',
 			restrict: 'E',
 			scope: {
 				data: '=data',
