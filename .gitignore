@@ -31,10 +31,7 @@ app.js
 bower.json
 package.json
 config.json
-!master_modules/
-master_modules/*
-
-!master_modules/core/
+master_libs/
 
 
 
