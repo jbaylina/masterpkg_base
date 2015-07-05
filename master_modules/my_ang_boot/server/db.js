@@ -9,7 +9,7 @@ var ORM = require("syncorm");
 var logger = __mods.logger;
 var _ = require('underscore');
 var config = __mods.config;
-config.database.log = logger.log;
+config.database.log = logger.log.bind(logger);
 
 var db = new ORM.Database(config.database);
 __mods.db = db;

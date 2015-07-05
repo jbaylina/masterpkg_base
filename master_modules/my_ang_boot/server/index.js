@@ -6,12 +6,22 @@ var passport = require('passport');
 
 var config = __mods.config;
 var winston = require('winston');
+
+var loggerConfig = {
+	transports: [
+		new winston.transports.Console({name: "console_err", level: 'debug'})
+	],
+	exitOnError: false
+};
 if (config.log) {
-	winston.add(winston.transports.File, { filename: config.log, level: config.logLevel, handleExceptions: false  });
-	winston.exitOnError = false;
+	loggerConfig.transports.push ( new winston.transports.File({ filename: config.log, level: config.logLevel, handleExceptions: false  }));
 }
-winston.log("verbose", "Starting App");
-__mods.logger = winston;
+
+
+var logger = new winston.Logger(loggerConfig);
+
+logger.log("verbose", "Starting App");
+__mods.logger = logger;
 
 var http = require('http');
 var express = require('express');
@@ -110,9 +120,7 @@ db.on('init', function() {
 	});
 
 	app.use(function (err, req, res, next) {
-		console.log(err);
-		winston.error(err.stack);
-		console.log(err.stack);
+		logger.error(err.stack);
 
 		var errObj = {};
 		if (err.errorCode) {
@@ -137,7 +145,6 @@ db.on('init', function() {
 	});
 
 	http.createServer(app).listen(app.get('port'), function () {
-		console.log('Express server listening on port ' + app.get('port'));
-		winston.log('verbose', 'Express server listening on port ' + app.get('port'));
+		logger.log('verbose', 'Express server listening on port ' + app.get('port'));
 	});
 });
