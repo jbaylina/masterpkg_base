@@ -6,6 +6,7 @@ var passport = require('passport');
 
 var config = __mods.config;
 var winston = require('winston');
+var _ = require('underscore');
 
 var loggerConfig = {
 	transports: [
@@ -83,6 +84,61 @@ db.on('init', function() {
 
 	app.use(passport.initialize());
 	app.use(passport.session());
+
+	var callId = (new Date()).getTime();
+	app.use(function(req, res, next) {
+		callId += 1;
+		req.callId = callId;
+		if (req.url.indexOf(config.apiPrefix) === 0) {
+			req.log = function(level, msg, meta) {
+				meta = meta || {};
+				meta = _.extend(meta, {
+					callId: req.callId,
+					session: req.sessionID
+				});
+				logger.log(level, msg, meta);
+			};
+			req.log('verbose', 'request', {
+				method: req.method,
+				url: req.originalUrl,
+				ip: req.ip,
+				body: req.body
+			});
+
+			var oldWrite = res.write;
+			var oldEnd = res.end;
+
+			var chunks = [];
+
+			// To track response time
+			req._rlStartTime = new Date();
+
+			res.write = function (chunk) {
+				chunks.push(chunk);
+
+				oldWrite.apply(res, arguments);
+			};
+
+			// Proxy the real end function
+			res.end = function(chunk, encoding) {
+			  	if (chunk)
+      				chunks.push(chunk);
+
+      			oldEnd.apply(res, arguments);
+
+      			var body = Buffer.concat(chunks).toString('utf8');
+
+				var meta = {
+					status: res.statusCode,
+					response_time: (new Date() - req._rlStartTime),
+					body: body
+				};
+
+				req.log('verbose', 'response', meta);
+			};
+		}
+		next();
+	});
 
 	app.use(express.static(path.join(__top, 'dist')));
 
