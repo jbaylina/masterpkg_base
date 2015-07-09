@@ -8,6 +8,8 @@ var config = __mods.config;
 var winston = require('winston');
 var _ = require('underscore');
 
+require('pmx').init();
+
 var loggerConfig = {
 	transports: [
 		new winston.transports.Console({name: "console_err", level: 'debug'})
