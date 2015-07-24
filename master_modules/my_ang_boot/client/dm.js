@@ -5,8 +5,8 @@
 (function () {
     "use strict";
 
-    var mod = angular.module('data_module',[]);
-    mod.provider('dm', function dmProvider() {
+    var mod = angular.module('dm',[]);
+    mod.provider('dm', function () {
         var resources = {};
         var dm;
         return {
@@ -21,7 +21,7 @@
                     var r;
                     for (r in resources) {
                         if (resources.hasOwnProperty(r)) {
-                            this[r] = $injector(resources[r]);
+                            this[r] = $injector.invoke(resources[r]);
                         }
                     }
                 }
