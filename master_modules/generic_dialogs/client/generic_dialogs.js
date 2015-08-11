@@ -50,7 +50,7 @@
 								title: title,
 								valor: valor
 							};
-						},
+						}
 					}
 				});
 			};
@@ -82,7 +82,7 @@
 						params: function () {
 							return {
 								msgs: msgs,
-								msg: msg,
+								msg: msg
 							};
 						},
 					}
