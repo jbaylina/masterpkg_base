@@ -1,0 +1,6 @@
+{
+    "name": "aggrid",
+    "bowerDependencies": {
+        "ag-grid": "~1.12.8"
+    }
+}
