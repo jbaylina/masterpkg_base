@@ -4,7 +4,7 @@
 
 (function () {
     "use strict";
-    var MasterError = require('../common/masterError');
+    var MasterError = require('../common/mastererror');
 
     var mod = angular.module('master_api',[]);
     mod.service('masterApi', function ($http, $q, clientConfig) {
