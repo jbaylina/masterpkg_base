@@ -178,4 +178,13 @@
 			$modalInstance.close("si");
 		};
 	});
+
+	mod.run(['$http', '$templateCache', function($http, $templateCache){
+		var template = 'templates/generic_dialogs/notification.html';
+		$http.get(template)
+		.then(function(res){
+			$templateCache.put(template, res.data);
+		});
+	}]);
+
 })();
