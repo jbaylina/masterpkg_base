@@ -76,6 +76,9 @@ a {
 .padRig0 { padding-right: 0; }
 .padLef0 { padding-left: 0; }
 
+.padRig5 { padding-right: 5px; }
+.padLef5 { padding-left: 5px; }
+
 .padRig10 { padding-right: 10px; }
 .padLef10 { padding-left: 10px; }
 
@@ -85,3 +88,11 @@ a {
 }
 
 .bottom-grey { border-bottom: 1px solid #ddd; }
+
+.conditionRuleWeekTable td {
+    padding: 4px !important;
+}
+
+.conditionRuleWeekTable th {
+    padding: 4px !important;
+}
