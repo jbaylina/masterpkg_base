@@ -66,6 +66,7 @@ a {
 .marBot10 { margin-bottom:10px; }
 
 .marRig5 { margin-right:5px; }
+.marRig15 { margin-right:15px; }
 
 .padTop5 { padding-top:5px; }
 .padTop10 { padding-top:10px; }
@@ -95,4 +96,15 @@ a {
 
 .conditionRuleWeekTable th {
     padding: 4px !important;
+}
+
+i span {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
