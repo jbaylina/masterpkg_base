@@ -10,7 +10,7 @@ var _ = require('underscore');
 
 var loggerConfig = {
 	transports: [
-		new winston.transports.Console({name: "console_err", level: 'debug'})
+		new winston.transports.Console({name: "console_err", level: config.logLevel})
 	],
 	exitOnError: false
 };
@@ -98,11 +98,11 @@ db.on('init', function() {
 				});
 				logger.log(level, msg, meta);
 			};
-			req.log('verbose', 'request', {
+			req.log('debug', 'request', {
 				method: req.method,
 				url: req.originalUrl,
 				ip: req.ip,
-				body: req.body
+				body: req.body.substr(0,2048)
 			});
 
 			var oldWrite = res.write;
