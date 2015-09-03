@@ -102,7 +102,7 @@ db.on('init', function() {
 				method: req.method,
 				url: req.originalUrl,
 				ip: req.ip,
-				body: req.body.substr(0,2048)
+				body: req.body ? JSON.stringify(req.body).substr(0,2048) : null
 			});
 
 			var oldWrite = res.write;
@@ -131,7 +131,7 @@ db.on('init', function() {
 				var meta = {
 					status: res.statusCode,
 					response_time: (new Date() - req._rlStartTime),
-					body: body.substr(0,2048)
+					body: body ? JSON.stringify(req.body).substr(0,2048) : null
 				};
 
 				req.log('debug', 'response', meta);
