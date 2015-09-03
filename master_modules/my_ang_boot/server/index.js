@@ -131,10 +131,10 @@ db.on('init', function() {
 				var meta = {
 					status: res.statusCode,
 					response_time: (new Date() - req._rlStartTime),
-					body: body
+					body: body.substr(0,2048)
 				};
 
-				req.log('verbose', 'response', meta);
+				req.log('debug', 'response', meta);
 			};
 		}
 		next();
