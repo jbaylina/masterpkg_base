@@ -12,6 +12,7 @@
 
 		$scope.logout = function() {
 			principal.logout().then(function() {
+				$scope.$broadcast('logout');
 				$timeout(function() {
 					$location.path("/login");
 				},100);

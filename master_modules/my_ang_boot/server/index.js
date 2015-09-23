@@ -80,7 +80,7 @@ db.on('init', function() {
 		store: new SSSession(db)
 	}));
 
-	app.use(bodyParser.json());
+	app.use(bodyParser.json({limit: '50mb'}));
 
 	app.use(passport.initialize());
 	app.use(passport.session());
