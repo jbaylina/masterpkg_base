@@ -36,7 +36,8 @@
         "logLevel": "debug",
         "accessLog": "access.log",
         "apiPrefix": "/api",
-        "sessionSecret": "masterASP149969*"
+        "sessionSecret": "masterASP149969*",
+        "port": 3000
 	},
 	"commonConfig": {
 		"hostUrl": "",
