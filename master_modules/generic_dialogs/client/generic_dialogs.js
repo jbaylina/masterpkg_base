@@ -37,6 +37,23 @@
 					}
 				});
 			};
+			this.getText = function (title,msg,valor) {
+				valor = valor || "";
+				return $modal.open({
+					templateUrl: "templates/generic_dialogs/gettext.html",
+					controller: "GetTextDialogCtrl",
+					backdrop: false,
+					resolve: {
+						params: function () {
+							return {
+								msg: msg,
+								title: title,
+								valor: valor
+							};
+						}
+					}
+				});
+			};
 			this.getString = function (title,msg,valor) {
 				valor = valor || "";
 				return $modal.open({
@@ -121,6 +138,21 @@
 	});
 
 	mod.controller('GetStringDialogCtrl', function ($scope, $modalInstance, params) {
+		$scope.data = {};
+		$scope.data.msg = params.msg;
+		$scope.data.title = params.title;
+		$scope.data.valor = params.valor;
+
+		$scope.cancel = function () {
+			$modalInstance.dismiss("no");
+		};
+
+		$scope.ok = function (a) {
+			$modalInstance.close($scope.data.valor);
+		};
+	});
+
+	mod.controller('GetTextDialogCtrl', function ($scope, $modalInstance, params) {
 		$scope.data = {};
 		$scope.data.msg = params.msg;
 		$scope.data.title = params.title;
