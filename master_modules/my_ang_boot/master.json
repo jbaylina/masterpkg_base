@@ -19,7 +19,8 @@
         "passport": "^0.2.1",
         "underscore": "^1.8.3",
         "async": "^1.4.2",
-		"pmx": "^0.3.20"
+		"pmx": "^0.3.20",
+        "lodash": "^3.10.0"
     },
 	"serverConfig": {
     	"database": {
