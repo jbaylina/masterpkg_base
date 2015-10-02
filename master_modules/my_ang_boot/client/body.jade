@@ -30,7 +30,7 @@ div#mainDiv.container-fluid(ng-controller="MainCtrl")
                         a(ng-if="!!subMenuItem.href", href="{{subMenuItem.href}}" ng-bind="subMenuItem.name")
                         a(ng-if="!!subMenuItem.onClick", ng-click="subMenuItem.onClick()" ng-bind="subMenuItem.name")
                     li.root(ng-if="!!subMenuItem.subMenu")
-                        a.dropdown-toggle(href="#", data-toggle="dropdown" ng-bind="subMenuItem.name")
+                        a.dropdown-toggle(href="#", data-toggle="dropdown") {{subMenuItem.name}}
                             b.caret
                         ul.dropdown-menu
                             ss(ng-repeat-start="subMenuItem in subMenuItem.subMenu", )
@@ -44,7 +44,7 @@ div#mainDiv.container-fluid(ng-controller="MainCtrl")
 
                 ul.nav.navbar-nav.navbar-right
                     li.dropdown(ng-if="principal.isAuthenticated()", dropdown)
-                        a.dropdown-toggle(href, dropdown-toggle ng-bind="principal.getIdUser()")
+                        a.dropdown-toggle(href, dropdown-toggle) {{principal.getIdUser()}}
                             span.caret
                         ul.dropdown-menu(role="menu")
                             li
