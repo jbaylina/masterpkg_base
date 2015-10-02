@@ -201,6 +201,7 @@ db.on('init', function() {
 	});
 
 	http.createServer(app).listen(app.get('port'), function () {
+		console.log('Express server listening on port ' + app.get('port'));
 		logger.log('verbose', 'Express server listening on port ' + app.get('port'));
 	});
 });
