@@ -1,12 +1,11 @@
 script(type="text/ng-template", id="subMenu.html")
-    a.dropdown-toggle(href="#", data-toggle="dropdown")
-        | {{subMenuItem.name}}
+    a.dropdown-toggle(href="#", data-toggle="dropdown" ng-bind="subMenuItem.name")
     ul.dropdown-menu
         ss(ng-repeat-start="subMenuItem in subMenuItem.subMenu", )
         li(ng-if="! subMenuItem.subMenu", ui-sref-active="active")
-            a(ng-if="!!subMenuItem.sref", ui-sref="{{subMenuItem.sref}}") {{subMenuItem.name}}
-            a(ng-if="!!subMenuItem.href", href="{{subMenuItem.href}}") {{subMenuItem.name}}
-            a(ng-if="!!subMenuItem.onClick", ng-click="subMenuItem.onClick()") {{subMenuItem.name}}
+            a(ng-if="!!subMenuItem.sref", ui-sref="{{subMenuItem.sref}}" ng-bind="subMenuItem.name")
+            a(ng-if="!!subMenuItem.href", href="{{subMenuItem.href}}" ng-bind="subMenuItem.name")
+            a(ng-if="!!subMenuItem.onClick", ng-click="subMenuItem.onClick()" ng-bind="subMenuItem.name")
         li.dropdown-submenu(ng-if="!!subMenuItem.subMenu", ng-include="'subMenu.html'")
         ss(ng-repeat-end)
 
@@ -27,27 +26,25 @@ div#mainDiv.container-fluid(ng-controller="MainCtrl")
                 ul.nav.navbar-nav
                     ss(ng-repeat-start="subMenuItem in mainMenu")
                     li(ng-if="! subMenuItem.subMenu", ui-sref-active="active")
-                        a(ng-if="!!subMenuItem.sref", ui-sref="{{subMenuItem.sref}}") {{subMenuItem.name}}
-                        a(ng-if="!!subMenuItem.href", href="{{subMenuItem.href}}") {{subMenuItem.name}}
-                        a(ng-if="!!subMenuItem.onClick", ng-click="subMenuItem.onClick()") {{subMenuItem.name}}
+                        a(ng-if="!!subMenuItem.sref", ui-sref="{{subMenuItem.sref}}" ng-bind="subMenuItem.name")
+                        a(ng-if="!!subMenuItem.href", href="{{subMenuItem.href}}" ng-bind="subMenuItem.name")
+                        a(ng-if="!!subMenuItem.onClick", ng-click="subMenuItem.onClick()" ng-bind="subMenuItem.name")
                     li.root(ng-if="!!subMenuItem.subMenu")
-                        a.dropdown-toggle(href="#", data-toggle="dropdown")
-                            | {{subMenuItem.name}}
+                        a.dropdown-toggle(href="#", data-toggle="dropdown" ng-bind="subMenuItem.name")
                             b.caret
                         ul.dropdown-menu
                             ss(ng-repeat-start="subMenuItem in subMenuItem.subMenu", )
                             li(ng-if="! subMenuItem.subMenu", ui-sref-active="active")
-                                a(ng-if="!!subMenuItem.sref", ui-sref="{{subMenuItem.sref}}") {{subMenuItem.name}}
-                                a(ng-if="!!subMenuItem.href", href="{{subMenuItem.href}}") {{subMenuItem.name}}
-                                a(ng-if="!!subMenuItem.onClick", ng-click="subMenuItem.onClick()") {{subMenuItem.name}}
+                                a(ng-if="!!subMenuItem.sref", ui-sref="{{subMenuItem.sref}}" ng-bind="subMenuItem.name")
+                                a(ng-if="!!subMenuItem.href", href="{{subMenuItem.href}}" ng-bind="subMenuItem.name")
+                                a(ng-if="!!subMenuItem.onClick", ng-click="subMenuItem.onClick()" ng-bind="subMenuItem.name")
                             li.dropdown-submenu(ng-if="!!subMenuItem.subMenu", ng-include="'subMenu.html'")
                             ss(ng-repeat-end)
                     ss(ng-repeat-end)
 
                 ul.nav.navbar-nav.navbar-right
                     li.dropdown(ng-if="principal.isAuthenticated()", dropdown)
-                        a.dropdown-toggle(href, dropdown-toggle)
-                            | {{principal.getIdUser()}}
+                        a.dropdown-toggle(href, dropdown-toggle ng-bind="principal.getIdUser()")
                             span.caret
                         ul.dropdown-menu(role="menu")
                             li
@@ -62,7 +59,8 @@ div#mainDiv.container-fluid(ng-controller="MainCtrl")
     //nav.navbar.navbar-inverse.navbar-fixed-bottom(role="navigation")
     nav.navbar.navbar-default.navbar-fixed-bottom.hidden-xs(role="navigation")
         .navbar-inner
-            p.navbar-text Version: v{{version}}
+            p.navbar-text Version: v
+                span(ng-bind="version")
             p.navbar-text.pull-right
                 a(href="http://www.masterasp.com")
                     img(src="images/logo_master.png")
