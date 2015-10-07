@@ -59,9 +59,14 @@
                 if ((identity) && (!identity.idUser)) identity = null;
                 _identity = identity;
                 _authenticated = !!identity;
-                var lang="en";
+                var lang = navigator.language.substring(0,2);
                 if (_identity) {
-                    lang= _identity.lang || "en";
+                    lang= _identity.lang || lang;
+                }
+                if(clientConfig.langs && clientConfig.langs.indexOf(lang)<0){
+                    lang = clientConfig.defaultLang || "en";
+                }else{
+                    lang = "en";
                 }
                 if (gettextCatalog.getCurrentLanguage() !== lang) {
                     gettextCatalog.setCurrentLanguage(lang);
