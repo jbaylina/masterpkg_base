@@ -8,6 +8,7 @@
     var mod = angular.module('login',[]);
     mod.controller('LoginCtrl', function ($rootScope, $scope, $state, $location, GenericDialogs, masterApi, principal, clientConfig) {
         $scope.credentials = {};
+        $scope.loginIsEmail = clientConfig.loginIsEmail || false;
         $scope.login = function() {
             masterApi.post('/login',$scope.credentials, function(err, aIdentity) {
                 if (err) {

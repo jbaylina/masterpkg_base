@@ -8,7 +8,7 @@
     var mod = angular.module('remember_password',[]);
     mod.controller('RememberPasswordCtrl', function ($window, $scope, $rootScope, $state, $location, GenericDialogs, masterApi, principal, clientConfig, gettextCatalog) {
         $scope.credentials = {};
-
+        $scope.loginIsEmail = clientConfig.loginIsEmail || false;
         $scope.rememberPassword = function() {
             masterApi.post('/user/' + $scope.credentials.username + '/requestPasswordChange', null, function(err) {
                 if (err) {

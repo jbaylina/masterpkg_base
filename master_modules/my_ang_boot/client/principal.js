@@ -66,7 +66,7 @@
                 if(clientConfig.langs && clientConfig.langs.indexOf(lang)<0){
                     lang = clientConfig.defaultLang || "en";
                 }else{
-                    lang = "en";
+                    lang = clientConfig.defaultLang || "en";
                 }
                 if (gettextCatalog.getCurrentLanguage() !== lang) {
                     gettextCatalog.setCurrentLanguage(lang);

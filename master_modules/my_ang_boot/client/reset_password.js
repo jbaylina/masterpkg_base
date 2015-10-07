@@ -8,6 +8,7 @@
     var mod = angular.module('reset_password',[]);
     mod.controller('ResetPasswordCtrl', function ($scope, $rootScope, $state, $location, GenericDialogs, masterApi, principal, clientConfig) {
         $scope.credentials = {};
+        $scope.loginIsEmail = clientConfig.loginIsEmail || false;
         var otp = $state.params.otp;
 
         if (principal.isAuthenticated()) {
