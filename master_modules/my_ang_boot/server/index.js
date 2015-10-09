@@ -200,7 +200,33 @@ db.on('init', function() {
 		res.json(errObj);
 	});
 
-	http.createServer(app).listen(app.get('port'), function () {
+	/***********************************
+	//			CONFIG SOCKET.IO
+	***********************************/
+	var server = http.createServer(app);
+	if(config.socket){
+		var io = require('socket.io')(server);
+		var clicks = 0;
+		io.on('connection', function(socket){
+			console.log('Socket io connected (Id: '+socket.id+')');
+			/*
+			socket hauria de ser "global", per podero configurar a cada módul que ho necesiti
+			*/
+			socket.emit('connected', true);
+		    socket.on('clicks', function(data) {
+			    clicks++;
+			    io.sockets.emit('clicks', clicks);
+		  	});
+		});
+	}
+	/*
+		A banda d'aquest if, tmb he modificat el "createServer" per guardaro a la variable "server"
+	*/
+	/***********************************
+	//			CONFIG SOCKET.IO
+	***********************************/
+
+	server.listen(app.get('port'), function () {
 		console.log('Express server listening on port ' + app.get('port'));
 		logger.log('verbose', 'Express server listening on port ' + app.get('port'));
 	});
