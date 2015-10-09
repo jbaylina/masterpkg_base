@@ -202,7 +202,7 @@ db.on('init', function() {
 
 	/***********************************
 	//			CONFIG SOCKET.IO
-	***********************************/
+	***********************************
 	var server = http.createServer(app);
 	if(config.socket){
 		var io = require('socket.io')(server);
@@ -211,7 +211,7 @@ db.on('init', function() {
 			console.log('Socket io connected (Id: '+socket.id+')');
 			/*
 			socket hauria de ser "global", per podero configurar a cada módul que ho necesiti
-			*/
+			* /
 			socket.emit('connected', true);
 		    socket.on('clicks', function(data) {
 			    clicks++;
@@ -226,7 +226,7 @@ db.on('init', function() {
 	//			CONFIG SOCKET.IO
 	***********************************/
 
-	server.listen(app.get('port'), function () {
+	http.createServer(app).listen(app.get('port'), function () {
 		console.log('Express server listening on port ' + app.get('port'));
 		logger.log('verbose', 'Express server listening on port ' + app.get('port'));
 	});
