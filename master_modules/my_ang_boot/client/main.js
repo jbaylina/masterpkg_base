@@ -10,6 +10,8 @@
 		$scope.principal = principal;
 		$scope.version = clientConfig.version;
 
+        $scope.mainMenu = masterMenu.getMenu();
+
 		$scope.logout = function() {
 			principal.logout().then(function() {
 				$scope.$broadcast('logout');
@@ -19,12 +21,9 @@
 			});
 		};
 
-
 		$scope.loginChanged = function() {
 			$scope.mainMenu = masterMenu.getMenu();
 		};
-
-		$scope.mainMenu = [];
 
 		console.log(JSON.stringify($scope.mainMenu));
 	});

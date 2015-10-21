@@ -17,7 +17,8 @@
 				  }
 				]
 			},
-			template: '<ui-view/>'
+            templateUrl: 'templates/my_ang_boot/content.html',
+            controller: 'MainCtrl'
 		});
 		$stateProvider.state("unauthorized", {
 				parent: 'site',
