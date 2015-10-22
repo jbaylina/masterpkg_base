@@ -37,8 +37,10 @@ var fs = require("fs");
 var db = __mods.db = require('./db');
 __mods.MasterError = require('../common/mastererror');
 
-
 var app = __mods.app =  express();
+
+var server = http.createServer(app);
+__mods.server = server;
 
 db.on('init', function() {
 	app.set('port', config.port || 3000);
@@ -200,7 +202,7 @@ db.on('init', function() {
 		res.json(errObj);
 	});
 
-	http.createServer(app).listen(app.get('port'), function () {
+	server.listen(app.get('port'), function () {
 		console.log('Express server listening on port ' + app.get('port'));
 		logger.log('verbose', 'Express server listening on port ' + app.get('port'));
 	});
