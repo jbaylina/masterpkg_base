@@ -178,7 +178,8 @@ db.on('init', function() {
 	});
 
 	app.use(function (err, req, res, next) {
-		logger.error(err.stack);
+		if(err.stack) logger.error(err.stack);
+		else logger.error(err.toString());
 
 		var errObj = {};
 		if (err.errorCode) {
