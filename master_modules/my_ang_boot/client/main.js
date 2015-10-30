@@ -25,6 +25,6 @@
 			$scope.mainMenu = masterMenu.getMenu();
 		};
 
-		console.log(JSON.stringify($scope.mainMenu));
+		// console.log(JSON.stringify($scope.mainMenu));
 	});
 })();
