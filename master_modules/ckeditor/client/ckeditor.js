@@ -13,7 +13,7 @@
 			link: function (scope, elm, attr, ngModel) {
 				CKEDITOR.config.protectedSource = [/<%.*%>/g, /&nbsp;/g, /<>/g];
 				var ck = CKEDITOR.replace(elm[0], {
-					toolbar_Full: [
+                    toolbar: [
 						{
 							name: 'document',
 							items: []
@@ -31,37 +31,39 @@
 							items: []
 						},
 						{
-							name: 'basicstyles',
-							items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript']
-						},
-						{
-							name: 'paragraph',
-							items: ['NumberedList', 'BulletedList', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
-						},
-						{
 							name: 'links',
 							items: []
 						},
 						{
 							name: 'insert',
-							items: ['SpecialChar']
-						}, '/',
+							items: [ 'Image', 'Table', 'HorizontalRule', 'SpecialChar' ]
+                        },
+                        {
+                            name: 'tools',
+                            items: ['Maximize']
+                        },
+                        '/',
 						{
 							name: 'styles',
-							items: ['Styles', 'Format', 'Font', 'FontSize']
+							items: ['Format', 'Font', 'FontSize']
 						},
+                        {
+                            name: 'basicstyles',
+                            items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript']
+                        },
+                        {
+                            name: 'paragraph',
+                            items: ['NumberedList', 'BulletedList', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
+                        },
 						{
 							name: 'colors',
-							items: []
-						},
-						{
-							name: 'tools',
-							items: ['Maximize']
+							items: ['TextColor', 'BGColor']
 						}
 					],
 					height: '290px',
 					width: '99%',
-				});
+                    extraPlugins: 'colorbutton'
+                });
 
 				if (!ngModel) {
 					return;
