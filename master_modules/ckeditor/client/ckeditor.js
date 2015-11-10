@@ -13,15 +13,12 @@
 			link: function (scope, elm, attr, ngModel) {
 				CKEDITOR.config.protectedSource = [/<%.*%>/g, /&nbsp;/g, /<>/g];
 				var ck = CKEDITOR.replace(elm[0], {
+                    extraPlugins: 'justify,colorbutton,font',
                     toolbar: [
 						{
-							name: 'document',
-							items: []
-						},
-						{
-							name: 'clipboard',
-							items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']
-						},
+                            name: 'clipboard',
+                            items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ]
+                        },
 						{
 							name: 'editing',
 							items: ['Find', 'Replace', '-', 'SpellChecker', 'Scayt']
@@ -42,6 +39,10 @@
                             name: 'tools',
                             items: ['Maximize']
                         },
+                        {
+                            name: 'document',
+                            items: [ 'Source', '-', 'NewPage', 'Preview', '-', 'Templates' ]
+                        },
                         '/',
 						{
 							name: 'styles',
@@ -49,7 +50,7 @@
 						},
                         {
                             name: 'basicstyles',
-                            items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript']
+                            items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'basicstyles', 'cleanup']
                         },
                         {
                             name: 'paragraph',
@@ -61,8 +62,7 @@
 						}
 					],
 					height: '290px',
-					width: '99%',
-                    extraPlugins: 'colorbutton'
+					width: '99%'
                 });
 
 				if (!ngModel) {

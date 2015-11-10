@@ -1,6 +1,6 @@
 {
 	"name": "masterModule_ckeditor",
 	"bowerDependencies": {
-		"ckeditor": "~4.4.7"
+		"ckeditor": "~4.5.4"
 	}
 }
