@@ -13,15 +13,12 @@
 			link: function (scope, elm, attr, ngModel) {
 				CKEDITOR.config.protectedSource = [/<%.*%>/g, /&nbsp;/g, /<>/g];
 				var ck = CKEDITOR.replace(elm[0], {
-					toolbar_Full: [
+                    extraPlugins: 'justify,colorbutton,font',
+                    toolbar: [
 						{
-							name: 'document',
-							items: []
-						},
-						{
-							name: 'clipboard',
-							items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']
-						},
+                            name: 'clipboard',
+                            items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ]
+                        },
 						{
 							name: 'editing',
 							items: ['Find', 'Replace', '-', 'SpellChecker', 'Scayt']
@@ -31,37 +28,42 @@
 							items: []
 						},
 						{
-							name: 'basicstyles',
-							items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript']
-						},
-						{
-							name: 'paragraph',
-							items: ['NumberedList', 'BulletedList', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
-						},
-						{
 							name: 'links',
 							items: []
 						},
 						{
 							name: 'insert',
-							items: ['SpecialChar']
-						}, '/',
+							items: [ 'Image', 'Table', 'HorizontalRule', 'SpecialChar' ]
+                        },
+                        {
+                            name: 'tools',
+                            items: ['Maximize']
+                        },
+                        {
+                            name: 'document',
+                            items: [ 'Source', '-', 'NewPage', 'Preview', '-', 'Templates' ]
+                        },
+                        '/',
 						{
 							name: 'styles',
-							items: ['Styles', 'Format', 'Font', 'FontSize']
+							items: ['Format', 'Font', 'FontSize']
 						},
+                        {
+                            name: 'basicstyles',
+                            items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'basicstyles', 'cleanup']
+                        },
+                        {
+                            name: 'paragraph',
+                            items: ['NumberedList', 'BulletedList', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
+                        },
 						{
 							name: 'colors',
-							items: []
-						},
-						{
-							name: 'tools',
-							items: ['Maximize']
+							items: ['TextColor', 'BGColor']
 						}
 					],
 					height: '290px',
-					width: '99%',
-				});
+					width: '99%'
+                });
 
 				if (!ngModel) {
 					return;
