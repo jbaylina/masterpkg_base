@@ -1,6 +1,6 @@
 {
     "name": "aggrid",
     "bowerDependencies": {
-        "ag-grid": "~1.16.1"
+        "ag-grid": "2.3.5"
     }
 }
