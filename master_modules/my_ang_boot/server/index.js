@@ -45,6 +45,7 @@ __mods.server = server;
 db.on('init', function() {
 	app.set('port', config.port || 3000);
 
+    app.use(express.static(path.join(__top, 'dist')));
 
 	// We syncronize with database on each call
 
@@ -141,8 +142,6 @@ db.on('init', function() {
 		}
 		next();
 	});
-
-	app.use(express.static(path.join(__top, 'dist')));
 
 	app.use(function (req, res, next) {
 		// Website you wish to allow to connect
