@@ -7,10 +7,10 @@
 
     var mod = angular.module('generic_dialogs',[]);
 
-	mod.service('GenericDialogs', ['$modal',
-		function ($modal) {
+	mod.service('GenericDialogs', ['$uibModal',
+		function ($uibModal) {
 			this.notification = function (msg) {
-				return $modal.open({
+				return $uibModal.open({
 					templateUrl: "templates/generic_dialogs/notification.html",
 					controller: "NotificationDialogCtrl",
 					backdrop: false,
@@ -24,7 +24,7 @@
 				});
 			};
 			this.confirmation = function (msg) {
-				return $modal.open({
+				return $uibModal.open({
 					templateUrl: "templates/generic_dialogs/confirmation.html",
 					controller: "ConfirmationDialogCtrl",
 					backdrop: false,
@@ -39,7 +39,7 @@
 			};
 			this.getText = function (title,msg,valor) {
 				valor = valor || "";
-				return $modal.open({
+				return $uibModal.open({
 					templateUrl: "templates/generic_dialogs/gettext.html",
 					controller: "GetTextDialogCtrl",
 					backdrop: false,
@@ -56,7 +56,7 @@
 			};
 			this.getString = function (title,msg,valor) {
 				valor = valor || "";
-				return $modal.open({
+				return $uibModal.open({
 					templateUrl: "templates/generic_dialogs/getstring.html",
 					controller: "GetStringDialogCtrl",
 					backdrop: false,
@@ -73,7 +73,7 @@
 			};
 			this.getInteger = function (title,msg,value,min, max) {
 				value = value || 0;
-				return $modal.open({
+				return $uibModal.open({
 					templateUrl: "templates/generic_dialogs/getinteger.html",
 					controller: "GetIntegerDialogCtrl",
 					backdrop: false,
@@ -91,7 +91,7 @@
 				});
 			};
 			this.error = function (msg, msgs) {
-				return $modal.open({
+				return $uibModal.open({
 					templateUrl: "templates/generic_dialogs/error.html",
 					controller: "ErrorDialogCtrl",
 					backdrop: false,
@@ -109,20 +109,20 @@
 	]);
 
 
-	mod.controller('NotificationDialogCtrl', function ($scope, $modalInstance, params) {
+	mod.controller('NotificationDialogCtrl', function ($scope, $uibModalInstance, params) {
 		$scope.msg = params.msg;
 
 		$scope.close = function (a) {
-			$modalInstance.close();
+			$uibModalInstance.close();
 		};
 	});
 
-	mod.controller('CopyClipboardDialogCtrl', function ($scope, $modalInstance, params) {
+	mod.controller('CopyClipboardDialogCtrl', function ($scope, $uibModalInstance, params) {
 		var ta;
 		$scope.msg = params.msg;
 
 		$scope.close = function (a) {
-			$modalInstance.close();
+			$uibModalInstance.close();
 		};
 	});
 
@@ -137,37 +137,37 @@
 		};
 	});
 
-	mod.controller('GetStringDialogCtrl', function ($scope, $modalInstance, params) {
+	mod.controller('GetStringDialogCtrl', function ($scope, $uibModalInstance, params) {
 		$scope.data = {};
 		$scope.data.msg = params.msg;
 		$scope.data.title = params.title;
 		$scope.data.valor = params.valor;
 
 		$scope.cancel = function () {
-			$modalInstance.dismiss("no");
+			$uibModalInstance.dismiss("no");
 		};
 
 		$scope.ok = function (a) {
-			$modalInstance.close($scope.data.valor);
+			$uibModalInstance.close($scope.data.valor);
 		};
 	});
 
-	mod.controller('GetTextDialogCtrl', function ($scope, $modalInstance, params) {
+	mod.controller('GetTextDialogCtrl', function ($scope, $uibModalInstance, params) {
 		$scope.data = {};
 		$scope.data.msg = params.msg;
 		$scope.data.title = params.title;
 		$scope.data.valor = params.valor;
 
 		$scope.cancel = function () {
-			$modalInstance.dismiss("no");
+			$uibModalInstance.dismiss("no");
 		};
 
 		$scope.ok = function (a) {
-			$modalInstance.close($scope.data.valor);
+			$uibModalInstance.close($scope.data.valor);
 		};
 	});
 
-	mod.controller('GetIntegerDialogCtrl', function ($scope, $modalInstance, params) {
+	mod.controller('GetIntegerDialogCtrl', function ($scope, $uibModalInstance, params) {
 		$scope.data = {};
 		$scope.data.msg = params.msg;
 		$scope.data.title = params.title;
@@ -176,27 +176,27 @@
 		$scope.data.max = params.max || 100;
 
 		$scope.cancel = function () {
-			$modalInstance.dismiss();
+			$uibModalInstance.dismiss();
 		};
 
 		$scope.ok = function (a) {
-			$modalInstance.close($scope.data.value);
+			$uibModalInstance.close($scope.data.value);
 		};
 	});
 
-	mod.controller('ConfirmationDialogCtrl', function ($scope, $modalInstance, params) {
+	mod.controller('ConfirmationDialogCtrl', function ($scope, $uibModalInstance, params) {
 		$scope.msg = params.msg;
 
 		$scope.no = function () {
-			$modalInstance.dismiss("no");
+			$uibModalInstance.dismiss("no");
 		};
 
 		$scope.si = function (a) {
-			$modalInstance.close("si");
+			$uibModalInstance.close("si");
 		};
 	});
 
-	mod.controller('ErrorDialogCtrl', function ($scope, $modalInstance, params) {
+	mod.controller('ErrorDialogCtrl', function ($scope, $uibModalInstance, params) {
 		if (!params.msgs) {
 			$scope.msgs =[];
 		} else if ( params.msgs instanceof Array) {
@@ -207,7 +207,7 @@
 		$scope.msg = params.msg;
 
 		$scope.ok = function (a) {
-			$modalInstance.close("si");
+			$uibModalInstance.close("si");
 		};
 	});
 
