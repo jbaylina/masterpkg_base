@@ -42,6 +42,10 @@ var app = __mods.app =  express();
 var server = http.createServer(app);
 __mods.server = server;
 
+db.on('error', function(err) {
+	logger.log('error', err.toString(), err);
+});
+
 db.on('init', function() {
 	app.set('port', config.port || 3000);
 
