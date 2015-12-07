@@ -30,8 +30,8 @@ nav.navbar.navbar-default.navbar-fixed-top(role="navigation")
                 ss(ng-repeat-end)
 
             ul.nav.navbar-nav.navbar-right
-                li.dropdown(ng-if="principal.isAuthenticated()", dropdown)
-                    a.dropdown-toggle(href, dropdown-toggle) {{principal.getIdUser()}}
+                li.dropdown(ng-if="principal.isAuthenticated()", uib-dropdown)
+                    a.dropdown-toggle(href, uib-dropdown-toggle) {{principal.getIdUser()}}
                         span.caret
                     ul.dropdown-menu(role="menu")
                         li

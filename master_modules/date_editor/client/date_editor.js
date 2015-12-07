@@ -23,7 +23,7 @@
 					' ng-model="ngModel" ' +
 					' min-date="minDate" ' +
 					' max-date="maxDate" ' +
-                    ' datepicker-popup="{{format}}" ' +
+                    ' uib-datepicker-popup="{{format}}" ' +
                     ' is-open="status.opened" ' +
                     ' datepicker-options="dateOptions" ' +
                     ' date-disabled="false" ' +
