@@ -200,8 +200,8 @@ db.on('init', function() {
 	});
 
 	app.use(function (err, req, res, next) {
-		if(err.stack) logger.error(err.stack);
-		else logger.error(err.toString());
+		if(err.stack) logger.warn(err.stack);
+		else logger.warn(err.toString());
 
 		var errObj = {};
 		if (err.errorCode) {
