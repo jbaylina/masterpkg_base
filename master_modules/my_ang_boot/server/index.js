@@ -22,7 +22,6 @@ if (config.log) {
 }
 
 loggerConfig.transports.push(new winston.transports.Console({
-    name: "console_err",
     level: config.logLevel,
     colorize: true,
     handleExceptions: config.winston.handleExceptions ? config.winston.handleExceptions : false
@@ -33,7 +32,9 @@ var logger = new winston.Logger(loggerConfig);
 if(config.winston.exitOnAllError) {
     logger.on('logging', function (transport, level, msg, meta) {
         if(transport.name === "file" && level === "error"){
-            process.exit(1);
+            setTimeout(function() {
+                process.exit(1);
+            }, 1000);
         }
     });
 }
