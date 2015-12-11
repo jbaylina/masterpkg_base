@@ -37,6 +37,21 @@
 					}
 				});
 			};
+			this.confirmationError = function (intro,msg) {
+				return $uibModal.open({
+					templateUrl: "templates/generic_dialogs/confirmationError.html",
+					controller: "ConfirmationErrorDialogCtrl",
+					backdrop: false,
+					resolve: {
+						params: function () {
+							return {
+								intro: intro,
+								msg: msg
+							};
+						},
+					}
+				});
+			};
 			this.getText = function (title,msg,valor) {
 				valor = valor || "";
 				return $uibModal.open({
@@ -181,6 +196,19 @@
 
 		$scope.ok = function (a) {
 			$uibModalInstance.close($scope.data.value);
+		};
+	});
+
+	mod.controller('ConfirmationErrorDialogCtrl', function ($scope, $uibModalInstance, params) {
+		$scope.msg = params.msg;
+		$scope.intro = params.intro;
+
+		$scope.no = function () {
+			$uibModalInstance.dismiss("no");
+		};
+
+		$scope.si = function (a) {
+			$uibModalInstance.close("si");
 		};
 	});
 

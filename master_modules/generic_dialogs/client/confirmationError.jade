@@ -2,7 +2,8 @@ div.modal-header
 	h4(translate) Confirmation
 
 div.modal-body
-	h5 {{msg}}
+	p {{intro}}
+	div.alerr.alert-danger(ng-bind-html="msg")
 
 div.modal-footer
 	button.btn.btn-primary(ng-click="si()" translate) Yes
