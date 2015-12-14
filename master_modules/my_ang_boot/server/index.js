@@ -42,9 +42,17 @@ var app = __mods.app =  express();
 var server = http.createServer(app);
 __mods.server = server;
 
+var timeout = require('connect-timeout');
+
+
+server.setTimeout(30000);
 db.on('error', function(err) {
 	logger.log('error', err.toString(), err);
 });
+
+
+
+
 
 db.on('init', function() {
 	app.set('port', config.port || 3000);
@@ -87,10 +95,16 @@ db.on('init', function() {
 		store: new SSSession(db)
 	}));
 
+	app.use(timeout('20s'));
 	app.use(bodyParser.json({limit: '50mb'}));
+	app.use(haltOnTimedout);
 
 	app.use(passport.initialize());
+	app.use(haltOnTimedout);
+
 	app.use(passport.session());
+	app.use(haltOnTimedout);
+
 
 	var callId = (new Date()).getTime();
 	app.use(function(req, res, next) {
@@ -101,7 +115,10 @@ db.on('init', function() {
 				meta = meta || {};
 				meta = _.extend(meta, {
 					callId: req.callId,
-					session: req.sessionID
+					session: req.sessionID,
+					method: req.method,
+					url: req.originalUrl,
+					ip: req.ip
 				});
 				logger.log(level, msg, meta);
 			};
@@ -146,6 +163,7 @@ db.on('init', function() {
 		}
 		next();
 	});
+	app.use(haltOnTimedout);
 
 	app.use(function (req, res, next) {
 		// Website you wish to allow to connect
@@ -167,8 +185,10 @@ db.on('init', function() {
 		// Pass to next layer of middleware
 		next();
 	});
+	app.use(haltOnTimedout);
 
 	require('./api')(app);
+	app.use(haltOnTimedout);
 
 	app.all('*', function(req, res,next) {
 		if (req.method==="OPTIONS") {
@@ -179,6 +199,7 @@ db.on('init', function() {
 		}
 		res.sendFile(path.resolve(path.join(__top , 'dist' , 'index.html')));
 	});
+	app.use(haltOnTimedout);
 
 	app.use(function (err, req, res, next) {
 		if(err.stack) logger.error(err.stack);
@@ -205,6 +226,16 @@ db.on('init', function() {
 		}
 		res.json(errObj);
 	});
+	app.use(haltOnTimedout);
+
+	function haltOnTimedout(err, req, res, next) {
+	  if (!req.timedout) return next(err);
+	  if (!req.timeoutLogged) {
+  		req.log("warn", "Timeout");
+  	  	req.timeoutLogged = true;
+	  }
+
+	}
 
 	server.listen(app.get('port'), function () {
 		console.log('Express server listening on port ' + app.get('port'));
