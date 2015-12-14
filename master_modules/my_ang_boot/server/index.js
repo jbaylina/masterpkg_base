@@ -10,26 +10,26 @@ var _ = require('underscore');
 
 var loggerConfig = {
     transports: [],
-    exitOnError: config.winston.exitOnError ? config.winston.exitOnError : false
+    exitOnError: (config.winston && config.winston.exitOnError) ? config.winston.exitOnError : false
 };
 
 if (config.log) {
     loggerConfig.transports.push( new winston.transports.File({
         filename: config.log,
         level: config.logLevel,
-		handleExceptions: config.winston.handleExceptions ? config.winston.handleExceptions : false
+		handleExceptions: (config.winston && config.winston.handleExceptions) ? config.winston.handleExceptions : false
     }));
 }
 
 loggerConfig.transports.push(new winston.transports.Console({
     level: config.logLevel,
     colorize: true,
-    handleExceptions: config.winston.handleExceptions ? config.winston.handleExceptions : false
+    handleExceptions: (config.winston && config.winston.handleExceptions) ? config.winston.handleExceptions : false
 }));
 
 var logger = new winston.Logger(loggerConfig);
 
-if(config.winston.exitOnAllError) {
+if ((config.winston) && (config.winston.exitOnAllError)) {
     logger.on('logging', function (transport, level, msg, meta) {
         if(transport.name === "file" && level === "error"){
             setTimeout(function() {
