@@ -9,19 +9,38 @@ var winston = require('winston');
 var _ = require('underscore');
 
 var loggerConfig = {
-	transports: [
-		new winston.transports.Console({name: "console_err", level: config.logLevel})
-	],
-	exitOnError: false
+    transports: [],
+    exitOnError: config.winston.exitOnError ? config.winston.exitOnError : false
 };
+
 if (config.log) {
-	loggerConfig.transports.push ( new winston.transports.File({ filename: config.log, level: config.logLevel, handleExceptions: false  }));
+    loggerConfig.transports.push( new winston.transports.File({
+        filename: config.log,
+        level: config.logLevel,
+		handleExceptions: config.winston.handleExceptions ? config.winston.handleExceptions : false
+    }));
 }
 
+loggerConfig.transports.push(new winston.transports.Console({
+    level: config.logLevel,
+    colorize: true,
+    handleExceptions: config.winston.handleExceptions ? config.winston.handleExceptions : false
+}));
 
 var logger = new winston.Logger(loggerConfig);
 
+if(config.winston.exitOnAllError) {
+    logger.on('logging', function (transport, level, msg, meta) {
+        if(transport.name === "file" && level === "error"){
+            setTimeout(function() {
+                process.exit(1);
+            }, 1000);
+        }
+    });
+}
+
 logger.log("verbose", "Starting App");
+
 __mods.logger = logger;
 
 var http = require('http');
@@ -202,8 +221,8 @@ db.on('init', function() {
 	app.use(haltOnTimedout);
 
 	app.use(function (err, req, res, next) {
-		if(err.stack) logger.error(err.stack);
-		else logger.error(err.toString());
+		if(err.stack) logger.warn(err.stack);
+		else logger.warn(err.toString());
 
 		var errObj = {};
 		if (err.errorCode) {
