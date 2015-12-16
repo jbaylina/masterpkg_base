@@ -33,7 +33,7 @@
                         },
                         {
                             name: 'insert',
-                            items: ['Image', 'Table', 'HorizontalRule', 'SpecialChar']
+                            items: ['Image', 'Table', 'HorizontalRule', 'SpecialChar', 'Link']
                         },
                         {
                             name: 'tools',
