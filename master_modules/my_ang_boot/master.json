@@ -39,9 +39,14 @@
 	        "database": "myDatabase"
 	    },
 	    "sessionSecret": "mySecret",
-        "log": "output.log",
-        "logLevel": "debug",
         "accessLog": "access.log",
+        "winston": {
+          "filename":"output.log",
+          "exitOnError": false,
+          "exitOnAllError": false,
+          "handleExceptions": false,
+          "level":"debug"
+        },
         "apiPrefix": "/api",
         "sessionSecret": "masterASP149969*",
         "port": 3000
