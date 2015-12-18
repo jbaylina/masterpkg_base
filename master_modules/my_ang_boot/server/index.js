@@ -250,8 +250,8 @@ db.on('init', function() {
 	function haltOnTimedout(err, req, res, next) {
 	  if (!req.timedout) return next(err);
 	  if (!req.timeoutLogged) {
-  		req.log("warn", "Timeout");
-  	  	req.timeoutLogged = true;
+		  logger.log("warn", "Timeout");
+  	  	  req.timeoutLogged = true;
 	  }
 
 	}
