@@ -5,65 +5,65 @@
 (function () {
     "use strict";
 
-    var mod = angular.module( 'ckeditor', [] );
+    var mod = angular.module('ckeditor', []);
 
-    mod.directive( 'ckEditor', ["$timeout", function ($timeout) {
+    mod.directive('ckEditor', ["$timeout", function ($timeout) {
         return {
             require: '?ngModel',
-            link: function (scope, elm, attr, ngModel) {
+            link   : function (scope, elm, attr, ngModel) {
                 CKEDITOR.config.protectedSource = [/<%.*%>/g, /&nbsp;/g, /<>/g];
-                var ck = CKEDITOR.replace( elm[0], {
+                var ck                          = CKEDITOR.replace(elm[0], {
                     extraPlugins: 'justify,colorbutton,font',
-                    toolbar: [
+                    toolbar     : [
                         {
-                            name: 'clipboard',
+                            name : 'clipboard',
                             items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']
                         },
                         {
-                            name: 'editing',
+                            name : 'editing',
                             items: ['Find', 'Replace', '-', 'SpellChecker', 'Scayt']
                         },
                         {
-                            name: 'forms',
+                            name : 'forms',
                             items: []
                         },
                         {
-                            name: 'links',
+                            name : 'links',
                             items: []
                         },
                         {
-                            name: 'insert',
+                            name : 'insert',
                             items: ['Image', 'Table', 'HorizontalRule', 'SpecialChar', 'Link']
                         },
                         {
-                            name: 'tools',
+                            name : 'tools',
                             items: ['Maximize']
                         },
                         {
-                            name: 'document',
+                            name : 'document',
                             items: ['Source', '-', 'NewPage', 'Preview', '-', 'Templates']
                         },
                         '/',
                         {
-                            name: 'styles',
+                            name : 'styles',
                             items: ['Format', 'Font', 'FontSize']
                         },
                         {
-                            name: 'basicstyles',
+                            name : 'basicstyles',
                             items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'basicstyles', 'cleanup']
                         },
                         {
-                            name: 'paragraph',
+                            name : 'paragraph',
                             items: ['NumberedList', 'BulletedList', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
                         },
                         {
-                            name: 'colors',
+                            name : 'colors',
                             items: ['TextColor', 'BGColor']
                         }
                     ],
-                    height: '290px',
-                    width: '99%'
-                } );
+                    height      : '290px',
+                    width       : '99%'
+                });
 
                 if (!ngModel) {
                     return;
@@ -71,31 +71,28 @@
 
                 //loaded didn't seem to work, but instanceReady did
                 //I added this because sometimes $render would call setData before the ckeditor was ready
-                ck.on( 'instanceReady', function () {
-                    ck.setData( ngModel.$viewValue );
-                } );
+                ck.on('instanceReady', function () {
+                    ck.setData(ngModel.$viewValue);
+                });
 
-                ck.on( 'pasteState', function () {
-                    scope.$apply( function () {
-                        ngModel.$setViewValue( ck.getData() );
-                    } );
-                } );
+                ck.on('pasteState', function () {
+                    scope.$apply(function () {
+                        ngModel.$setViewValue(ck.getData());
+                    });
+                });
 
-                ck.on( 'key', function (event) {
-                        console.log( "key" );
-                        $timeout( function () {
-                            console.log( ck.getData() );
-                            ngModel.$setViewValue( ck.getData() );
-                        } )
+                ck.on('key',
+                    function () {
+                        $timeout(function () {
+                            ngModel.$setViewValue(ck.getData());
+                        });
+                    });
 
-                    }
-                );
-
-                ngModel.$render = function (value) {
-                    ck.setData( ngModel.$viewValue );
+                ngModel.$render = function () {
+                    ck.setData(ngModel.$viewValue);
                 };
 
             }
         };
-    }] );
+    }]);
 })();

@@ -15,14 +15,14 @@ var loggerConfig = {
 
 if (config.log) {
     loggerConfig.transports.push( new winston.transports.File({
-        filename: config.log,
-        level: config.logLevel,
+        filename: (config.winston && config.winston.filename) ? config.winston.filename : "output.log",
+        level: (config.winston && config.winston.level) ? config.winston.level : "debug",
 		handleExceptions: (config.winston && config.winston.handleExceptions) ? config.winston.handleExceptions : false
     }));
 }
 
 loggerConfig.transports.push(new winston.transports.Console({
-    level: config.logLevel,
+	level: (config.winston && config.winston.level) ? config.winston.level : "debug",
     colorize: true,
     handleExceptions: (config.winston && config.winston.handleExceptions) ? config.winston.handleExceptions : false
 }));
