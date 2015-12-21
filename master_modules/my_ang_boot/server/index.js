@@ -10,26 +10,26 @@ var _ = require('underscore');
 
 var loggerConfig = {
     transports: [],
-    exitOnError: config.winston.exitOnError ? config.winston.exitOnError : false
+    exitOnError: (config.winston && config.winston.exitOnError) ? config.winston.exitOnError : false
 };
 
 if (config.log) {
     loggerConfig.transports.push( new winston.transports.File({
-        filename: config.log,
-        level: config.logLevel,
-		handleExceptions: config.winston.handleExceptions ? config.winston.handleExceptions : false
+        filename: (config.winston && config.winston.filename) ? config.winston.filename : "output.log",
+        level: (config.winston && config.winston.level) ? config.winston.level : "debug",
+		handleExceptions: (config.winston && config.winston.handleExceptions) ? config.winston.handleExceptions : false
     }));
 }
 
 loggerConfig.transports.push(new winston.transports.Console({
-    level: config.logLevel,
+	level: (config.winston && config.winston.level) ? config.winston.level : "debug",
     colorize: true,
-    handleExceptions: config.winston.handleExceptions ? config.winston.handleExceptions : false
+    handleExceptions: (config.winston && config.winston.handleExceptions) ? config.winston.handleExceptions : false
 }));
 
 var logger = new winston.Logger(loggerConfig);
 
-if(config.winston.exitOnAllError) {
+if ((config.winston) && (config.winston.exitOnAllError)) {
     logger.on('logging', function (transport, level, msg, meta) {
         if(transport.name === "file" && level === "error"){
             setTimeout(function() {
@@ -61,9 +61,17 @@ var app = __mods.app =  express();
 var server = http.createServer(app);
 __mods.server = server;
 
+var timeout = require('connect-timeout');
+
+
+server.setTimeout(30000);
 db.on('error', function(err) {
 	logger.log('error', err.toString(), err);
 });
+
+
+
+
 
 db.on('init', function() {
 	app.set('port', config.port || 3000);
@@ -106,10 +114,16 @@ db.on('init', function() {
 		store: new SSSession(db)
 	}));
 
+	app.use(timeout('20s'));
 	app.use(bodyParser.json({limit: '50mb'}));
+	app.use(haltOnTimedout);
 
 	app.use(passport.initialize());
+	app.use(haltOnTimedout);
+
 	app.use(passport.session());
+	app.use(haltOnTimedout);
+
 
 	var callId = (new Date()).getTime();
 	app.use(function(req, res, next) {
@@ -120,7 +134,10 @@ db.on('init', function() {
 				meta = meta || {};
 				meta = _.extend(meta, {
 					callId: req.callId,
-					session: req.sessionID
+					session: req.sessionID,
+					method: req.method,
+					url: req.originalUrl,
+					ip: req.ip
 				});
 				logger.log(level, msg, meta);
 			};
@@ -165,6 +182,7 @@ db.on('init', function() {
 		}
 		next();
 	});
+	app.use(haltOnTimedout);
 
 	app.use(function (req, res, next) {
 		// Website you wish to allow to connect
@@ -186,8 +204,10 @@ db.on('init', function() {
 		// Pass to next layer of middleware
 		next();
 	});
+	app.use(haltOnTimedout);
 
 	require('./api')(app);
+	app.use(haltOnTimedout);
 
 	app.all('*', function(req, res,next) {
 		if (req.method==="OPTIONS") {
@@ -198,6 +218,7 @@ db.on('init', function() {
 		}
 		res.sendFile(path.resolve(path.join(__top , 'dist' , 'index.html')));
 	});
+	app.use(haltOnTimedout);
 
 	app.use(function (err, req, res, next) {
 		if(err.stack) logger.warn(err.stack);
@@ -224,6 +245,16 @@ db.on('init', function() {
 		}
 		res.json(errObj);
 	});
+	app.use(haltOnTimedout);
+
+	function haltOnTimedout(err, req, res, next) {
+	  if (!req.timedout) return next(err);
+	  if (!req.timeoutLogged) {
+		  logger.log("warn", "Timeout");
+  	  	  req.timeoutLogged = true;
+	  }
+
+	}
 
 	server.listen(app.get('port'), function () {
 		console.log('Express server listening on port ' + app.get('port'));
