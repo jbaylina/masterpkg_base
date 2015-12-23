@@ -92,9 +92,10 @@
 	            ngModelController.$formatters.push(function (modelValue) {
 	            	// console.log("before formater: " + typeof(modelValue) + " -> " + modelValue);
 
-	            	modelValue = new Date(modelValue);
-
-	            	modelValue = new Date(modelValue.toISOString().substr(0,10));
+					if(modelValue) {
+						modelValue = new Date(modelValue);
+						modelValue = new Date(modelValue.toISOString().substr(0,10));
+					}
 
 	            	// console.log("after formater: " + typeof(modelValue) + " -> " + modelValue);
 
