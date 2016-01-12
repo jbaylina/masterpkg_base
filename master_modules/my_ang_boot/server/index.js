@@ -169,7 +169,13 @@ db.on('init', function() {
 
       			oldEnd.apply(res, arguments);
 
-      			var body = Buffer.concat(chunks).toString('utf8');
+      			var body;
+
+                if(chunks.length === 1 && typeof chunk === "string") {
+                    body = chunk;
+                } else {
+                    body = Buffer.concat(chunks).toString('utf8');
+                }
 
 				var meta = {
 					status: res.statusCode,
@@ -247,17 +253,39 @@ db.on('init', function() {
 	});
 	app.use(haltOnTimedout);
 
-	function haltOnTimedout(err, req, res, next) {
-	  if (!req.timedout) return next(err);
-	  if (!req.timeoutLogged) {
-		  logger.log("warn", "Timeout");
-  	  	  req.timeoutLogged = true;
-	  }
+        function haltOnTimedout(err, req, res, next) {
+            if ((req.timedout) && (!req.timeoutSended)) {
 
-	}
+                logger.log("warn", "haltOnTimedout : Timeout", {
+                    method        : req.method,
+                    originalUrl   : req.originalUrl,
+                    body          : req.body,
+                    params        : req.params,
+                    query         : req.query,
+                    headers       : req.headers,
+                    user          : req.user || {},
+                    _remoteAddress: req._remoteAddress
+                });
+                req.timeoutSended = true;
+                res.status(504).json(err);
+            }
+            if ((!req.timedout) && (!req.timeoutSended)) {
+                if(err) return next(err);
+                else return next();
+            }
+        }
 
-	server.listen(app.get('port'), function () {
-		console.log('Express server listening on port ' + app.get('port'));
-		logger.log('verbose', 'Express server listening on port ' + app.get('port'));
-	});
-});
+        //function haltOnTimedout(err, req, res, next) {
+        //    if (!req.timedout) return next(err);
+        //    if (!req.timeoutLogged) {
+        //        logger.log("warn", "Timeout");
+        //        req.timeoutLogged = true;
+        //    }
+        //}
+
+        server.listen(app.get('port'), function() {
+            console.log('Express server listening on port ' + app.get('port'));
+            logger.log('verbose', 'Express server listening on port ' + app.get('port'));
+        });
+    }
+);
