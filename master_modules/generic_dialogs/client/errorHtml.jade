@@ -1,0 +1,9 @@
+div.modal-header
+	h4(translate) Error
+
+div.modal-body
+	p {{intro}}
+	div.alerr.alert-danger(ng-bind-html="msg")
+
+div.modal-footer
+	button.btn(ng-click="close()" translate) Close

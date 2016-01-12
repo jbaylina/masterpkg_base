@@ -52,6 +52,21 @@
 					}
 				});
 			};
+			this.errorHtml = function (intro,msg) {
+				return $uibModal.open({
+					templateUrl: "templates/generic_dialogs/errorHtml.html",
+					controller: "ErrorHtmlDialogCtrl",
+					backdrop: false,
+					resolve: {
+						params: function () {
+							return {
+								intro: intro,
+								msg: msg
+							};
+						},
+					}
+				});
+			};
 			this.confirmationError = function (intro,msg) {
 				return $uibModal.open({
 					templateUrl: "templates/generic_dialogs/confirmationError.html",
@@ -226,7 +241,14 @@
 			$uibModalInstance.close("si");
 		};
 	});
+	mod.controller('ErrorHtmlDialogCtrl', function ($scope, $uibModalInstance, params) {
+		$scope.msg = params.msg;
+		$scope.intro = params.intro;
 
+		$scope.close = function () {
+			$uibModalInstance.dismiss();
+		};
+	});
 	mod.controller('ConfirmationDialogCtrl', function ($scope, $uibModalInstance, params) {
 		$scope.msg = params.msg;
 
