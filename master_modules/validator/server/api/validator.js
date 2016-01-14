@@ -91,6 +91,8 @@ function getItems(req, res, next) {
 		};
 
 		var host = config.clientConfig.apiPrefix.substring(0, config.clientConfig.apiPrefix.length - 4);
+		host = host.substring(7, host.length);
+
 		var json = {
 			swagger: "2.0",
 			info: {
