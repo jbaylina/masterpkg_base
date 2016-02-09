@@ -65,6 +65,7 @@ var timeout = require('connect-timeout');
 
 
 server.setTimeout(30000);
+
 db.on('error', function(err) {
 	logger.log('error', err.toString(), err);
 });
