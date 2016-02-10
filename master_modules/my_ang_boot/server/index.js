@@ -59,7 +59,6 @@ __mods.MasterError = require('../common/mastererror');
 var app = __mods.app =  express();
 
 var server = http.createServer(app);
-__mods.server = server;
 
 
 if(config.https) {
@@ -70,6 +69,9 @@ if(config.https) {
 	};
 	var serverHttps = https.createServer(options, app);
 	serverHttps.setTimeout(30000);
+	__mods.server = serverHttps;
+}else{
+	__mods.server = server;
 }
 
 var timeout = require('connect-timeout');
