@@ -59,12 +59,26 @@ __mods.MasterError = require('../common/mastererror');
 var app = __mods.app =  express();
 
 var server = http.createServer(app);
-__mods.server = server;
+
+
+if(config.https) {
+	var https = require('https');
+	var options = {
+		key: fs.readFileSync('key.pem'),
+		cert: fs.readFileSync('key-cert.pem')
+	};
+	var serverHttps = https.createServer(options, app);
+	serverHttps.setTimeout(30000);
+	__mods.server = serverHttps;
+}else{
+	__mods.server = server;
+}
 
 var timeout = require('connect-timeout');
 
 
 server.setTimeout(30000);
+
 db.on('error', function(err) {
 	logger.log('error', err.toString(), err);
 });
@@ -287,5 +301,11 @@ db.on('init', function() {
             console.log('Express server listening on port ' + app.get('port'));
             logger.log('verbose', 'Express server listening on port ' + app.get('port'));
         });
+		if(config.https) {
+			serverHttps.listen(8000, function () {
+				console.log('Express server HTTPS listening on port 8000');
+				logger.log('verbose', 'Express server HTTPS listening on port 8000');
+			});
+		}
     }
 );
