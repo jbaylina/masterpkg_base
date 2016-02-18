@@ -15,11 +15,11 @@
                     CKEDITOR.config.protectedSource = [/<%.*%>/g, /&nbsp;/g, /<>/g];
                     CKEDITOR.config.allowedContent = true;
 
-                    if(clientConfig.ckeditor.filebrowserUploadUrl) {
+                    if(clientConfig.ckeditor && clientConfig.ckeditor.filebrowserUploadUrl) {
                         CKEDITOR.config.filebrowserUploadUrl = clientConfig.ckeditor.filebrowserUploadUrl;
                     }
 
-                    if(clientConfig.ckeditor.filebrowserBrowseUrl) {
+                    if(clientConfig.ckeditor && clientConfig.ckeditor.filebrowserBrowseUrl) {
                         CKEDITOR.config.filebrowserBrowseUrl = clientConfig.ckeditor.filebrowserBrowseUrl;
                     }
 
