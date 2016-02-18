@@ -31,7 +31,7 @@ nav.navbar.navbar-default.navbar-fixed-top(role="navigation")
 
             ul.nav.navbar-nav.navbar-right
                 li.dropdown(ng-if="principal.isAuthenticated()", uib-dropdown)
-                    a.dropdown-toggle(href, uib-dropdown-toggle) {{principal.getIdUser()}}
+                    a.dropdown-toggle(href, uib-dropdown-toggle class="minus") {{principal.getIdUser()}}
                         span.caret
                     ul.dropdown-menu(role="menu")
                         li

@@ -6,7 +6,7 @@
     "use strict";
 
     var mod = angular.module('main',[]);
-    mod.controller('MainCtrl', function ($scope,  $state, $location, $timeout, masterApi, GenericDialogs, clientConfig, gettextCatalog, principal, masterMenu) {
+    mod.controller('MainCtrl', function ($scope,  $state, $location, $timeout, masterApi, GenericDialogs, clientConfig, gettextCatalog, principal, masterMenu, $window) {
 		$scope.principal = principal;
 		$scope.version = clientConfig.version;
 
@@ -16,7 +16,7 @@
 			principal.logout().then(function() {
 				$scope.$broadcast('logout');
 				$timeout(function() {
-					$location.path("/login");
+					$window.location.href = "/login";
 				},100);
 			});
 		};
