@@ -10,10 +10,34 @@
     mod.directive('ckEditor', ["$timeout", function ($timeout) {
         return {
             require: '?ngModel',
+            scope:{
+              transLangDefault: "=",
+              transLang: "=",
+              transUrlApi: "="
+            },
             link   : function (scope, elm, attr, ngModel) {
                 CKEDITOR.config.protectedSource = [/<%.*%>/g, /&nbsp;/g, /<>/g];
+
+                var translate = {};
+                if(scope.transLang && scope.transUrlApi){
+                    translate = {
+                        name: 'translate',
+                        items: ['Translate']
+                    }
+                    var oldValue = undefined;
+                    scope.$watch('transLangDefault', function(newValue) {
+                        if(newValue!=='' && newValue!=oldValue){
+                            CKEDITOR.config.transLangDefault = newValue;
+                        }
+                        oldValue = newValue;
+                    });
+                }
+
+                CKEDITOR.config.transUrlApi = scope.transUrlApi;
+
                 var ck                          = CKEDITOR.replace(elm[0], {
-                    extraPlugins: 'justify,colorbutton,font',
+                    transLang: scope.transLang,
+                    extraPlugins: 'justify,colorbutton,font,translate',
                     toolbar     : [
                         {
                             name : 'clipboard',
@@ -59,7 +83,8 @@
                         {
                             name : 'colors',
                             items: ['TextColor', 'BGColor']
-                        }
+                        },
+                        translate
                     ],
                     height      : '290px',
                     width       : '99%'
