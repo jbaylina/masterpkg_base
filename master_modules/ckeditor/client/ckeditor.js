@@ -44,10 +44,11 @@
                             oldValue = newValue;
                         });
                     }
+
                     CKEDITOR.config.transUrlApi = scope.transUrlApi;
 
                     var ck = CKEDITOR.replace(elm[0], {
-                        extraPlugins: 'justify,colorbutton,font',
+                        extraPlugins: 'justify,colorbutton,font,translate',
                         toolbar: [
                             {
                                 name: 'clipboard',

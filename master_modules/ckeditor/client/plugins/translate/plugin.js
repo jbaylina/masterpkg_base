@@ -101,6 +101,7 @@ CKEDITOR.plugins.add('translate',{
             transUrlApi = CKEDITOR.config.transUrlApi;
             transLangDefault = CKEDITOR.config.transLangDefault;
 
+            
             if(!transLangDefault || !transLang || transLangDefault===transLang){
                 /* DESACTIVATS */
                 editor.getCommand('translateIn').setState(CKEDITOR.TRISTATE_DISABLED);
