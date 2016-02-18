@@ -53,9 +53,8 @@ CKEDITOR.plugins.add('translate',{
                         elements: [
                             {
                                 type: 'html',
-                                html: '<div id="myTextTranslate"></div>',
-                                id: 'translateTxt',
-                                class: 'boxTranslate'
+                                html: '<div id="myTextTranslate" class="boxTranslateDialog"></div>',
+                                id: 'translateTxt'
                             }
                         ]
                     }
@@ -79,6 +78,10 @@ CKEDITOR.plugins.add('translate',{
                                 res = JSON.parse(res);
                                 if(res.data){
                                     document.getElementById('myTextTranslate').innerHTML = res.data;
+                                    var elementClass = document.getElementsByClassName("boxTranslateDialog");
+                                    for (i = 0; i < elementClass.length; i++) {
+                                        elementClass[i].innerHTML = res.data;
+                                    }
                                     // dialog.setValueOf( 'tab-basic','translateTxt', res.data);
                                 }
                             }
