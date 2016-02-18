@@ -5,8 +5,6 @@ var transLangDefault = '';
 CKEDITOR.plugins.add('translate',{
     init: function (editor) {
 
-        transLang = editor.config.transLang;
-
         editor.ui.addButton('Translate',
             {
                 label: 'Translate text',
@@ -101,8 +99,7 @@ CKEDITOR.plugins.add('translate',{
             transUrlApi = CKEDITOR.config.transUrlApi;
             transLangDefault = CKEDITOR.config.transLangDefault;
 
-            
-            if(!transLangDefault || !transLang || transLangDefault===transLang){
+            if(!transLangDefault || transLangDefault===transLang){
                 /* DESACTIVATS */
                 editor.getCommand('translateIn').setState(CKEDITOR.TRISTATE_DISABLED);
                 editor.getCommand('translateOut').setState(CKEDITOR.TRISTATE_DISABLED);

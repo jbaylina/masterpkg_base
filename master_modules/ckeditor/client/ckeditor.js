@@ -48,6 +48,7 @@
                     CKEDITOR.config.transUrlApi = scope.transUrlApi;
 
                     var ck = CKEDITOR.replace(elm[0], {
+                        transLang: scope.transLang,
                         extraPlugins: 'justify,colorbutton,font,translate',
                         toolbar: [
                             {
