@@ -8,7 +8,7 @@ exports.Joi = Joi;
 
 exports.joiValidate = function joiValidate(validations, options) {
     options = options || { strict: true };
-console.log(options);
+
     function validate(req, res, next) {
 
         var method = req.method;
