@@ -88,6 +88,16 @@ db.on('error', function(err) {
 
 
 db.on('init', function() {
+
+    if(config.winston && config.winston.mySqlLevel){
+        require('./winston_mysql_transport.js').Mysql;
+        var dataBaseOptions = {
+            connection: db.$driver.pool,
+            level: config.winston.mySqlLevel
+        };
+        logger.add(winston.transports.Mysql, dataBaseOptions);
+    }
+
 	app.set('port', config.port || 3000);
 
     app.use(express.static(path.join(__top, 'dist')));
