@@ -26,7 +26,8 @@ exports.joiValidate = function joiValidate(validations, options) {
         if (method !== "GET" && method !== "DELETE") {
             bodyExtras = copyObject(body, items, validations, options.strict, true);
         }
-        var err = Joi.validate(items, validations);
+        delete options.strict;
+        var err = Joi.validate(items, validations, options);
 
         if (err.error) {
             next(err.error);

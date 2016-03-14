@@ -58,6 +58,8 @@ exports.init = function() {
     var db = __mods.db = require('./db');
     __mods.MasterError = require('../common/mastererror');
 
+
+
     var app = __mods.app =  express();
 
     var server = http.createServer(app);
@@ -90,6 +92,17 @@ exports.init = function() {
 
 
     db.on('init', function() {
+
+
+        if(config.winston && config.winston.mySqlLevel){
+            var tmpTransporter = require('./winston_mysql_transport.js').Mysql;
+            var dataBaseOptions = {
+                connection: db.$driver.pool,
+                level: config.winston.mySqlLevel
+            };
+            logger.add(winston.transports.Mysql, dataBaseOptions);
+        }
+
     	app.set('port', config.port || 3000);
 
         app.use(express.static(path.join(__top, 'dist')));
