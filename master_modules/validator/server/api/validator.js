@@ -44,15 +44,25 @@ function getItems(req, res, next) {
 					}
 				}
 			};
-			if(path.resp200.model){
+			if(path.resp200.modelArray){
 				paths[path.path][path.method].responses = {
 					200: {
 						description: path.resp200.description,
 						schema: {
 							type: "array",
 							items: {
-								"$ref": "#/definitions/"+path.resp200.model
+								"$ref": "#/definitions/"+path.resp200.modelArray
 							}
+						}
+					}
+				};
+			}
+			if(path.resp200.model){
+				paths[path.path][path.method].responses = {
+					200: {
+						description: path.resp200.description,
+						schema: {
+							"$ref": "#/definitions/"+path.resp200.model
 						}
 					}
 				};
@@ -72,10 +82,7 @@ function getItems(req, res, next) {
 			if(!apiModels[model.name]){
 				apiModels[model.name] = {};
 			}
-			apiModels[model.name] = {
-				type: model.type,
-				properties: model.properties
-			};
+			apiModels[model.name] = model;
 		}
 
 		apiModels.Error = {
