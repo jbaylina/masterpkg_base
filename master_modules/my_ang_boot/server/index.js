@@ -212,6 +212,10 @@ exports.init = function() {
     					body: body ? JSON.stringify(req.body).substr(0,2048) : null
     				};
 
+                    if(req.debugTime || config.debugTime) {
+                        console.log(req.originalUrl + " : " + (new Date() - req._rlStartTime) + " ms");
+                    }
+
     				req.log('debug', 'response', meta);
     			};
     		}
