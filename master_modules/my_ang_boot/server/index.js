@@ -72,7 +72,9 @@ exports.init = function() {
     		cert: fs.readFileSync('key-cert.pem')
     	};
     	var serverHttps = https.createServer(options, app);
-    	serverHttps.setTimeout(30000);
+        if(config.timeout) {
+            serverHttps.setTimeout(config.timeout);
+        }
     	__mods.server = serverHttps;
     }else{
     	__mods.server = server;
@@ -80,16 +82,13 @@ exports.init = function() {
 
     var timeout = require('connect-timeout');
 
-
-    server.setTimeout(30000);
+	if(config.timeout){
+		server.setTimeout(config.timeout);
+	}
 
     db.on('error', function(err) {
     	logger.log('error', err.toString(), err);
     });
-
-
-
-
 
     db.on('init', function() {
 
