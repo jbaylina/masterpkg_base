@@ -5,103 +5,114 @@
 (function () {
     "use strict";
 
-    var mod = angular.module('date_editor',[]);
+    var mod = angular.module('date_editor', []);
 
-	mod.directive('dateEditor', ['gettextCatalog', function (gettextCatalog) {
-		return {
-			require: '?ngModel',
-			restrict: 'E',
-			scope: {
-				ngModel: "=",
-				minDate: "=",
-				maxDate: "=",
-				ngRequired: "="
-			},
-			template:
-				'<input class="form-control" ' +
-					' type="text" ' +
-					' ng-model="ngModel" ' +
-					' min-date="minDate" ' +
-					' max-date="maxDate" ' +
-                    ' uib-datepicker-popup="{{format}}" ' +
+    mod.directive('dateEditor', ['gettextCatalog', '$timeout', function (gettextCatalog, $timeout) {
+        return {
+            restrict: 'E',
+            scope: {
+                ngModel: "=",
+                minDate: "=",
+                maxDate: "=",
+                ngRequired: "="
+            },
+            template: function (element, attrs) {
+
+                var tmpTemplate = '<input class="form-control" ' +
+                    ' type="text" ' +
+                    ' ng-model="ngModel" ';
+
+                if (attrs.$attr.minDate) {
+                    tmpTemplate += ' min-date="minDate" ';
+                }
+
+                if (attrs.$attr.maxDate) {
+                    tmpTemplate += ' max-date="maxDate" ';
+                }
+
+                if (attrs.$attr.maxDate) {
+                    tmpTemplate += ' ng-required="true" ';
+                }
+
+                tmpTemplate += ' uib-datepicker-popup="{{format}}" ' +
                     ' is-open="status.opened" ' +
                     ' datepicker-options="dateOptions" ' +
                     ' date-disabled="false" ' +
                     ' ng-focus="open($event)" ' +
-                    ' ng-required="ngRequired" ' +
                     ' on-open-focus="false" ' +
                     ' clear-text="{{clearText}}"' +
                     ' close-text="{{closeText}}"' +
                     ' current-text="{{currentText}}"' +
-				'</input>',
+                    ' name="' + attrs.name + '"' +
+                    '</input>';
 
+                return tmpTemplate;
+            },
+            link: function ($scope, elm, attr) {
+                $scope.status = {
+                    opened: false
+                };
 
+                var lang = gettextCatalog.getCurrentLanguage();
+                if ((lang === 'es') || (lang === 'ca')) {
+                    $scope.format = "dd/MM/yyyy";
+                } else {
+                    $scope.format = "yyyy-MM-dd";
+                }
+                $scope.clearText = gettextCatalog.getString('Clear');
+                $scope.closeText = gettextCatalog.getString('Close');
+                $scope.currentText = gettextCatalog.getString('Today');
 
-			link: function ($scope, elm, attr, ctrls) {
-	            $scope.status = {
-	            	opened: false
-	            };
+                $scope.dateOptions = {
+                    formatYear: 'yyyy',
+                    startingDay: 1
+                };
 
-	            var lang = gettextCatalog.getCurrentLanguage();
-	            if ((lang === 'es') || (lang === 'ca')) {
-	            	$scope.format = "dd/MM/yyyy";
-	            } else {
-	            	$scope.format = "yyyy-MM-dd";
-	            }
-	            $scope.clearText = gettextCatalog.getString('Clear');
-	            $scope.closeText = gettextCatalog.getString('Close');
-	            $scope.currentText = gettextCatalog.getString('Today');
+                $scope.open = function () {
+                    $event.preventDefault();
+                    $event.stopPropagation();
+                    $scope.status.opened = true;
+                };
 
-	            $scope.dateOptions = {
-	                formatYear: 'yyyy',
-	                startingDay: 1
-	            };
+                var ngModelController = elm.children().controller('ngModel');
 
-	            $scope.open = function($event) {
-	                $event.preventDefault();
-	                $event.stopPropagation();
+                ngModelController.$parsers.push(function (viewValue) {
 
-	                $scope.status.opened = true;
-	            };
+                    function fill(S, l) {
+                        S = "" + S;
+                        while (S.length < l) S = '0' + S;
+                        return S;
+                    }
 
-	            var ngModelController = elm.children().controller('ngModel');
+                    console.log("before parser: " + typeof(viewValue) + " -> " + viewValue);
 
-	            ngModelController.$parsers.push(function (viewValue) {
+                    viewValue = new Date(viewValue);
+                    var y = viewValue.getFullYear();
+                    var m = viewValue.getMonth() + 1;
+                    var d = viewValue.getDate();
 
-	            	function fill(S,l) {
-	            		S = "" +S;
-	            		while (S.length < l) S = '0' +S;
-	            		return S;
-	            	}
+                    viewValue = new Date(fill(y, 4) + '-' + fill(m, 2) + '-' + fill(d, 2) + 'T00:00:00.000Z');
 
-	            	console.log("before parser: " + typeof(viewValue) + " -> " + viewValue);
+                    console.log("after parser: " + typeof(viewValue) + " -> " + viewValue);
 
-	            	viewValue = new Date(viewValue);
-	            	var y = viewValue.getFullYear();
-	            	var m = viewValue.getMonth() +1;
-	            	var d = viewValue.getDate();
+                    return viewValue;
+                });
 
-	            	viewValue = new Date(fill(y,4) + '-' + fill(m,2) + '-' + fill(d,2) + 'T00:00:00.000Z' );
+                // called with a 'yyyy-mm-dd' string to format
+                ngModelController.$formatters.push(function (modelValue) {
+                    // console.log("before formater: " + typeof(modelValue) + " -> " + modelValue);
 
-	            	console.log("after parser: " + typeof(viewValue) + " -> " + viewValue);
+                    if (modelValue) {
+                        modelValue = new Date(modelValue);
+                        modelValue = new Date(modelValue.toISOString().substr(0, 10));
+                    }
 
-	            	return viewValue;
-	            });
+                    // console.log("after formater: " + typeof(modelValue) + " -> " + modelValue);
 
-	            // called with a 'yyyy-mm-dd' string to format
-	            ngModelController.$formatters.push(function (modelValue) {
-	            	// console.log("before formater: " + typeof(modelValue) + " -> " + modelValue);
+                    return modelValue;
+                });
 
-					if(modelValue) {
-						modelValue = new Date(modelValue);
-						modelValue = new Date(modelValue.toISOString().substr(0,10));
-					}
-
-	            	// console.log("after formater: " + typeof(modelValue) + " -> " + modelValue);
-
-	            	return modelValue;
-	            });
-			}
-		};
-	}]);
+            }
+        };
+    }]);
 })();
