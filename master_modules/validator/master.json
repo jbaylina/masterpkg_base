@@ -2,6 +2,6 @@
 	"name": "validator",
 	"version": "0.0.1",
 	"npmDependencies": {
-		"joi": "7.0.0"
+		"joi": "^8.0.0"
 	}
 }
