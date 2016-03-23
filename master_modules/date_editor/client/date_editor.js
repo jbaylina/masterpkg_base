@@ -68,7 +68,7 @@
                     startingDay: 1
                 };
 
-                $scope.open = function () {
+                $scope.open = function ($event) {
                     $event.preventDefault();
                     $event.stopPropagation();
                     $scope.status.opened = true;
