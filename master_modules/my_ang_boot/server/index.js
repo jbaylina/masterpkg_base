@@ -15,7 +15,7 @@ exports.init = function() {
         exitOnError: (config.winston && config.winston.exitOnError) ? config.winston.exitOnError : false
     };
 
-    if (config.log) {
+    if ((config.winston)&&(config.winston.filename)) {
         loggerConfig.transports.push( new winston.transports.File({
             filename: (config.winston && config.winston.filename) ? config.winston.filename : "output.log",
             level: (config.winston && config.winston.level) ? config.winston.level : "debug",
@@ -33,7 +33,7 @@ exports.init = function() {
 
     if ((config.winston) && (config.winston.exitOnAllError)) {
         logger.on('logging', function (transport, level, msg, meta) {
-            if(transport.name === "file" && level === "error"){
+            if(transport.name === "console" && level === "error"){
                 setTimeout(function() {
                     process.exit(1);
                 }, 1000);
