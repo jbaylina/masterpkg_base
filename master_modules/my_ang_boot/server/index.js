@@ -142,7 +142,9 @@ exports.init = function() {
     		store: new SSSession(db)
     	}));
 
-    	app.use(timeout('20s'));
+        if (config.requestTimeout !== false) {
+    	   app.use(timeout('20s'));
+        }
     	app.use(bodyParser.json({limit: '50mb'}));
     	app.use(haltOnTimedout);
 
