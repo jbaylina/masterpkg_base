@@ -1,2 +1,6 @@
-link(rel="stylesheet", type="text/css", href="bower_components/ag-grid/dist/ag-grid.css")
-link(rel="stylesheet", type="text/css", href="bower_components/ag-grid/dist/theme-fresh.css")
+- if(!release)
+    link(rel="stylesheet", type="text/css", href="bower_components/ag-grid/dist/ag-grid.css")
+    link(rel="stylesheet", type="text/css", href="bower_components/ag-grid/dist/theme-fresh.css")
+- else
+    link(rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ag-grid/2.3.5/ag-grid.css")
+    link(rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ag-grid/2.3.5/theme-fresh.css")
