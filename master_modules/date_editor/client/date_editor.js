@@ -30,7 +30,7 @@
                     tmpTemplate += ' max-date="maxDate" ';
                 }
 
-                if (attrs.$attr.maxDate) {
+                if (attrs.$attr.ngRequired) {
                     tmpTemplate += ' ng-required="true" ';
                 }
 

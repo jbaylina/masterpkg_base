@@ -6,8 +6,19 @@
     "use strict";
 
     var mod = angular.module('login',[]);
-    mod.controller('LoginCtrl', function ($rootScope, $scope, $state, $location, GenericDialogs, masterApi, principal, clientConfig) {
+    mod.controller('LoginCtrl', function ($rootScope, $scope, $state, $location, GenericDialogs, masterApi, principal, clientConfig, $timeout) {
+
+        $('body').addClass('gray-bg');
+
+        principal.logout().then(function() {
+            $scope.$broadcast('logout');
+            $timeout(function() {
+                $window.location.href = "/login";
+            },100);
+        });
+
         $scope.credentials = {};
+        $scope.clientConfig = clientConfig;
         $scope.loginIsEmail = clientConfig.loginIsEmail || false;
         $scope.login = function() {
             masterApi.post('/login',$scope.credentials, function(err, aIdentity) {
