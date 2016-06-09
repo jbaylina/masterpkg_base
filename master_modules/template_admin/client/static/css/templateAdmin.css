@@ -1,0 +1,100 @@
+
+.logoHeader{
+    margin:15px 0 0 5px; max-height:30px;
+    /*-webkit-filter: grayscale(100%);*/
+    /*filter: grayscale(100%);*/
+}
+.nav-tabs > li > a{ padding-left:15px; padding-right:15px;}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus{ border-bottom:1px solid #FFFFFF; }
+
+.animated05{
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    z-index: 100;
+}
+.navbar-default{ overflow:hidden;}
+.sidebar-collapse{  min-width:220px; }
+body{padding-top:0 !important}
+.btn-primary { background:#457abb; border-color:#457abb;}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary,
+.btn-primary:active:focus,
+.btn-primary:active:hover,
+.btn-primary.active:hover,
+.btn-primary.active:focus {
+    background:#1c66a6; border-color:#1c66a6;
+}
+.md-skin .nav .open > a,.md-skin .nav .open > a:hover,.md-skin .nav .open > a:focus,.md-skin .navbar-fixed-top,.md-skin .navbar-static-top,.spin-icon,.fc-event,.onoffswitch-inner:before,.sk-spinner-fading-circle .sk-circle:before,.landing-page li.pricing-title,.fc-agenda .fc-event-time,.toast,.jvectormap-zoomin,.sk-spinner-rotating-plane.sk-spinner,.landing-page .testimonials,.jvectormap-zoomout,.open-small-chat,.open-small-chat:hover,.sk-spinner-wordpress.sk-spinner,.landing-page .navbar-default .navbar-brand,.jvectormap-goback,.branding,.navy-bg,.progress-bar,.small-chat-box .content .chat-message.active,.landing-page .btn-primary,.fc-event a,a.list-group-item.active,.panel-primary > .panel-heading,.sk-spinner-cube-grid .sk-cube,.landing-page .social-icon a,a.list-group-item.active:hover,.noUi-connect,.product-price,.sk-spinner-double-bounce .sk-double-bounce1,.sk-spinner-double-bounce .sk-double-bounce2,.sk-spinner-wave div,.sk-spinner-wandering-cubes .sk-cube1,.sk-spinner-wandering-cubes .sk-cube2,.sk-spinner-pulse.sk-spinner,.sk-spinner-chasing-dots .sk-dot1,.landing-page .navy-section,.sk-spinner-chasing-dots .sk-dot2,.sk-spinner-three-bounce div,.sk-spinner-circle .sk-circle:before,a.list-group-item.active:focus,.label-primary,.fc-state-active,.badge-primary,.btn-home,.pace .pace-progress,.navbar-default .landing_link a:hover,body.mini-navbar .nav-header,.navbar-default .special_link a,.top-navigation .navbar-brand,.navbar-toggle
+{
+    background:#c42126;
+}
+.btn-home:hover, .btn-home:focus, .btn-home:active, .btn-home.active, .open .dropdown-toggle.btn-home, .btn-home:active:focus, .btn-home:active:hover, .btn-home.active:hover, .btn-home.active:focus
+{
+    background-color:#96191d !important;
+    border-color:#96191d !important;
+}
+.md-skin.landing-page .navbar-default .navbar-nav > li > a:hover,.md-skin.landing-page .navbar-default .navbar-nav > li > a:focus,.md-skin.top-navigation .nav > li a:hover,.md-skin .top-navigation .nav > li a:focus,.md-skin.top-navigation .nav .open > a,.md-skin.top-navigation .nav .open > a:hover,.md-skin.top-navigation .nav .open > a:focus,.md-skin.top-navigation .nav > li.active a,.btn-link:hover,.forum-item.active .fa,.forum-item.active a.forum-item-title,.vertical-date small,.btn-link:focus,.slick-prev:before,.product-name:hover,.landing-page .pricing-plan .pricing-price span,.landing-page .features .big-icon,.product-name:focus,.vote-info a:hover,.landing-page .features small,.landing-page .features-icon,.slick-next:before,.text-navy,.category-list li a .text-navy,.file-list li a:hover,.faq-question,.issue-tracker .btn-link,.btn-link:active,.vote-actions a,.vote-icon.active,.landing-page a.navy-link,.landing-page .navbar-default .nav li a:hover,.btn-link.active,.landing-page span.navy,.landing-page .navbar-scroll.navbar-default .nav li a:hover,.open .dropdown-toggle.btn-link,.navbar-default .special_link a span.label,.top-navigation .navbar-nav .dropdown-menu > .active > a,.top-navigation .nav > li a:hover,.top-navigation .nav > li a:focus,.top-navigation .nav > li.active > a,.btn-home.btn-outline
+{
+    color:#c42126;
+}
+.onoffswitch-switch,.btn-home, .nav > li.active,.onoffswitch-label,.fc-state-active,.fc-event,.fc-agenda .fc-event-time,.panel-primary,.landing-page .navbar-default .navbar-nav > li > a:hover,.landing-page .navbar-default .navbar-nav > li > a:focus,.landing-page .btn-primary,.fc-event a,a.list-group-item.active,.panel-primary > .panel-heading,.dropzone,a.list-group-item.active:hover,.landing-page .navbar-default .navbar-nav > .active > a,.landing-page .navbar-default .navbar-nav > .active > a:hover,a.list-group-item.active:focus,.form-control:focus,.landing-page .navy-line,.single-line:focus,.inspinia-notify.alert-info
+{
+    border-color:#c42126;
+}
+
+.dBug{ margin:10px 0 0 0; position:relative;}
+.dBug .dBugHeadr{ font-size:14px; font-weight: bold; margin-bottom:0;}
+.dBug .dBugHeadr b{ margin:0 0 0 15px; float:right;}
+.dBug .dBugBody{ transition: all 300ms ease-in-out; max-height:0; overflow:hidden;}
+.dBug pre{background-color:#FFF; color:#000; padding:10px 5px 10px 5px; margin-top:25px; outline: none; white-space:pre-wrap !important; text-align:left; border-color:#f17474;}
+.dBug #toggle { position:absolute; appearance:none; cursor:pointer; left:-100%; top:-100%;}
+.dBug #toggle + label {
+    position:absolute;
+    cursor:pointer;
+    background: #dd6149;
+    width: 50px;
+    border-radius: 3px;
+    padding: 3px 2px;
+    color: #FFF;
+    line-height:20px;
+    font-size:12px;
+    text-align:center;
+    -webkit-font-smoothing: antialiased;
+    right:0;
+    margin:-9px 15px 0 0;
+    transition:all 500ms ease;
+}
+.dBug #toggle + label:after {  content:"Error" }
+.dBug #toggle:checked + label { background:#457abb;}
+.dBug #toggle:checked + label:after { content:"Close"}
+.dBug #toggle:checked ~ div.dBugBody{ max-height:500px; overflow-y: auto;}
+.dropdown-messages{ max-height: 200px; height:auto; overflow-y:auto;}
+a.btn.btn-primary.btn-sm.buttonmarginbottom{margin-bottom: 40px;}
+a.btn.btn-default.btn-sm.buttonmarginbottom{margin-bottom: 40px;}
+a.btn.btn-danger.btn-sm.buttonmarginbottom{margin-bottom: 40px;}
+#south{ margin-top:3px;}
+.colorRed{ color:#c42126;}
+.cursor{ cursor:pointer;}
+.ibox-content{ padding-bottom: 5px;}
+.textLeft{ text-align: left;}
+.wrapper-content{ padding-bottom: 10px;}
+.marTop30{ margin-top:30px; }
+.footer-action{ text-align: right; padding-bottom: 70px;}
+.occupancyBox .row{ padding:8px 0 8px 0;}
+.occupancyBox .textCenter{ text-align: center; margin-bottom:0;}
+.occupancyBox .form-control{ margin-bottom:0; height: 26px !important;}
+.occupancyBox .padTop0{ padding-top:0;}
+.occupancyBox .grayBackground{ background-color:#eeeeee;}
+.heightPromotionProduct{ min-height:40px; padding-top:7px;}
+
+.uib-datepicker-popup.dropdown-menu{ padding-bottom:3px; padding-right:3px;}
+
+.btn-primary.disabled, .btn-primary.disabled:hover, .btn-primary.disabled:focus, .btn-primary.disabled:active, .btn-primary.disabled.active, .btn-primary[disabled], .btn-primary[disabled]:hover, .btn-primary[disabled]:focus, .btn-primary[disabled]:active, .btn-primary.active[disabled], fieldset[disabled] .btn-primary, fieldset[disabled] .btn-primary:hover, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:active, fieldset[disabled] .btn-primary.active{
+    background-color:#d66868;
+    border-color:#d66868;
+}

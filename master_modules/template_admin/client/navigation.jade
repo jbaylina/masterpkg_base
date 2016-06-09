@@ -1,0 +1,31 @@
+nav.navbar-default.navbar-static-side(role='navigation' ng-if="principal.isAuthenticated()")
+    .sidebar-collapse
+        ul#side-menu.nav.metismenu.animated(side-navigation)
+            ss(ng-repeat-start="subMenuItem in mainMenu")
+            li(ng-class="{active: $state.includes(subMenuItem.sref)}" ng-if="!subMenuItem.subMenu")
+                a(ng-if="!!subMenuItem.sref", ui-sref="{{subMenuItem.sref}}")
+                    i.fa.fa-th-large(ng-if="!subMenuItem.icon")
+                    i.fa(ng-class="subMenuItem.icon" ng-if="subMenuItem.icon")
+                    span.nav-label(ng-bind="subMenuItem.name")
+            li(ng-class="{active: $state.includes(subMenuItem.sref)}" ng-if="!subMenuItem.subMenu")
+                a(ng-if="!!subMenuItem.href", href="{{subMenuItem.href}}" ng-bind="subMenuItem.name")
+                    i.fa.fa-th-large(ng-if="!subMenuItem.icon")
+                    i.fa(ng-class="subMenuItem.icon" ng-if="subMenuItem.icon")
+                    span.nav-label(ng-bind="subMenuItem.name")
+            li(ng-class="{active: $state.includes(subMenuItem.sref)}" ng-if="!subMenuItem.subMenu")
+                a(ng-if="!!subMenuItem.onClick", ng-click="subMenuItem.onClick()" ng-bind="subMenuItem.name")
+                    i.fa.fa-th-large(ng-if="!subMenuItem.icon")
+                    i.fa(ng-class="subMenuItem.icon" ng-if="subMenuItem.icon")
+                    span.nav-label(ng-bind="subMenuItem.name")
+            li(ng-class="{active: $state.includes(subMenuItem.sref)}" ng-if="subMenuItem.subMenu")
+                a(href='index.html')
+                    i.fa.fa-th-large(ng-if="!subMenuItem.icon")
+                    i.fa(ng-class="subMenuItem.icon" ng-if="subMenuItem.icon")
+                    span.nav-label {{subMenuItem.name}}
+                    span.fa.arrow
+                ul.nav.nav-second-level.collapse
+                    ss(ng-repeat-start="subMenuItem in subMenuItem.subMenu", )
+                    li(ui-sref-active='active')
+                        a(ui-sref='{{subMenuItem.sref}}') {{subMenuItem.name}}
+                    ss(ng-repeat-end)
+            ss(ng-repeat-end)

@@ -1,0 +1,17 @@
+div.middle-box.text-center.loginscreen.animated.fadeInDown
+    div
+        div
+            img(alt="image" src="/images/logo_blanc.png")
+        h3
+            span(translate) Welcome to {{ clientConfig.property.name }}
+        form(class="m-t" role="form" action="#" name="loginForm")
+            div(class="form-group")
+                input(name="username" type="text" class="form-control" ng-model="credentials.username" placeholder="Username" required="" translate ng-if="!loginIsEmail")
+                input(name="username" type="email" class="form-control" ng-model="credentials.username" placeholder="Email" required="" translate ng-if="loginIsEmail")
+            div(class="form-group")
+                input(name="password" type="password" class="form-control" ng-model="credentials.password" placeholder="Password" required="")
+            button.btn.btn-primary.block.full-width.m-b(type="button" ng-enter="login" ng-click="login()" ng-disabled="loginForm.$invalid" translate) Login
+            a(ui-sref="rememberPassword" translate)
+                small(translate) Forgot password?
+        p.m-t
+            small Powered by MasterASP

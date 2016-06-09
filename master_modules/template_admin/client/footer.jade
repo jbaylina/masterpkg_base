@@ -1,0 +1,7 @@
+.footer(ng-if="principal.isAuthenticated()")
+   .pull-right
+      a(href="http://www.masterasp.com" target="_blank")
+         img(src="images/logo_master.png")
+   div(ng-if="version")
+      span Versión:&nbsp;
+      b(ng-bind="version")

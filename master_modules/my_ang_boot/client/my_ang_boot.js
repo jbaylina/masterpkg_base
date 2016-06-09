@@ -21,7 +21,7 @@
                 if (clientConfig.template) {
                     return 'templates/' + clientConfig.template + '/content.html'
                 } else {
-                    return 'templates/template_base/content.html'
+                    return 'templates/template_admin/content.html'
                 }
             },
             controller: 'MainCtrl'
@@ -33,7 +33,7 @@
                 if (clientConfig.template) {
                     return 'templates/' + clientConfig.template + '/unauthorized.html'
                 } else {
-                    return 'templates/template_base/unauthorized.html'
+                    return 'templates/template_admin/unauthorized.html'
                 }
             },
             controller: 'UnauthorizedCtrl'
@@ -44,7 +44,7 @@
                 if (clientConfig.template) {
                     return 'templates/' + clientConfig.template + '/login.html'
                 } else {
-                    return 'templates/template_base/login.html'
+                    return 'templates/template_admin/login.html'
                 }
             },
             controller: 'LoginCtrl'
@@ -59,7 +59,7 @@
                 if (clientConfig.template) {
                     return 'templates/' + clientConfig.template + '/change_password.html'
                 } else {
-                    return 'templates/template_base/change_password.html'
+                    return 'templates/template_admin/change_password.html'
                 }
             },
             controller: 'ChangePasswordCtrl'
@@ -71,7 +71,7 @@
                 if (clientConfig.template) {
                     return 'templates/' + clientConfig.template + '/reset_password.html'
                 } else {
-                    return 'templates/template_base/reset_password.html'
+                    return 'templates/template_admin/reset_password.html'
                 }
             },
             controller: 'ResetPasswordCtrl'
@@ -83,7 +83,7 @@
                 if (clientConfig.template) {
                     return 'templates/' + clientConfig.template + '/remember_password.html'
                 } else {
-                    return 'templates/template_base/remember_password.html'
+                    return 'templates/template_admin/remember_password.html'
                 }
             },
             controller: 'RememberPasswordCtrl'
