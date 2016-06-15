@@ -11,7 +11,7 @@ div.middle-box.text-center.loginscreen.animated.fadeInDown
             div(class="form-group")
                 input(name="password" type="password" class="form-control" ng-model="credentials.password" placeholder="Password" required="")
             button.btn.btn-primary.block.full-width.m-b(type="button" ng-enter="login" ng-click="login()" ng-disabled="loginForm.$invalid" translate) Login
-            a(ui-sref="rememberPassword" translate)
+            a(ui-sref="rememberPassword")
                 small(translate) Forgot password?
         p.m-t
             small Powered by MasterASP
