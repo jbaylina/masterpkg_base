@@ -78,7 +78,8 @@ a.btn.btn-primary.btn-sm.buttonmarginbottom{margin-bottom: 40px;}
 a.btn.btn-default.btn-sm.buttonmarginbottom{margin-bottom: 40px;}
 a.btn.btn-danger.btn-sm.buttonmarginbottom{margin-bottom: 40px;}
 #south{ margin-top:3px;}
-.colorRed{ color:#c42126;}
+.colorRed{ color:#ed5565;}
+.colorGreen{ color:#55a958;}
 .cursor{ cursor:pointer;}
 .ibox-content{ padding-bottom: 5px;}
 .textLeft{ text-align: left;}
