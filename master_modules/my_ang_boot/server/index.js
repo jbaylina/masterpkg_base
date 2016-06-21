@@ -289,7 +289,8 @@ exports.init = function () {
                     errObj.errorMsg = err.message;
                 }
 
-                logger.log("warn", errObj.code, err);
+                if(err.stack) errObj.stack = err.stack;
+                logger.log("warn", errObj.code, errObj);
 
                 if (err.code === "security.accessDenied" || err.errorCode === "security.accessDenied") {
                     res.status(403);
