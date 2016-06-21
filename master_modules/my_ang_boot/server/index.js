@@ -17,9 +17,13 @@ exports.init = function () {
 
     if ((config.winston) && (config.winston.filename)) {
         loggerConfig.transports.push(new winston.transports.File({
-            filename: (config.winston && config.winston.filename) ? config.winston.filename : "output.log",
+            filename: (config.winston && config.winston.filename) ? config.winston.filename : "logs/output.log",
             level: (config.winston && config.winston.level) ? config.winston.level : "debug",
-            handleExceptions: (config.winston && config.winston.handleExceptions) ? config.winston.handleExceptions : false
+            handleExceptions: (config.winston && config.winston.handleExceptions) ? config.winston.handleExceptions : false,
+            humanReadableUnhandledException: true
+        }));
+        loggerConfig.transports.push(new (require('winston-daily-rotate-file'))({
+            filename: (config.winston && config.winston.filename) ? config.winston.filename : "logs/output.log"
         }));
     }
 
@@ -121,7 +125,7 @@ exports.init = function () {
             });
 
             if (config.accessLog) {
-                var accessLogStream = fs.createWriteStream(config.accessLog, {flags: 'a'});
+                var accessLogStream = fs.createWriteStream(config.accessLog || "logs/access.log", {flags: 'a'});
                 app.use(morgan('combined', {stream: accessLogStream}));
             } else {
                 app.use(morgan("dev"));
@@ -291,6 +295,7 @@ exports.init = function () {
 
                 if(err.stack) errObj.stack = err.stack;
                 logger.log("warn", errObj.code, errObj);
+                delete errObj.stack;
 
                 if (err.code === "security.accessDenied" || err.errorCode === "security.accessDenied") {
                     res.status(403);
