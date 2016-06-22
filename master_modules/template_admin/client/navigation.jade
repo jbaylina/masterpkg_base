@@ -7,6 +7,8 @@ nav.navbar-default.navbar-static-side(role='navigation' ng-if="principal.isAuthe
                     i.fa.fa-th-large(ng-if="!subMenuItem.icon")
                     i.fa(ng-class="subMenuItem.icon" ng-if="subMenuItem.icon")
                     span.nav-label(ng-bind="subMenuItem.name")
+                    span.label.label-info.pull-right.point(ng-if="subMenuItem.modeTest=='No'" title="Activo") {{'&nbsp;'}}
+                    span.label.label-danger.pull-right.point(ng-if="subMenuItem.modeTest=='Si'" title="Modo test") {{'&nbsp;'}}
             li(ng-class="{active: $state.includes(subMenuItem.sref)}" ng-if="!subMenuItem.subMenu")
                 a(ng-if="!!subMenuItem.href", href="{{subMenuItem.href}}" ng-bind="subMenuItem.name")
                     i.fa.fa-th-large(ng-if="!subMenuItem.icon")
