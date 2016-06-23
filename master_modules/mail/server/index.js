@@ -1,3 +1,8 @@
+/*jslint node: true */
+/*global __mods */
+"use strict";
+
+var _ = require('lodash');
 var nodemailer = require('nodemailer');
 var htmlToText = require('nodemailer-html-to-text').htmlToText;
 var serverMailConfig;
@@ -33,8 +38,12 @@ var log = function (level, msg, meta) {
  */
 function setMailConfig(config, callback){
     try {
-        serverMailConfig = {};
+        serverMailConfig = {
+            secure: false
+        };
+
         if(config.secure) serverMailConfig.secure = config.secure;
+
         serverMailConfig.greetingTimeout = config.greetingTimeout || 30000;
 
         if (config.auth) {
@@ -74,11 +83,11 @@ function mail(mailOptions, callback){
 
     transporter.sendMail(mailOptions, function (errMail) {
         if (errMail) {
-            callback(errMail);
             log("error", "error sending generic mail", errMail);
+            callback(errMail);
         } else {
-            callback();
             log("silly", "mail sended to " + mailOptions.to);
+            callback();
         }
     });
 
