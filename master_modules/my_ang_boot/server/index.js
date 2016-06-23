@@ -8,6 +8,7 @@ exports.init = function () {
 
     var config = __mods.config;
     var winston = require('winston');
+    var fs = require('fs');
     var _ = require('underscore');
 
     var loggerConfig = {
@@ -15,22 +16,23 @@ exports.init = function () {
         exitOnError: (config.winston && config.winston.exitOnError) ? config.winston.exitOnError : false
     };
 
+    if (!fs.existsSync('logs')) fs.mkdirSync('logs');
+
     if ((config.winston) && (config.winston.filename)) {
-        loggerConfig.transports.push(new winston.transports.File({
+        loggerConfig.transports.push(new (require('winston-daily-rotate-file'))({
             filename: (config.winston && config.winston.filename) ? config.winston.filename : "logs/output.log",
             level: (config.winston && config.winston.level) ? config.winston.level : "debug",
             handleExceptions: (config.winston && config.winston.handleExceptions) ? config.winston.handleExceptions : false,
-            humanReadableUnhandledException: true
-        }));
-        loggerConfig.transports.push(new (require('winston-daily-rotate-file'))({
-            filename: (config.winston && config.winston.filename) ? config.winston.filename : "logs/output.log"
+            humanReadableUnhandledException: true,
+            prepend: true
         }));
     }
 
     loggerConfig.transports.push(new winston.transports.Console({
         level: (config.winston && config.winston.level) ? config.winston.level : "debug",
         colorize: true,
-        handleExceptions: (config.winston && config.winston.handleExceptions) ? config.winston.handleExceptions : false
+        handleExceptions: (config.winston && config.winston.handleExceptions) ? config.winston.handleExceptions : false,
+        humanReadableUnhandledException: true
     }));
 
     var logger = new winston.Logger(loggerConfig);
