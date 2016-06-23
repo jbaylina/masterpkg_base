@@ -10,13 +10,13 @@
      */
     function pageTitle($rootScope, $timeout) {
         return {
-            link: function(scope, element) {
-                var listener = function(event, toState, toParams, fromState, fromParams) {
+            link: function (scope, element) {
+                var listener = function (event, toState, toParams, fromState, fromParams) {
                     // Default title - load on Dashboard 1
                     var title = 'MasterASP | Admin';
                     // Create your own title pattern
                     if (toState.data && toState.data.pageTitle) title = 'MasterASP | ' + toState.data.pageTitle;
-                    $timeout(function() {
+                    $timeout(function () {
                         element.text(title);
                     });
                 };
@@ -31,10 +31,10 @@
     function sideNavigation($timeout) {
         return {
             restrict: 'A',
-            link: function(scope, element) {
+            link: function (scope, element) {
 
                 // Call the metsiMenu plugin and plug it to sidebar navigation
-                $timeout(function(){
+                $timeout(function () {
                     element.metisMenu();
                 });
 
@@ -115,25 +115,26 @@
                     $('body').toggleClass('fullscreen-ibox-mode');
                     button.toggleClass('fa-expand').toggleClass('fa-compress');
                     ibox.toggleClass('fullscreen');
-                    setTimeout(function() {
+                    setTimeout(function () {
                         $(window).trigger('resize');
                     }, 100);
                 }
             }
         };
     }
+
     /**
      * templateFactory - Factory for all template
      */
-    function templateFactory($rootScope, $state){
+    function templateFactory($rootScope, $state) {
 
         var menuOpen = true;
 
-        function closeMenu(){
-            if(menuOpen){
+        function closeMenu() {
+            if (menuOpen) {
                 if ($(document).width() < 769) {
                     $("body").removeClass("mini-navbar");
-                }else{
+                } else {
                     $("body").addClass("mini-navbar");
                 }
                 $('#side-menu').removeClass('fadeIn');
@@ -142,11 +143,11 @@
             }
             menuOpen = false;
         };
-        function openMenu(){
-            if(!menuOpen) {
+        function openMenu() {
+            if (!menuOpen) {
                 if ($(document).width() < 769) {
                     $("body").addClass("mini-navbar");
-                }else{
+                } else {
                     $("body").removeClass("mini-navbar");
                 }
                 $('#side-menu').removeClass('time02');
@@ -159,25 +160,25 @@
         return {
             minimalizaSidebar: function (action) {
 
-                if($state.current.url.indexOf("edit")>=0){
+                if ($state.current.url.indexOf("edit") >= 0) {
                     closeMenu();
                     return;
                 }
 
-                switch(action){
+                switch (action) {
                     case 'min':
                         closeMenu();
-                    break;
+                        break;
                     case 'max':
                         openMenu();
-                    break;
+                        break;
                     default:
-                        if(menuOpen){
+                        if (menuOpen) {
                             closeMenu();
-                        }else{
+                        } else {
                             openMenu();
                         }
-                    break;
+                        break;
                 }
                 setTimeout(function () {
                     $rootScope.$broadcast("minimalizaSidebar");
@@ -205,13 +206,13 @@
 
     function config($stateProvider, $urlRouterProvider, IdleProvider, KeepaliveProvider) {
         $stateProvider.state("forbiden", {
-            parent     : "site",
-            url        : "/forbiden",
+            parent: "site",
+            url: "/forbiden",
             templateUrl: 'templates/template_admin/forbiden.html'
         });
         $stateProvider.state("timeout", {
-            parent     : "site",
-            url        : "/timeout",
+            parent: "site",
+            url: "/timeout",
             templateUrl: 'templates/template_admin/timeout.html'
         });
 
@@ -226,18 +227,30 @@
         'principal'
     ])
         .factory('templateFactory', templateFactory)
+        .directive('ngEnter', function () {
+            return function (scope, element, attrs) {
+                element.bind("keydown keypress", function (event) {
+                    if (event.which === 13) {
+                        scope.$apply(function () {
+                            scope.$eval(attrs.ngEnter);
+                        });
+                        event.preventDefault();
+                    }
+                });
+            };
+        })
         .directive('pageTitle', pageTitle)
         .directive('sideNavigation', sideNavigation)
         .directive('iboxTools', iboxTools)
         .directive('minimalizaSidebar', minimalizaSidebar)
         .directive('iboxToolsFullScreen', iboxToolsFullScreen)
         .config(config)
-        .run(function($rootScope, $state, templateFactory, $interval) {
+        .run(function ($rootScope, $state, templateFactory, $interval) {
 
-            var listener = function(event, toState, toParams, fromState, fromParams) {
-                if(toState && toState.url.indexOf("edit")>=0){
+            var listener = function (event, toState, toParams, fromState, fromParams) {
+                if (toState && toState.url.indexOf("edit") >= 0) {
                     templateFactory.minimalizaSidebar('min');
-                }else{
+                } else {
                     templateFactory.minimalizaSidebar('max');
                 }
             };
@@ -248,14 +261,14 @@
             angular.element("body").addClass("fixed-nav");
 
             // TODO interfiere en el rendimiento?
-            $interval(function(){
-                if(!navigator.onLine){
+            $interval(function () {
+                if (!navigator.onLine) {
                     sweetAlert("Offline", "No internet connection", "warning");
                 }
             }, 5000);
 
             // Minimalize menu when screen is less than 768px
-            $(window).bind("load resize", function() {
+            $(window).bind("load resize", function () {
                 if ($(document).width() < 769) {
                     $('body').addClass('body-small');
                     templateFactory.minimalizaSidebar('min');

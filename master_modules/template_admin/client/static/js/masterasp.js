@@ -37,7 +37,7 @@ $(document).ready(function () {
         if(!$("body").hasClass('body-small')) {
                 fix_height();
         }
-    })
+    });
 
     // Move right sidebar top after scroll
     $(window).scroll(function(){

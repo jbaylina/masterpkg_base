@@ -9,8 +9,8 @@ div.middle-box.text-center.loginscreen.animated.fadeInDown
                 input(name="username" type="text" class="form-control" ng-model="credentials.username" placeholder="Username" required="" translate ng-if="!loginIsEmail")
                 input(name="username" type="email" class="form-control" ng-model="credentials.username" placeholder="Email" required="" translate ng-if="loginIsEmail")
             div(class="form-group")
-                input(name="password" type="password" class="form-control" ng-model="credentials.password" placeholder="Password" required="")
-            button.btn.btn-primary.block.full-width.m-b(type="button" ng-enter="login" ng-click="login()" ng-disabled="loginForm.$invalid" translate) Login
+                input(name="password" type="password" class="form-control" ng-model="credentials.password" placeholder="Password" required="" ng-enter="login()")
+            button.btn.btn-primary.block.full-width.m-b(type="button" ng-click="login()" ng-disabled="loginForm.$invalid" translate) Login
             a(ui-sref="rememberPassword")
                 small(translate) Forgot password?
         p.m-t
