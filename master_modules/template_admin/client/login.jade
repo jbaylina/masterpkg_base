@@ -6,8 +6,8 @@ div.middle-box.text-center.loginscreen.animated.fadeInDown
             span(translate) Welcome to {{ clientConfig.property.name }}
         form(class="m-t" role="form" action="#" name="loginForm")
             div(class="form-group")
-                input(name="username" type="text" class="form-control" ng-model="credentials.username" placeholder="Username" required="" translate ng-if="!loginIsEmail")
-                input(name="username" type="email" class="form-control" ng-model="credentials.username" placeholder="Email" required="" translate ng-if="loginIsEmail")
+                input(name="username" type="text" class="form-control" ng-model="credentials.username" placeholder="Username" required="" translate ng-if="!loginIsEmail" ng-enter="login()")
+                input(name="username" type="email" class="form-control" ng-model="credentials.username" placeholder="Email" required="" translate ng-if="loginIsEmail" ng-enter="login()")
             div(class="form-group")
                 input(name="password" type="password" class="form-control" ng-model="credentials.password" placeholder="Password" required="" ng-enter="login()")
             button.btn.btn-primary.block.full-width.m-b(type="button" ng-click="login()" ng-disabled="loginForm.$invalid" translate) Login
