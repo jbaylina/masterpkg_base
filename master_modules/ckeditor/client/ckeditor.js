@@ -20,6 +20,9 @@
                     CKEDITOR.config.protectedSource = [/<%.*%>/g, /&nbsp;/g, /<>/g];
                     CKEDITOR.config.allowedContent = true;
 
+                    CKEDITOR.config.htmlEncodeOutput = false;
+                    CKEDITOR.config.entities = false;
+
                     CKEDITOR.config.filebrowserUploadUrl = "/api/uploadCK";
                     CKEDITOR.config.filebrowserBrowseUrl = "/api/availableImagesCK";
                     
