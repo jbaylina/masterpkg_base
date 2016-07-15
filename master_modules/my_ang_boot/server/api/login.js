@@ -4,7 +4,6 @@
 
 var db= __mods.db;
 var config = __mods.config;
-var U = require('underscore');
 var path = require('path');
 var MasterError = __mods.MasterError;
 var passport = require('passport');
