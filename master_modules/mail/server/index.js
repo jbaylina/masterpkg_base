@@ -79,15 +79,15 @@ function setMailConfig(config, callback){
  */
 function mail(mailOptions, callback){
 
-    if(!serverMailConfig) return callback("Mail config not defined");
+    if(!serverMailConfig && callback) return callback("Mail config not defined");
 
     transporter.sendMail(mailOptions, function (errMail) {
         if (errMail) {
-            log("error", "error sending generic mail", errMail);
-            callback(errMail);
+            log("warn", "error sending generic mail", errMail);
+            if(callback) callback(errMail);
         } else {
             log("silly", "mail sended to " + mailOptions.to);
-            callback();
+            if(callback) callback();
         }
     });
 
