@@ -1,4 +1,3 @@
-
 .logoHeader{
     margin:15px 0 0 5px; max-height:30px;
     /*-webkit-filter: grayscale(100%);*/
@@ -6,6 +5,12 @@
 }
 .nav-tabs > li > a{ padding-left:15px; padding-right:15px;}
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus{ border-bottom:1px solid #FFFFFF; }
+.dropdown-messages{ overflow-x: hidden;}
+.pictoImg{ font-size:28px;}
+.pictoSuccess, .pictoSuccess a{ color:#23c6c8;}
+.pictoError, .pictoError a{ color:#ed5565;}
+.pictoInfo, .pictoInfo a{ color:#457abb;}
+.pictoInfo a, .pictoSuccess a, .pictoError a{ padding-left:0px !important; font-size:12px !important; text-align:left;}
 
 .animated05{
     -webkit-animation-duration: 0.5s;
@@ -29,7 +34,7 @@ body{padding-top:0 !important}
 .btn-primary.active:focus {
     background:#1c66a6; border-color:#1c66a6;
 }
-.md-skin .nav .open > a,.md-skin .nav .open > a:hover,.md-skin .nav .open > a:focus,.md-skin .navbar-fixed-top,.md-skin .navbar-static-top,.spin-icon,.fc-event,.onoffswitch-inner:before,.sk-spinner-fading-circle .sk-circle:before,.landing-page li.pricing-title,.fc-agenda .fc-event-time,.toast,.jvectormap-zoomin,.sk-spinner-rotating-plane.sk-spinner,.landing-page .testimonials,.jvectormap-zoomout,.open-small-chat,.open-small-chat:hover,.sk-spinner-wordpress.sk-spinner,.landing-page .navbar-default .navbar-brand,.jvectormap-goback,.branding,.navy-bg,.progress-bar,.small-chat-box .content .chat-message.active,.landing-page .btn-primary,.fc-event a,a.list-group-item.active,.panel-primary > .panel-heading,.sk-spinner-cube-grid .sk-cube,.landing-page .social-icon a,a.list-group-item.active:hover,.noUi-connect,.product-price,.sk-spinner-double-bounce .sk-double-bounce1,.sk-spinner-double-bounce .sk-double-bounce2,.sk-spinner-wave div,.sk-spinner-wandering-cubes .sk-cube1,.sk-spinner-wandering-cubes .sk-cube2,.sk-spinner-pulse.sk-spinner,.sk-spinner-chasing-dots .sk-dot1,.landing-page .navy-section,.sk-spinner-chasing-dots .sk-dot2,.sk-spinner-three-bounce div,.sk-spinner-circle .sk-circle:before,a.list-group-item.active:focus,.label-primary,.fc-state-active,.badge-primary,.btn-home,.pace .pace-progress,.navbar-default .landing_link a:hover,body.mini-navbar .nav-header,.navbar-default .special_link a,.top-navigation .navbar-brand,.navbar-toggle
+.md-skin .nav .open > a,.md-skin .nav .open > a:hover,.md-skin .nav .open > a:focus,.md-skin .navbar-fixed-top,.md-skin .navbar-static-top,.spin-icon,.fc-event,.onoffswitch-inner:before,.sk-spinner-fading-circle .sk-circle:before,.landing-page li.pricing-title,.fc-agenda .fc-event-time,.jvectormap-zoomin,.sk-spinner-rotating-plane.sk-spinner,.landing-page .testimonials,.jvectormap-zoomout,.open-small-chat,.open-small-chat:hover,.sk-spinner-wordpress.sk-spinner,.landing-page .navbar-default .navbar-brand,.jvectormap-goback,.branding,.navy-bg,.progress-bar,.small-chat-box .content .chat-message.active,.landing-page .btn-primary,.fc-event a,a.list-group-item.active,.panel-primary > .panel-heading,.sk-spinner-cube-grid .sk-cube,.landing-page .social-icon a,a.list-group-item.active:hover,.noUi-connect,.product-price,.sk-spinner-double-bounce .sk-double-bounce1,.sk-spinner-double-bounce .sk-double-bounce2,.sk-spinner-wave div,.sk-spinner-wandering-cubes .sk-cube1,.sk-spinner-wandering-cubes .sk-cube2,.sk-spinner-pulse.sk-spinner,.sk-spinner-chasing-dots .sk-dot1,.landing-page .navy-section,.sk-spinner-chasing-dots .sk-dot2,.sk-spinner-three-bounce div,.sk-spinner-circle .sk-circle:before,a.list-group-item.active:focus,.label-primary,.fc-state-active,.badge-primary,.btn-home,.pace .pace-progress,.navbar-default .landing_link a:hover,body.mini-navbar .nav-header,.navbar-default .special_link a,.top-navigation .navbar-brand,.navbar-toggle
 {
     background:#c42126;
 }
@@ -100,3 +105,5 @@ a.btn.btn-danger.btn-sm.buttonmarginbottom{margin-bottom: 40px;}
     border-color:#d66868;
 }
 .point{ border-radius:50px; padding:2px 4px !important; line-height:7px; margin-top:3px;}
+#actionHistory:empty{ display:none; }
+#actionHistory:empty{ color:#FF0000 !important;}
