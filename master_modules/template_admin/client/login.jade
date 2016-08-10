@@ -3,7 +3,7 @@ div.middle-box.text-center.loginscreen.animated.fadeInDown
         div
             img(alt="image" src="/images/logo_blanc.png")
         h3
-            span(translate) Welcome to {{ clientConfig.property.name }}
+            span(ng-if='clientConfig.property.name' translate) {{ clientConfig.property.name }}
         form(class="m-t" role="form" action="#" name="loginForm")
             div(class="form-group")
                 input(name="username" type="text" class="form-control" ng-model="credentials.username" placeholder="Username" required="" translate ng-if="!loginIsEmail" ng-enter="login()")
