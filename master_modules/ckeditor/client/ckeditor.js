@@ -17,7 +17,11 @@
                     transUrlApi: "="
                 },
                 link: function (scope, elm, attr, ngModel) {
-                    CKEDITOR.config.protectedSource = [/<%.*%>/g, /&nbsp;/g, /<>/g];
+
+                    if(attr.protectedSource){
+                        CKEDITOR.config.protectedSource = [/<%.*%>/g, /&nbsp;/g, /<>/g];
+                    }
+
                     CKEDITOR.config.allowedContent = true;
 
                     CKEDITOR.config.htmlEncodeOutput = false;
