@@ -28,6 +28,8 @@ nav.navbar-default.navbar-static-side(role='navigation' ng-if="principal.isAuthe
                 ul.nav.nav-second-level.collapse
                     ss(ng-repeat-start="subMenuItem in subMenuItem.subMenu", )
                     li(ui-sref-active='active')
-                        a(ui-sref='{{subMenuItem.sref}}') {{subMenuItem.name}}
+                        a(ui-sref='{{subMenuItem.sref}}')
+                            i.fa(ng-class="subMenuItem.icon" ng-if="subMenuItem.icon")
+                            | {{subMenuItem.name}}
                     ss(ng-repeat-end)
             ss(ng-repeat-end)
