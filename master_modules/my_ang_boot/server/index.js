@@ -92,237 +92,238 @@ exports.init = function () {
 
     db.on('init', function () {
 
-            if (config.winston && config.winston.mySqlLevel) {
-                var tmpTransporter = require('./winston_mysql_transport.js').Mysql;
-                var dataBaseOptions = {
-                    connection: db.$driver.pool,
-                    level: config.winston.mySqlLevel
-                };
-                logger.add(winston.transports.Mysql, dataBaseOptions);
-            }
+        if (config.winston && config.winston.mySqlLevel) {
+            var tmpTransporter = require('./winston_mysql_transport.js').Mysql;
+            var dataBaseOptions = {
+                connection: db.$driver.pool,
+                level: config.winston.mySqlLevel
+            };
+            logger.add(winston.transports.Mysql, dataBaseOptions);
+        }
 
-            app.set('port', config.port || 3000);
+        app.set('port', config.port || 3000);
 
-            app.use(express.static(path.join(__top, 'dist')));
+        app.use(express.static(path.join(__top, 'dist')));
 
-            // We syncronize with database on each call
+        // We syncronize with database on each call
 
-            if (config.database.synchronize) {
-                app.use(function (req, res, next) {
-                    if (req.url.indexOf(config.apiPrefix) === 0) {
-                        db.refreshDatabase(next);
-                    } else {
-                        next();
-                    }
-                });
-            }
-
+        if (config.database.synchronize) {
             app.use(function (req, res, next) {
                 if (req.url.indexOf(config.apiPrefix) === 0) {
-                    res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-                    res.header('Expires', '-1');
-                    res.header('Pragma', 'no-cache');
+                    db.refreshDatabase(next);
+                } else {
+                    next();
                 }
-                next();
             });
+        }
 
-            if (config.accessLog) {
-                var accessLogStream = fs.createWriteStream(config.accessLog || "logs/access.log", {flags: 'a'});
-                app.use(morgan('combined', {stream: accessLogStream}));
-            } else {
-                app.use(morgan("dev"));
+        app.use(function (req, res, next) {
+            if (req.url.indexOf(config.apiPrefix) === 0) {
+                res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+                res.header('Expires', '-1');
+                res.header('Pragma', 'no-cache');
             }
+            next();
+        });
 
-            app.use(session({
-                secret: config.sessionSecret,
-                proxy: true,
-                resave: true,
-                saveUninitialized: true,
-                store: new SSSession(db)
-            }));
+        if (config.accessLog) {
+            var accessLogStream = fs.createWriteStream(config.accessLog || "logs/access.log", {flags: 'a'});
+            app.use(morgan('combined', {stream: accessLogStream}));
+        } else {
+            app.use(morgan("dev"));
+        }
 
-            if (config.requestTimeout !== false) {
-                app.use(timeout('20s'));
-            }
-            app.use(bodyParser.json({limit: '50mb'}));
+        app.use(session({
+            secret: config.sessionSecret,
+            proxy: true,
+            resave: true,
+            saveUninitialized: true,
+            store: new SSSession(db)
+        }));
 
-            app.use(passport.initialize());
+        if (config.requestTimeout !== false) {
+            app.use(timeout('20s'));
+        }
+        app.use(bodyParser.json({limit: '50mb'}));
 
-            app.use(passport.session());
+        app.use(passport.initialize());
 
-            var callId = (new Date()).getTime();
-            app.use(function (req, res, next) {
-                callId += 1;
-                req.callId = callId;
-                if (req.url.indexOf(config.apiPrefix) === 0) {
-                    req.log = function (level, msg, meta) {
-                        meta = meta || {};
-                        meta = _.extend(meta, {
-                            callId: req.callId,
-                            session: req.sessionID,
-                            method: req.method,
-                            url: req.originalUrl,
-                            ip: req.ip
-                        });
-                        logger.log(level, msg, meta);
-                    };
-                    req.log('debug', 'request', {
+        app.use(passport.session());
+
+        var callId = (new Date()).getTime();
+        app.use(function (req, res, next) {
+            callId += 1;
+            req.callId = callId;
+            if (req.url.indexOf(config.apiPrefix) === 0) {
+                req.log = function (level, msg, meta) {
+                    meta = meta || {};
+                    meta = _.extend(meta, {
+                        callId: req.callId,
+                        session: req.sessionID,
                         method: req.method,
                         url: req.originalUrl,
-                        ip: req.ip,
-                        body: req.body ? JSON.stringify(req.body).substr(0, 2048) : null
+                        ip: req.ip
                     });
+                    logger.log(level, msg, meta);
+                };
+                req.log('debug', 'request', {
+                    method: req.method,
+                    url: req.originalUrl,
+                    ip: req.ip,
+                    body: req.body ? JSON.stringify(req.body).substr(0, 2048) : null
+                });
 
-                    req.on("timeout", function () {
-                        res.json = function (j) {
-                            logger.log("warn", "res.json not sended: ", j);
-                        };
-                        res.end = function (j) {
-                            logger.log("warn", "res.end not sended: ", j);
-                        };
-                    });
+                req.on("timeout", function () {
+                    res.json = function (j) {
+                        logger.log("warn", "res.json not sended: ", j);
+                    };
+                    res.end = function (j) {
+                        logger.log("warn", "res.end not sended: ", j);
+                    };
+                });
 
-                    var oldWrite = res.write;
-                    var oldEnd = res.end;
+                var oldWrite = res.write;
+                var oldEnd = res.end;
 
-                    var chunks = [];
+                var chunks = [];
 
-                    // To track response time
-                    req._rlStartTime = new Date();
+                // To track response time
+                req._rlStartTime = new Date();
 
-                    res.write = function (chunk) {
+                res.write = function (chunk) {
+                    chunks.push(chunk);
+
+                    oldWrite.apply(res, arguments);
+                };
+
+                // Proxy the real end function
+                res.end = function (chunk, encoding) {
+
+                    if (chunk)
                         chunks.push(chunk);
 
-                        oldWrite.apply(res, arguments);
-                    };
+                    oldEnd.apply(res, arguments);
 
-                    // Proxy the real end function
-                    res.end = function (chunk, encoding) {
+                    var body;
 
-                        if (chunk)
-                            chunks.push(chunk);
-
-                        oldEnd.apply(res, arguments);
-
-                        var body;
-
-                        if (chunks.length === 1 && typeof chunk === "string") {
-                            body = chunk;
-                        } else {
-                            body = Buffer.concat(chunks).toString('utf8');
-                        }
-
-                        var meta = {
-                            status: res.statusCode,
-                            response_time: (new Date() - req._rlStartTime),
-                            body: body ? JSON.stringify(req.body).substr(0, 2048) : null
-                        };
-
-                        if (req.debugTime || config.debugTime) {
-                            console.log(req.originalUrl + " : " + (new Date() - req._rlStartTime) + " ms");
-                        }
-
-                        req.log('debug', 'response', meta);
-                    };
-                }
-                next();
-            });
-
-            app.use(function (req, res, next) {
-                // Website you wish to allow to connect
-                //		res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:3001');
-                if (req.headers.origin) {
-                    res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
-                }
-
-                // Request methods you wish to allow
-                res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-                // Request headers you wish to allow
-                res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-                // Set to true if you need the website to include cookies in the requests sent
-                // to the API (e.g. in case you use sessions)
-                res.setHeader('Access-Control-Allow-Credentials', true);
-
-                // Pass to next layer of middleware
-                next();
-            });
-
-            require('./api')(app);
-
-            app.all('*', function (req, res, next) {
-                if (req.method === "OPTIONS") {
-                    return next();
-                }
-                if (req.url.indexOf(config.apiPrefix) === 0) {
-                    return next(new Error("Invalid call: " + req.url));
-                }
-                res.sendFile(path.resolve(path.join(__top, 'dist', 'index.html')));
-            });
-
-            app.use(function (err, req, res, next) {
-
-                if (err.code && err.code === "ETIMEDOUT") {
-                    logger.log("warn", "ETIMEDOUT : Timeout error : ", {
-                        method: req.method,
-                        originalUrl: req.originalUrl,
-                        statusCode: res.statusCode,
-                        body: req.body,
-                        params: req.params,
-                        query: req.query,
-                        headers: req.headers,
-                        user: req.user || {},
-                        _remoteAddress: req._remoteAddress
-                    });
-                }
-
-                var errObj = {};
-                if (err.code) {
-                    errObj.code = err.code;
-                } else if (err.errorCode) {
-                    errObj.code = err.errorCode;
-                } else {
-                    if (err.name) {
-                        errObj.code = "generic." + err.name;
+                    if (chunks.length === 1 && typeof chunk === "string") {
+                        body = chunk;
                     } else {
-                        errObj.code = "generic.generic";
+                        body = Buffer.concat(chunks).toString('utf8');
                     }
-                }
 
-                if (err.message) {
-                    errObj.message = err.message;
-                    errObj.errorMsg = err.message;
-                }
+                    var meta = {
+                        status: res.statusCode,
+                        response_time: (new Date() - req._rlStartTime),
+                        body: body ? JSON.stringify(req.body).substr(0, 2048) : null
+                    };
 
-                if(err.stack) errObj.stack = err.stack;
-                logger.log("warn", errObj.code, errObj);
-                delete errObj.stack;
+                    if (req.debugTime || config.debugTime) {
+                        console.log(req.originalUrl + " : " + (new Date() - req._rlStartTime) + " ms");
+                    }
 
-                if (err.code === "security.accessDenied" || err.errorCode === "security.accessDenied") {
-                    res.status(403);
-                } else if (err.code === "ETIMEDOUT") {
-                    res.status(408);
-                } else {
-                    res.status(500);
-                }
+                    req.log('debug', 'response', meta);
+                };
+            }
+            next();
+        });
 
-                if (!res.finished) {
-                    res.json(errObj);
-                }
-            });
+        app.use(function (req, res, next) {
+            // Website you wish to allow to connect
+            //		res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:3001');
+            if (req.headers.origin) {
+                res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+            }
 
-            server.listen(app.get('port'), function () {
-                console.log('Express server listening on port ' + app.get('port'));
-                logger.log('verbose', 'Express server listening on port ' + app.get('port'));
-            });
+            // Request methods you wish to allow
+            res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-            if (config.https) {
-                serverHttps.listen(8000, function () {
-                    console.log('Express server HTTPS listening on port 8000');
-                    logger.log('verbose', 'Express server HTTPS listening on port 8000');
+            // Request headers you wish to allow
+            res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+            // Set to true if you need the website to include cookies in the requests sent
+            // to the API (e.g. in case you use sessions)
+            res.setHeader('Access-Control-Allow-Credentials', true);
+
+            // Pass to next layer of middleware
+            next();
+        });
+
+        require('./api')(app);
+
+        app.all('*', function (req, res, next) {
+            if (req.method === "OPTIONS") {
+                return next();
+            }
+            if (req.url.indexOf(config.apiPrefix) === 0) {
+                return next(new Error("Invalid call: " + req.url));
+            }
+            res.sendFile(path.resolve(path.join(__top, 'dist', 'index.html')));
+        });
+
+        app.use(function (err, req, res, next) {
+
+            if (err.code && err.code === "ETIMEDOUT") {
+                logger.log("warn", "ETIMEDOUT : Timeout error : ", {
+                    method: req.method,
+                    originalUrl: req.originalUrl,
+                    statusCode: res.statusCode,
+                    body: req.body,
+                    params: req.params,
+                    query: req.query,
+                    headers: req.headers,
+                    user: req.user || {},
+                    _remoteAddress: req._remoteAddress
                 });
             }
+
+            var errObj = {};
+            if (err.code) {
+                errObj.code = err.code;
+            } else if (err.errorCode) {
+                errObj.code = err.errorCode;
+            } else {
+                if (err.name) {
+                    errObj.code = "generic." + err.name;
+                } else {
+                    errObj.code = "generic.generic";
+                }
+            }
+
+            if (err.message) {
+                errObj.message = err.message;
+                errObj.errorMsg = err.message;
+            }
+
+            if(err.stack) errObj.stack = err.stack;
+            logger.log("warn", errObj.code, errObj);
+            delete errObj.stack;
+
+            if (err.code === "security.accessDenied" || err.errorCode === "security.accessDenied") {
+                res.status(403);
+            } else if (err.code === "ETIMEDOUT") {
+                res.status(408);
+            } else {
+                res.status(500);
+            }
+
+            if (!res.finished) {
+                res.json(errObj);
+            }
+        });
+
+        server.listen(app.get('port'), function () {
+            console.log('Express server listening on port ' + app.get('port'));
+            logger.log('verbose', 'Express server listening on port ' + app.get('port'));
+        });
+
+        require('./tpvSOAP')(app, server);
+
+        if (config.https) {
+            serverHttps.listen(8000, function () {
+                console.log('Express server HTTPS listening on port 8000');
+                logger.log('verbose', 'Express server HTTPS listening on port 8000');
+            });
         }
-    );
+    });
 };
