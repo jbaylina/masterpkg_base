@@ -14,6 +14,7 @@ var Booking = __mods.booking;
 var docs = __mods.docs;
 var db = __mods.db;
 var crypto = require('crypto');
+var zeropad = require('zeropad');
 
 var log = function (level, msg, meta) {
     meta = meta || {};
@@ -93,12 +94,14 @@ function tpvResponse(args){
         },
         // MAKE OCUPANCY
         function (cb) {
+            return cb();
             db.doTransaction(function () {
                 booking.asyncAccommodation();
             }, cb, log);
         },
         // CREATE THE INVOICE AND PUT STAY IN RESERVATION STATE
         function (cb) {
+            return cb();
             db.doTransaction(function () {
                 booking.invoiceBooking(-1);
                 // TODO FER PAYMENT
@@ -113,6 +116,9 @@ function tpvResponse(args){
             console.log(err);
             return new MasterError(err);
         }
+
+        return callback(responseXml(booking.params, cpParams, signature));
+
         booking.getBooking(booking.params.idBooking, function (r) {
             var options = {
                 template: r.productBookingTemplate,
@@ -134,8 +140,49 @@ function tpvResponse(args){
     });
 }
 
-function responseXml(params, orgParams, signature){
+function mac256(data, key) {
+    const hexMac256 = crypto.createHmac("sha256", new Buffer(key, 'base64')).update(data).digest("hex");
+    return new Buffer(hexMac256, 'hex').toString('base64');
+}
+
+function encrypt3DES (str,key) {
+    const secretKey = new Buffer(key, 'base64');
+    const iv = new Buffer(8);
+    iv.fill(0);
+    const cipher = crypto.createCipheriv('des-ede3-cbc', secretKey, iv);
+    cipher.setAutoPadding(false);
+
+    return cipher.update(zeropad(str, 8), 'utf8', 'base64') + cipher.final('base64');
+}
+
+function createMerchantSignatureNotifSOAPResponse(key, datos, numPedido) {
+    // Se decodifica la clave Base64
+    // var tmpKey = new Buffer(key).toString('base64');
+
+    // Se diversifica la clave con el Número de Pedido
+    var tmpKey = encrypt3DES(String(numPedido), key);
+
+    // MAC256 del parámetro Ds_Parameters que envía Redsys
+    var res = mac256(datos, tmpKey);
+
+    // Se codifican los datos Base64
+    return new Buffer(res).toString('base64');
+}
+
+function responseXml(params, orgParams, signature) {
     // CODIGO: 0= correcta
+
+    // var Cadena = orgParams.Ds_Amount + orgParams.Ds_Order + orgParams.Ds_MerchantCode
+    //     + orgParams.Ds_Currency + orgParams.Ds_Response + orgParams.Ds_TransactionType +
+    //     orgParams.Ds_SecurePayment;
+    //
+    // var newSignature = encrypt3DES(signature, Cadena);
+
+    var claveAdmin = 'sq7HjrUOBfKmC576ILgskD5srU870gJ7';
+    var responseData = '<Response Ds_Version="0.0"><Ds_Response_Merchant>OK</Ds_Response_Merchant></Response>';
+    var responseSignature = createMerchantSignatureNotifSOAPResponse(claveAdmin, responseData, orgParams.Ds_Order);
+    return '<Message>' + responseData + '<Signature>' + responseSignature + '</Signature></Message>';
+
     var result = {
         RETORNOXML: {
             CODIGO: 0,
