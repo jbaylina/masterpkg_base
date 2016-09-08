@@ -178,7 +178,10 @@ function responseXml(params, orgParams, signature) {
     //
     // var newSignature = encrypt3DES(signature, Cadena);
 
-    var claveAdmin = 'sq7HjrUOBfKmC576ILgskD5srU870gJ7';
+    var origBooking = db.rsvBookings[orgParams.Ds_Order].toJSON();
+    var tpv = db.paymentMethodsCreditCardTPV[origBooking.bookingData.payment.idPaymentMethod];
+
+    var claveAdmin = tpv.tpvIdComerce;
     var responseData = '<Response Ds_Version="0.0"><Ds_Response_Merchant>OK</Ds_Response_Merchant></Response>';
     var responseSignature = createMerchantSignatureNotifSOAPResponse(claveAdmin, responseData, orgParams.Ds_Order);
     return '<Message>' + responseData + '<Signature>' + responseSignature + '</Signature></Message>';
