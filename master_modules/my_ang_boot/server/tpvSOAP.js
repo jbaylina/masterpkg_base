@@ -34,8 +34,8 @@ module.exports = function(app, server) {
     var service = {
         InotificacionSISService: {
             InotificacionSIS: {
-                procesaNotificacionSIS : function(args){
-                    return tpvResponse(args);
+                procesaNotificacionSIS : function(args, callback){
+                    tpvResponse(args, callback);
                 }
             }
         }
@@ -51,8 +51,9 @@ module.exports = function(app, server) {
     }
 };
 
-function tpvResponse(args){
+function tpvResponse(args, callback){
 
+    console.log(args);
     var payment;
     var booking = {};
     var selfDoInvoice;
@@ -117,7 +118,8 @@ function tpvResponse(args){
             return new MasterError(err);
         }
 
-        return callback(responseXml(booking.params, cpParams, signature));
+        var xml = responseXml(booking.params, cpParams, signature);
+        return callback(xml);
 
         booking.getBooking(booking.params.idBooking, function (r) {
             var options = {
@@ -157,10 +159,10 @@ function encrypt3DES (str,key) {
 
 function createMerchantSignatureNotifSOAPResponse(key, datos, numPedido) {
     // Se decodifica la clave Base64
-    // var tmpKey = new Buffer(key).toString('base64');
+    var tmpKey = new Buffer(key).toString('base64');
 
     // Se diversifica la clave con el Número de Pedido
-    var tmpKey = encrypt3DES(String(numPedido), key);
+    tmpKey = encrypt3DES(String(numPedido), tmpKey);
 
     // MAC256 del parámetro Ds_Parameters que envía Redsys
     var res = mac256(datos, tmpKey);
@@ -184,6 +186,7 @@ function responseXml(params, orgParams, signature) {
     var claveAdmin = tpv.tpvIdComerce;
     var responseData = '<Response Ds_Version="0.0"><Ds_Response_Merchant>OK</Ds_Response_Merchant></Response>';
     var responseSignature = createMerchantSignatureNotifSOAPResponse(claveAdmin, responseData, orgParams.Ds_Order);
+    console.log('<Message>' + responseData + '<Signature>' + responseSignature + '</Signature></Message>');
     return '<Message>' + responseData + '<Signature>' + responseSignature + '</Signature></Message>';
 
     var result = {
