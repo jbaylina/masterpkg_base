@@ -12,6 +12,7 @@ var logger = __mods.logger;
 var xml2js = require('xml2js');
 var Booking = __mods.booking;
 var docs = __mods.docs;
+var config = __mods.config;
 var db = __mods.db;
 var crypto = require('crypto');
 var zeropad = require('zeropad');
@@ -24,35 +25,9 @@ var log = function (level, msg, meta) {
     __mods.logger.log(level, msg, meta);
 };
 
-module.exports = function(app, server) {
 
-    var xmlSoap = '';
-    if (fs.existsSync('./tpvSoap.wsdl')) {
-        xmlSoap = fs.readFileSync('./tpvSoap.wsdl', 'utf8');
-    }
-
-    var service = {
-        InotificacionSISService: {
-            InotificacionSIS: {
-                procesaNotificacionSIS : function(args, callback){
-                    tpvResponse(args, callback);
-                }
-            }
-        }
-    };
-
-    if(xmlSoap){
-        console.log('SOAP server listening on port ' + __mods.app.get('port'));
-        logger.log('verbose', 'SOAP server listening on port ' + __mods.app.get('port'));
-        var serverSoap = soap.listen(server, '/wsdl', service, xmlSoap);
-        serverSoap.log = function(type, data) {
-            logger.log('verbose', 'SOAP server type: ' + type + ' \n Data: ' + data);
-        };
-    }
-};
-
-function tpvResponse(args, callback){
-
+function tpvResponse(args, callback) {
+    console.log('SOAP tpvResponse');
     console.log(args);
     var payment;
     var booking = {};
@@ -62,6 +37,7 @@ function tpvResponse(args, callback){
     // TODO xapusa que sha de treure
     var cpParams = {};
     var signature = '';
+    var requestData = args.XML.$value.substring(9, args.XML.$value.indexOf('</Request>') + 10);
 
     async.series([
         function (cb) {
@@ -78,14 +54,14 @@ function tpvResponse(args, callback){
                  result.Message.Request[0].Ds_TransactionType: [ '0' ],
                  result.Message.Request[0].Ds_ConsumerLanguage: [ '2' ],
                  result.Message.Request[0].Ds_AuthorisationCode: [ '004728' ] } ]
-                */
+                 */
 
                 // si response = 0000
                 cpParams = result.Message.Request[0];
-                if(result.Message.Request[0].Ds_Response[0]==='0000'){
+                if (result.Message.Request[0].Ds_Response[0] === '0000') {
                     booking = new Booking(result.Message.Request[0].Ds_Order[0]);
                     cb();
-                }else{
+                } else {
                     log('info', 'TPV WS ERROR RESPONSE', {
                         errorResponse: result.Message.Request[0].Ds_Response[0]
                     });
@@ -112,15 +88,19 @@ function tpvResponse(args, callback){
     ], function (err) {
         console.log('ENVIO EL MAIL');
         // SEND DE MAIL
-        if (err){
+        if (err) {
             console.log('########## ERROR ############');
             console.log(err);
             return new MasterError(err);
         }
 
-        var xml = responseXml(booking.params, cpParams, signature);
-        return callback(xml);
-
+        var xml = responseXml(requestData, cpParams, signature);
+        console.log('SOAP responseXml');
+        console.log(xml);
+        callback({
+            Message: xml
+        });
+        return;
         booking.getBooking(booking.params.idBooking, function (r) {
             var options = {
                 template: r.productBookingTemplate,
@@ -133,7 +113,7 @@ function tpvResponse(args, callback){
             docs.sendMail(options, function (err) {
                 if (err) return new MasterError(err);
 
-                var xml = responseXml(booking.params, cpParams, signature);
+                var xml = responseXml(requestData, cpParams, signature);
                 console.log(xml);
                 return xml;
 
@@ -147,31 +127,31 @@ function mac256(data, key) {
     return new Buffer(hexMac256, 'hex').toString('base64');
 }
 
-function encrypt3DES (str,key) {
+function encrypt3DES(str, key) {
     const secretKey = new Buffer(key, 'base64');
     const iv = new Buffer(8);
     iv.fill(0);
     const cipher = crypto.createCipheriv('des-ede3-cbc', secretKey, iv);
+    console.log("cipher=" + cipher);
     cipher.setAutoPadding(false);
-
-    return cipher.update(zeropad(str, 8), 'utf8', 'base64') + cipher.final('base64');
+    console.log("cipher=" + cipher);
+    var test = cipher.update(zeropad(str, 8), 'utf8', 'base64') + cipher.final('base64');
+    console.log("cipher=" + test);
+    return test;
 }
 
-function createMerchantSignatureNotifSOAPResponse(key, datos, numPedido) {
+function createMerchantSignatureNotifSOAPResponse(datos, key, numPedido) {
     // Se decodifica la clave Base64
-    var tmpKey = new Buffer(key).toString('base64');
-
+    //  var tmpKey = new Buffer(key).toString('base64');
     // Se diversifica la clave con el Número de Pedido
-    tmpKey = encrypt3DES(String(numPedido), tmpKey);
-
+    var tmpKey = encrypt3DES(String(numPedido), key);
     // MAC256 del parámetro Ds_Parameters que envía Redsys
     var res = mac256(datos, tmpKey);
-
     // Se codifican los datos Base64
     return new Buffer(res).toString('base64');
 }
 
-function responseXml(params, orgParams, signature) {
+function responseXml(requestData, orgParams, signature) {
     // CODIGO: 0= correcta
 
     // var Cadena = orgParams.Ds_Amount + orgParams.Ds_Order + orgParams.Ds_MerchantCode
@@ -183,10 +163,19 @@ function responseXml(params, orgParams, signature) {
     var origBooking = db.rsvBookings[orgParams.Ds_Order].toJSON();
     var tpv = db.paymentMethodsCreditCardTPV[origBooking.bookingData.payment.idPaymentMethod];
 
-    var claveAdmin = tpv.tpvIdComerce;
+    var claveAdmin = tpv.commerceKey;
     var responseData = '<Response Ds_Version="0.0"><Ds_Response_Merchant>OK</Ds_Response_Merchant></Response>';
-    var responseSignature = createMerchantSignatureNotifSOAPResponse(claveAdmin, responseData, orgParams.Ds_Order);
+    var responseSignature = createMerchantSignatureNotifSOAPResponse(requestData, claveAdmin, orgParams.Ds_Order);
     console.log('<Message>' + responseData + '<Signature>' + responseSignature + '</Signature></Message>');
+    // return {
+    //     "Message": {
+    //         "Response": {
+    //             "Ds_Response_Merchant": "OK"
+    //         },
+    //         "Signature": responseSignature
+    //     }
+    // };
+    return responseData + '<Signature>' + responseSignature + '</Signature>';
     return '<Message>' + responseData + '<Signature>' + responseSignature + '</Signature></Message>';
 
     var result = {
@@ -210,8 +199,38 @@ function responseXml(params, orgParams, signature) {
             }
         }
     };
-    var builder = new xml2js.Builder({headless: true, cdata:true});
+    var builder = new xml2js.Builder({headless: true, cdata: true});
     var xml = builder.buildObject(result);
 
     return xml;
 }
+
+module.exports = function (app, server) {
+
+    var service = {
+        InotificacionSISService: {
+            InotificacionSIS: {
+                procesaNotificacionSIS: tpvResponse
+            }
+        }
+    };
+
+    var xmlSoap = '';
+    if (fs.existsSync('./tpvSoap.wsdl')) {
+        xmlSoap = fs.readFileSync('./tpvSoap.wsdl', 'utf8');
+    }
+
+    if (xmlSoap && config.soapAddress) {
+        xmlSoap = xmlSoap.replace('SOAP_ADDRESS', config.soapAddress);
+        console.log('SOAP server listening on port ' + __mods.app.get('port'));
+        logger.log('verbose', 'SOAP server listening on port ' + __mods.app.get('port'));
+        var serverSoap = soap.listen(server, {
+            path: '/wsdl',
+            services: service,
+            xml: xmlSoap
+        });
+        serverSoap.log = function (type, data) {
+            logger.log('verbose', 'SOAP server type: ' + type + ' \n Data: ' + data);
+        };
+    }
+};
