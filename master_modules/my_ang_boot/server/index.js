@@ -24,7 +24,8 @@ exports.init = function () {
             level: (config.winston && config.winston.level) ? config.winston.level : "debug",
             handleExceptions: (config.winston && config.winston.handleExceptions) ? config.winston.handleExceptions : false,
             humanReadableUnhandledException: true,
-            prepend: true
+            prepend: true,
+            maxFiles: config.winston.maxFiles || 7
         }));
     }
 
@@ -316,8 +317,6 @@ exports.init = function () {
             console.log('Express server listening on port ' + app.get('port'));
             logger.log('verbose', 'Express server listening on port ' + app.get('port'));
         });
-
-        require('./tpvSOAP')(app, server);
 
         if (config.https) {
             serverHttps.listen(8000, function () {
