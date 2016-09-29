@@ -59,7 +59,7 @@
 
         return {
             view: function (error) {
-                if(error.status==-1){
+                if(error.status && error.status == -1){
                     sweetAlert('503', gettextCatalog.getString('The service is unavailable'), "error");
                 }else if (error.status == 403) {
                     if(principal.isAuthenticated()){
@@ -127,7 +127,7 @@
                 actHistory({
                     title: msg,
                     class: 'success',
-                    link: link,
+                    link: link
                 });
                 toastr.success(msg, gettextCatalog.getString('Saved successfully'), {
                     "closeButton": true,
