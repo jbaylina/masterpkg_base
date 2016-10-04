@@ -149,7 +149,7 @@
                 actHistory({
                     title: msg,
                     class: 'error',
-                    link: link,
+                    link: link
                 });
                 toastr.error(msg, gettextCatalog.getString('Failed to save'), {
                     "closeButton": true,
