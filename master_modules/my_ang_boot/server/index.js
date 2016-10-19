@@ -63,7 +63,7 @@ exports.init = function () {
     var fs = require("fs");
 
     var db = __mods.db = require('./db');
-    __mods.MasterError = require('../common/mastererror');
+    global.MasterError = require('../common/mastererror');
 
 
     var app = __mods.app = express();

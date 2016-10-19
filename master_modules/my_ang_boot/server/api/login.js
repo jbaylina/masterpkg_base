@@ -5,7 +5,6 @@
 var db= __mods.db;
 var config = __mods.config;
 var path = require('path');
-var MasterError = __mods.MasterError;
 var passport = require('passport');
 var async = require('async');
 

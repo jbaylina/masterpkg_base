@@ -5,7 +5,6 @@
 var db= __mods.db;
 var config = __mods.config;
 var _ = require('lodash');
-var MasterError = __mods.MasterError;
 var path = require('path');
 var fs = require('fs');
 var api = __mods.api;
