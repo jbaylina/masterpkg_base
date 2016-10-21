@@ -18,16 +18,14 @@ exports.init = function () {
 
     if (!fs.existsSync('logs')) fs.mkdirSync('logs');
 
-    if ((config.winston) && (config.winston.filename)) {
-        loggerConfig.transports.push(new (require('winston-daily-rotate-file'))({
-            filename: (config.winston && config.winston.filename) ? config.winston.filename : "logs/output.log",
-            level: (config.winston && config.winston.level) ? config.winston.level : "debug",
-            handleExceptions: (config.winston && config.winston.handleExceptions) ? config.winston.handleExceptions : false,
-            humanReadableUnhandledException: true,
-            prepend: true,
-            maxFiles: config.winston.maxFiles || 7
-        }));
-    }
+    loggerConfig.transports.push(new (require('winston-daily-rotate-file'))({
+        filename: (config.winston && config.winston.filename) ? config.winston.filename : "logs/output.log",
+        level: (config.winston && config.winston.level) ? config.winston.level : "debug",
+        handleExceptions: (config.winston && config.winston.handleExceptions) ? config.winston.handleExceptions : false,
+        humanReadableUnhandledException: true,
+        prepend: true,
+        maxFiles: config.winston.maxFiles || 7
+    }));
 
     loggerConfig.transports.push(new winston.transports.Console({
         level: (config.winston && config.winston.level) ? config.winston.level : "debug",
@@ -296,7 +294,7 @@ exports.init = function () {
                 errObj.errorMsg = err.message;
             }
 
-            if(err.stack) errObj.stack = err.stack;
+            if (err.stack) errObj.stack = err.stack;
             logger.log("warn", errObj.code, errObj);
             delete errObj.stack;
 
