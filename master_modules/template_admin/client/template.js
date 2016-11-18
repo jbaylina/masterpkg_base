@@ -224,7 +224,8 @@
     angular.module('masterasp', [
         'ui.bootstrap',
         'ngIdle',
-        'principal'
+        'principal',
+        'daterangepicker'
     ])
         .factory('templateFactory', templateFactory)
         .directive('ngEnter', function () {

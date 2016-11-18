@@ -8,7 +8,7 @@ exports.init = function () {
 
     var config = __mods.config;
     var winston = require('winston');
-    require('winston-daily-rotate-file');
+    var winstonDailyRotateFile = require('winston-daily-rotate-file');
     var fs = require('fs');
     var _ = require('underscore');
 
@@ -19,7 +19,7 @@ exports.init = function () {
 
     if (!fs.existsSync('logs')) fs.mkdirSync('logs');
 
-    loggerConfig.transports.push(new winston.transports.DailyRotateFile({
+    loggerConfig.transports.push(new winstonDailyRotateFile({
         filename: (config.winston && config.winston.filename) ? config.winston.filename : "logs/output.log",
         level: (config.winston && config.winston.level) ? config.winston.level : "debug",
         handleExceptions: (config.winston && config.winston.handleExceptions) ? config.winston.handleExceptions : false,
