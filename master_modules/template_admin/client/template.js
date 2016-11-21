@@ -55,7 +55,9 @@
         return {
             restrict: 'A',
             scope: true,
-            templateUrl: 'views/common/ibox_tools.html',
+            templateUrl: function (elem, attr) {
+                return attr.template;
+            },
             controller: function ($scope, $element) {
                 // Function for collapse ibox
                 $scope.showhide = function () {
@@ -70,12 +72,12 @@
                         ibox.resize();
                         ibox.find('[id^=map-]').resize();
                     }, 50);
-                },
-                    // Function for close ibox
-                    $scope.closebox = function () {
-                        var ibox = $element.closest('div.ibox');
-                        ibox.remove();
-                    }
+                };
+                // Function for close ibox
+                $scope.closebox = function () {
+                    var ibox = $element.closest('div.ibox');
+                    ibox.remove();
+                }
             }
         };
     }
@@ -204,18 +206,19 @@
     }
 
 
-    function config($stateProvider, $urlRouterProvider, IdleProvider, KeepaliveProvider) {
+    function config($stateProvider, IdleProvider) {
+
         $stateProvider.state("forbiden", {
             parent: "site",
             url: "/forbiden",
             templateUrl: 'templates/template_admin/forbiden.html'
         });
+
         $stateProvider.state("timeout", {
             parent: "site",
             url: "/timeout",
             templateUrl: 'templates/template_admin/timeout.html'
         });
-
 
         IdleProvider.idle(5);
         IdleProvider.timeout(120);
