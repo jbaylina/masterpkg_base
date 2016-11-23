@@ -54,7 +54,6 @@
     function iboxTools($timeout) {
         return {
             restrict: 'A',
-            scope: true,
             templateUrl: function (elem, attr) {
                 return attr.template;
             },
