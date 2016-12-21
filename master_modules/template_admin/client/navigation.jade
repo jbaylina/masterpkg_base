@@ -3,19 +3,19 @@ nav.navbar-default.navbar-static-side(role='navigation' ng-if="principal.isAuthe
         ul#side-menu.nav.metismenu.animated(side-navigation)
             ss(ng-repeat-start="subMenuItem in mainMenu")
             li(ng-class="{active: $state.includes(subMenuItem.sref)}" ng-if="!subMenuItem.subMenu")
-                a(ng-if="!!subMenuItem.sref", ui-sref="{{subMenuItem.sref}}")
+                a(ng-if="!!subMenuItem.sref" ui-sref="{{subMenuItem.sref}}")
                     i.fa.fa-th-large(ng-if="!subMenuItem.icon")
                     i.fa(ng-class="subMenuItem.icon" ng-if="subMenuItem.icon")
                     span.nav-label(ng-bind="subMenuItem.name")
                     span.label.label-info.pull-right.point(ng-if="subMenuItem.modeTest=='No'" title="Activo") {{'&nbsp;'}}
                     span.label.label-danger.pull-right.point(ng-if="subMenuItem.modeTest=='Si'" title="Modo test") {{'&nbsp;'}}
             li(ng-class="{active: $state.includes(subMenuItem.sref)}" ng-if="!subMenuItem.subMenu")
-                a(ng-if="!!subMenuItem.href", href="{{subMenuItem.href}}" ng-bind="subMenuItem.name")
+                a(ng-if="!!subMenuItem.href" href="{{subMenuItem.href}}" ng-bind="subMenuItem.name")
                     i.fa.fa-th-large(ng-if="!subMenuItem.icon")
                     i.fa(ng-class="subMenuItem.icon" ng-if="subMenuItem.icon")
                     span.nav-label(ng-bind="subMenuItem.name")
             li(ng-class="{active: $state.includes(subMenuItem.sref)}" ng-if="!subMenuItem.subMenu")
-                a(ng-if="!!subMenuItem.onClick", ng-click="subMenuItem.onClick()" ng-bind="subMenuItem.name")
+                a(ng-if="!!subMenuItem.onClick" ng-click="subMenuItem.onClick()" ng-bind="subMenuItem.name")
                     i.fa.fa-th-large(ng-if="!subMenuItem.icon")
                     i.fa(ng-class="subMenuItem.icon" ng-if="subMenuItem.icon")
                     span.nav-label(ng-bind="subMenuItem.name")
@@ -26,10 +26,36 @@ nav.navbar-default.navbar-static-side(role='navigation' ng-if="principal.isAuthe
                     span.nav-label {{subMenuItem.name}}
                     span.fa.arrow
                 ul.nav.nav-second-level.collapse
-                    ss(ng-repeat-start="subMenuItem in subMenuItem.subMenu", )
-                    li(ui-sref-active='active')
-                        a(ui-sref='{{subMenuItem.sref}}')
-                            i.fa(ng-class="subMenuItem.icon" ng-if="subMenuItem.icon")
-                            | {{subMenuItem.name}}
+                    ss(ng-repeat-start="subMenuItem2 in subMenuItem.subMenu")
+                    li(ng-class="{active: $state.includes(subMenuItem2.sref)}" ng-if="!subMenuItem2.subMenu")
+                        a(ng-if="!!subMenuItem2.sref" ui-sref="{{subMenuItem2.sref}}")
+                            i.fa.fa-th-large(ng-if="!subMenuItem2.icon")
+                            i.fa(ng-class="subMenuItem2.icon" ng-if="subMenuItem2.icon")
+                            span.nav-label(ng-bind="subMenuItem2.name")
+                            span.label.label-info.pull-right.point(ng-if="subMenuItem2.modeTest=='No'" title="Activo") {{'&nbsp;'}}
+                            span.label.label-danger.pull-right.point(ng-if="subMenuItem2.modeTest=='Si'" title="Modo test") {{'&nbsp;'}}
+                    li(ng-class="{active: $state.includes(subMenuItem2.sref)}" ng-if="!subMenuItem2.subMenu")
+                        a(ng-if="!!subMenuItem2.href" href="{{subMenuItem2.href}}" ng-bind="subMenuItem2.name")
+                            i.fa.fa-th-large(ng-if="!subMenuItem2.icon")
+                            i.fa(ng-class="subMenuItem2.icon" ng-if="subMenuItem2.icon")
+                            span.nav-label(ng-bind="subMenuItem2.name")
+                    li(ng-class="{active: $state.includes(subMenuItem2.sref)}" ng-if="!subMenuItem2.subMenu")
+                        a(ng-if="!!subMenuItem2.onClick" ng-click="subMenuItem2.onClick()" ng-bind="subMenuItem2.name")
+                            i.fa.fa-th-large(ng-if="!subMenuItem2.icon")
+                            i.fa(ng-class="subMenuItem2.icon" ng-if="subMenuItem2.icon")
+                            span.nav-label(ng-bind="subMenuItem2.name")
+                    li(ng-class="{active: $state.includes(subMenuItem2.sref)}" ng-if="subMenuItem2.subMenu")
+                        a(href='index.html')
+                            i.fa.fa-th-large(ng-if="!subMenuItem2.icon")
+                            i.fa(ng-class="subMenuItem2.icon" ng-if="subMenuItem2.icon")
+                            span.nav-label {{subMenuItem2.name}}
+                            span.fa.arrow
+                        ul.nav.nav-third-level.collapse
+                            ss(ng-repeat-start="subMenuItem3 in subMenuItem2.subMenu")
+                            li(ui-sref-active='active')
+                                a(ui-sref='{{subMenuItem3.sref}}')
+                                    i.fa(ng-class="subMenuItem3.icon" ng-if="subMenuItem3.icon")
+                                    | {{subMenuItem3.name}}
+                            ss(ng-repeat-end)
                     ss(ng-repeat-end)
             ss(ng-repeat-end)
