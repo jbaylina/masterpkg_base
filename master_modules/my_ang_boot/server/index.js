@@ -277,8 +277,13 @@ exports.init = function () {
                 });
             }
 
+
+
             var errObj = {};
-            if (err.code) {
+            if(typeof err == "string") {
+                errObj.code = "Undefined";
+                errObj.message = err;
+            } else if (err.code) {
                 errObj.code = err.code;
             } else if (err.errorCode) {
                 errObj.code = err.errorCode;
