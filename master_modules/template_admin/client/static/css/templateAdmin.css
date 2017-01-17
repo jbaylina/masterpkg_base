@@ -22,18 +22,18 @@
 .navbar-default{ overflow:hidden;}
 .sidebar-collapse{  min-width:220px; }
 body{padding-top:0 !important}
-.btn-primary { background:#457abb; border-color:#457abb;}
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-primary.active,
-.open .dropdown-toggle.btn-primary,
-.btn-primary:active:focus,
-.btn-primary:active:hover,
-.btn-primary.active:hover,
-.btn-primary.active:focus {
-    background:#1c66a6; border-color:#1c66a6;
-}
+/*.btn-primary { background:#457abb; border-color:#457abb;}*/
+/*.btn-primary:hover,*/
+/*.btn-primary:focus,*/
+/*.btn-primary:active,*/
+/*.btn-primary.active,*/
+/*.open .dropdown-toggle.btn-primary,*/
+/*.btn-primary:active:focus,*/
+/*.btn-primary:active:hover,*/
+/*.btn-primary.active:hover,*/
+/*.btn-primary.active:focus {*/
+    /*background:#1c66a6; border-color:#1c66a6;*/
+/*}*/
 .md-skin .nav .open > a,.md-skin .nav .open > a:hover,.md-skin .nav .open > a:focus,.md-skin .navbar-fixed-top,.md-skin .navbar-static-top,.spin-icon,.fc-event,.onoffswitch-inner:before,.sk-spinner-fading-circle .sk-circle:before,.landing-page li.pricing-title,.fc-agenda .fc-event-time,.jvectormap-zoomin,.sk-spinner-rotating-plane.sk-spinner,.landing-page .testimonials,.jvectormap-zoomout,.open-small-chat,.open-small-chat:hover,.sk-spinner-wordpress.sk-spinner,.landing-page .navbar-default .navbar-brand,.jvectormap-goback,.branding,.navy-bg,.progress-bar,.small-chat-box .content .chat-message.active,.landing-page .btn-primary,.fc-event a,a.list-group-item.active,.panel-primary > .panel-heading,.sk-spinner-cube-grid .sk-cube,.landing-page .social-icon a,a.list-group-item.active:hover,.noUi-connect,.product-price,.sk-spinner-double-bounce .sk-double-bounce1,.sk-spinner-double-bounce .sk-double-bounce2,.sk-spinner-wave div,.sk-spinner-wandering-cubes .sk-cube1,.sk-spinner-wandering-cubes .sk-cube2,.sk-spinner-pulse.sk-spinner,.sk-spinner-chasing-dots .sk-dot1,.landing-page .navy-section,.sk-spinner-chasing-dots .sk-dot2,.sk-spinner-three-bounce div,.sk-spinner-circle .sk-circle:before,a.list-group-item.active:focus,.label-primary,.fc-state-active,.badge-primary,.btn-home,.pace .pace-progress,.navbar-default .landing_link a:hover,body.mini-navbar .nav-header,.navbar-default .special_link a,.top-navigation .navbar-brand,.navbar-toggle
 {
     background:#c42126;
@@ -90,7 +90,11 @@ a.btn.btn-danger.btn-sm.buttonmarginbottom{margin-bottom: 40px;}
 .textLeft{ text-align: left;}
 .wrapper-content{ padding-bottom: 10px;}
 .marTop30{ margin-top:30px; }
-.footer-action{ text-align: right; padding-bottom: 70px;}
+.footer-action {
+    /*text-align: right; */
+    /*padding-bottom: 70px;*/
+    /*min-height: 100px;*/
+}
 .occupancyBox .row{ padding:8px 0 8px 0;}
 .occupancyBox .textCenter{ text-align: center; margin-bottom:0;}
 .occupancyBox .form-control{ margin-bottom:0; height: 26px !important;}

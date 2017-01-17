@@ -3482,12 +3482,13 @@ ol.unstyled {
 }
 /* FOOTER */
 .footer {
-  background: none repeat scroll 0 0 white;
-  border-top: 1px solid #e7eaec;
+  /*background: none repeat scroll 0 0 white;*/
+  /*border-top: 1px solid #e7eaec;*/
   bottom: 0;
   left: 0;
   padding: 10px 20px;
-  position: absolute;
+  /*position: absolute;*/
+  position: relative;
   right: 0;
 }
 .footer.fixed_full {
@@ -3534,6 +3535,16 @@ body.body-small .footer.fixed {
 .panel-heading h2 {
   margin-bottom: 5px;
 }
+
+.page-footer {
+    border-top: 0;
+    padding: 0 10px 20px 10px;
+}
+
+.page-footer .title-action {
+    padding-top: 20px;
+}
+
 /* TABLES */
 .table-bordered {
   border: 1px solid #EBEBEB;
