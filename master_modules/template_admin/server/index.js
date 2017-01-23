@@ -8,7 +8,7 @@ var fs = require("fs-extra");
 var config = __mods.config;
 
 exports.init = function () {
-    if (config.clientConfig.property) {
+    if (config.clientConfig.property && config.clientConfig.property.logo) {
         var logo = config.clientConfig.property.logo || "/media/sf_mastersq/Bookings/logo.png";
         fs.stat(logo, function (err, stat) {
             if (err == null) {
