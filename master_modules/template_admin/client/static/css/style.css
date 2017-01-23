@@ -3497,7 +3497,7 @@ ol.unstyled {
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 10px 20px;
+  /*padding: 10px 20px;*/
   background: white;
   border-top: 1px solid #e7eaec;
 }
@@ -3539,6 +3539,7 @@ body.body-small .footer.fixed {
 .page-footer {
     border-top: 0;
     padding: 0 10px 20px 10px;
+    margin-bottom: 33px;
 }
 
 .page-footer .title-action {

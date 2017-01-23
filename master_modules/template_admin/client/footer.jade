@@ -1,7 +1,13 @@
-.footer(ng-if="principal.isAuthenticated()")
-   .pull-right
-      a(href="http://www.masterasp.com" target="_blank")
-         img(src="images/logo_master.png")
-   div(ng-if="version")
-      span Versión:&nbsp;
-      b(ng-bind="version")
+.row.footer.fixed_full
+    .col-sm-12
+        .col-sm-6
+            div(ng-if="version" style="margin-top: 5px;")
+                span Versión:&nbsp;
+                b(ng-bind="version")
+        .col-sm-6
+            .pull-right
+              a(href="http://www.mastercamping.com" target="_blank")
+                h3
+                    img(src="images/logo.png" style="height: 14px;margin-right:5px;")
+                    span(style="color:#9e9ba2;") master
+                    b(style="color: #5C4E3E;") camping
