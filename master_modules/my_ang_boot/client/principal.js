@@ -67,10 +67,10 @@
                     lang = clientConfig.defaultLang || "en";
                 }
 
-                if (gettextCatalog.getCurrentLanguage() !== lang) {
+                // if (gettextCatalog.getCurrentLanguage() !== lang) {
                     gettextCatalog.setCurrentLanguage(lang);
                     gettextCatalog.loadRemote("/translations/" + lang + ".json");
-                }
+                // }
 
                 try {
                     angular.element(document.getElementById('mainDiv')).scope().loginChanged(_identity);
