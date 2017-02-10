@@ -55,6 +55,8 @@ function setMailConfig(config, callback){
         serverMailConfig.host = config.host;
         serverMailConfig.port = config.port || 25;
 
+        if (config.ignoreTLS) serverMailConfig.ignoreTLS = true;
+
         process.env.NODE_TLS_REJECT_UNAUTHORIZED = config.NODE_TLS_REJECT_UNAUTHORIZED || '0';
 
         transporter = nodemailer.createTransport(serverMailConfig);
