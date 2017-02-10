@@ -106,9 +106,9 @@ function getItems(req, res, next) {
 				version: "2.0.0",
 				title: "API aph",
 				contact: {
-					name: "MasterASP Team",
-					url: "http://masterasp.com",
-					email: "francesc@masterasp.com"
+					name: "MasterCamping Team",
+					url: "http://www.mastercamping.com/",
+					email: "info@mastercamping.com"
 				}
 			},
 			host: host,

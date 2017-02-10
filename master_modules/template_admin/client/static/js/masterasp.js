@@ -1,5 +1,5 @@
 /**
- * MASTERASP - Responsive Admin Theme
+ * MASTERCAMPING - Responsive Admin Theme
  * 2.5
  *
  * Custom scripts

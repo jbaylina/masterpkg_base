@@ -13,9 +13,9 @@
             link: function (scope, element) {
                 var listener = function (event, toState, toParams, fromState, fromParams) {
                     // Default title - load on Dashboard 1
-                    var title = 'MasterASP | Admin';
+                    var title = 'MasterCamping | Admin';
                     // Create your own title pattern
-                    if (toState.data && toState.data.pageTitle) title = 'MasterASP | ' + toState.data.pageTitle;
+                    if (toState.data && toState.data.pageTitle) title = 'MasterCamping | ' + toState.data.pageTitle;
                     $timeout(function () {
                         element.text(title);
                     });
@@ -260,7 +260,7 @@
         IdleProvider.timeout(120);
     }
 
-    angular.module('masterasp', [
+    angular.module('mastercamping', [
         'ui.bootstrap',
         'ngIdle',
         'principal',
