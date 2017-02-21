@@ -78,13 +78,15 @@
 
                 ngModelController.$parsers.push(function (viewValue) {
 
+                    if(!viewValue) return null;
+
                     function fill(S, l) {
                         S = "" + S;
                         while (S.length < l) S = '0' + S;
                         return S;
                     }
 
-                    console.log("before parser: " + typeof(viewValue) + " -> " + viewValue);
+                    //console.log("before parser: " + typeof(viewValue) + " -> " + viewValue);
 
                     viewValue = new Date(viewValue);
                     var y = viewValue.getFullYear();
@@ -93,7 +95,7 @@
 
                     viewValue = new Date(fill(y, 4) + '-' + fill(m, 2) + '-' + fill(d, 2) + 'T00:00:00.000Z');
 
-                    console.log("after parser: " + typeof(viewValue) + " -> " + viewValue);
+                    //console.log("after parser: " + typeof(viewValue) + " -> " + viewValue);
 
                     return viewValue;
                 });
