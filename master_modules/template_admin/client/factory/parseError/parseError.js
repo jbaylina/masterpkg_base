@@ -95,7 +95,7 @@
                     showCancelButton: true,
                     closeOnConfirm: false,
                     showLoaderOnConfirm: true
-                }, function(){cb();});
+                }).then(function(){cb();});
             },
             goBack: function(message,cb){
                 swal({
@@ -107,7 +107,7 @@
                     showCancelButton: true,
                     closeOnConfirm: false,
                     showLoaderOnConfirm: true
-                }, function(){cb(); swal.close(); });
+                }).then(function(){cb(); swal.close(); });
             },
             deleteSuccess: function (message) {
                 if (!message) {
