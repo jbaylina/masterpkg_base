@@ -93,7 +93,6 @@
                     confirmButtonColor: "#DD6B55",
                     confirmButtonText: gettextCatalog.getString("Yes, delete it!"),
                     showCancelButton: true,
-                    closeOnConfirm: false,
                     showLoaderOnConfirm: true
                 }).then(function(){cb();});
             },
@@ -105,7 +104,6 @@
                     confirmButtonColor: "#DD6B55",
                     confirmButtonText: gettextCatalog.getString("Yes, go back!"),
                     showCancelButton: true,
-                    closeOnConfirm: false,
                     showLoaderOnConfirm: true
                 }).then(function(){cb(); swal.close(); });
             },
