@@ -85,7 +85,7 @@
                 }
                 return;
             },
-            delete: function(message,cb){
+            delete: function(message, cb, dismiss){
                 swal({
                     title: gettextCatalog.getString("Are you sure?"),
                     text: message,
@@ -94,9 +94,9 @@
                     confirmButtonText: gettextCatalog.getString("Yes, delete it!"),
                     showCancelButton: true,
                     showLoaderOnConfirm: true
-                }).then(function(){cb();});
+                }).then(cb, dismiss);
             },
-            goBack: function(message,cb){
+            goBack: function(message, cb, dismiss){
                 swal({
                     title: gettextCatalog.getString("Are you sure?"),
                     text: message,
@@ -105,7 +105,7 @@
                     confirmButtonText: gettextCatalog.getString("Yes, go back!"),
                     showCancelButton: true,
                     showLoaderOnConfirm: true
-                }).then(function(){cb(); swal.close(); });
+                }).then(function(){cb(); swal.close(); }, dismiss);
             },
             deleteSuccess: function (message) {
                 if (!message) {
